@@ -10,7 +10,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ChatButton from './components/ChatButton';
 import About from './components/About';
-import AIImageRecognition from './components/blog/AIImageRecognition';
+import Networkapp from './components/blog/Networkapp';
 import DDO from './components/blog/DDO';
 import ATSScoreChecker from './components/blog/ATSScoreChecker';
 import ATSApp from './components/ats/ATSApp';
@@ -58,7 +58,7 @@ function App() {
           </div>
         } />
         <Route path="/about" element={<About />} />
-        <Route path="/blog/ai-image-recognition" element={<AIImageRecognition />} />
+        <Route path="/blog/Networkapp" element={<Networkapp />} />
         <Route path="/blog/DDO" element={<DDO />} />
         <Route path="/blog/ats-score-checker" element={<ATSScoreChecker />} />
         <Route path="/ats" element={<ATSApp />} />

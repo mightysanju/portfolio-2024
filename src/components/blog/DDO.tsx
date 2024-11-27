@@ -79,6 +79,18 @@ const DDO = () => {
         </ul>
       </p>
 
+      <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-6">
+        <h3 className="text-xl font-semibold text-gray-200 mb-4">
+          Core Features
+        </h3>
+        <ul className="list-disc list-inside text-gray-300 space-y-2">
+          <li>Real-time data processing</li>
+          <li>Multi Processing & Multi Threading</li>
+          <li>User Friendly Graphic Interface</li>
+          <li>One Click Data Fetch and Upload</li>
+        </ul>
+      </div>
+
       <h2 className="text-2xl font-semibold text-gray-200 mb-4">
         Technical Implementation
       </h2>
@@ -98,27 +110,9 @@ const DDO = () => {
         </li>
       </p>
 
-      <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-6">
-        <h3 className="text-xl font-semibold text-gray-200 mb-4">
-          Core Features
-        </h3>
-        <ul className="list-disc list-inside text-gray-300 space-y-2">
-          <li>Real-time data processing</li>
-          <li>Multi Processing & Multi Threading</li>
-          <li>User Friendly Graphic Interface</li>
-          <li>One Click Data Fetch and Upload</li>
-        </ul>
-      </div>
+      
 
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">Conclusion</h2>
-      <p className="text-gray-300 mb-6">
-        DDO is a powerful tool that has revolutionized the way carrier
-        performance issues are handled. By leveraging advanced technologies and
-        a user-centric design, this application has significantly improved
-        efficiency, accuracy, and decision-making within the organization. This
-        project showcases my ability to develop innovative solutions that
-        address real-world business problems and deliver tangible results.
-      </p>
+      
 
       <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-6">
         <h3 className="text-xl font-semibold text-gray-200 mb-4">

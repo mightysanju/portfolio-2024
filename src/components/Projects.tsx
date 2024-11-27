@@ -24,19 +24,19 @@ const Projects = () => {
       description: 'Real-time Defect Dispute Management Tool with GUI',
       image: 'https://i.imgur.com/pqH8SRU.png',
       tags: ['GUI', 'Python', 'Analytics'],
-      github: 'https://github.com/sanjukumarkanki/sentiment-analysis',
+      github: 'https://github.com/mightysanju/DDO-Tool-Code-for-Public',
       blog: '/blog/DDO',
     },
     {
-      title: 'Smart Agriculture System',
+      title: 'Network App',
       description:
-        'IoT-based smart farming solution with ML-powered crop prediction',
+        'The Network App automates network balancing tasks, saving time and reducing errors.',
       image:
-        'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80',
-      tags: ['IoT', 'Machine Learning', 'Python'],
-      github: 'https://github.com/sanjukumarkanki/smart-agriculture',
-      demo: 'https://agriculture.mightysanju.com',
-      blog: '/blog/ai-image-recognition',
+        'https://i.imgur.com/VxGPpEB.png',
+      tags: ['Automation', 'Advanced SQL', 'Python'],
+      //github: 'https://github.com/sanjukumarkanki/smart-agriculture',
+      //demo: 'https://agriculture.mightysanju.com',
+      blog: '/blog/Networkapp',
     },
   ];
 
