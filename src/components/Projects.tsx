@@ -38,17 +38,6 @@ const Projects = () => {
       demo: 'https://agriculture.mightysanju.com',
       blog: '/blog/ai-image-recognition',
     },
-    {
-      title: 'Automated Trading Bot',
-      description:
-        'ML-powered cryptocurrency trading bot with real-time market analysis',
-      image:
-        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-      tags: ['Python', 'Machine Learning', 'Trading'],
-      github: 'https://github.com/sanjukumarkanki/trading-bot',
-      demo: 'https://trading.mightysanju.com',
-      blog: '/blog/nlp-summarizer',
-    },
   ];
 
   const handleDemoClick = (demo: string, index: number) => {

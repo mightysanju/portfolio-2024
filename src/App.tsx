@@ -12,7 +12,6 @@ import ChatButton from './components/ChatButton';
 import About from './components/About';
 import AIImageRecognition from './components/blog/AIImageRecognition';
 import DDO from './components/blog/DDO';
-import NLPSummarizer from './components/blog/NLPSummarizer';
 import ATSScoreChecker from './components/blog/ATSScoreChecker';
 import ATSApp from './components/ats/ATSApp';
 
@@ -61,7 +60,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/blog/ai-image-recognition" element={<AIImageRecognition />} />
         <Route path="/blog/DDO" element={<DDO />} />
-        <Route path="/blog/nlp-summarizer" element={<NLPSummarizer />} />
         <Route path="/blog/ats-score-checker" element={<ATSScoreChecker />} />
         <Route path="/ats" element={<ATSApp />} />
       </Routes>

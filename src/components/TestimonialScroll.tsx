@@ -38,7 +38,7 @@ const TestimonialScroll = () => {
         {[...testimonials, ...testimonials].map((testimonial, index) => (
           <div
             key={index}
-            className="flex-none w-72 mx-3 bg-gray-800/50 rounded-xl border border-gray-700 backdrop-blur-sm
+            className="flex-none w-96 mx-3 bg-gray-800/50 rounded-xl border border-gray-700 backdrop-blur-sm
               hover:transform hover:scale-105 transition-all duration-300 neon-card nebula-glow cursor-pointer
               hover:bg-gray-800/70"
             onClick={() => window.open('https://linkedin.com', '_blank')}
