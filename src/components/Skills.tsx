@@ -1,33 +1,34 @@
 import React, { useState } from 'react';
-import { Brain, Database, BarChart, Code2, Atom, Network, Cloud, Lock, Globe, Cpu } from 'lucide-react';
+import { Brain, Database, BarChart, Code2, Atom, Network, Cloud, Lock, Globe, Cpu, Wrench, Users, Shield } from 'lucide-react';
 import SkillBar from './SkillBar';
 
 const Skills = () => {
   const [activeTab, setActiveTab] = useState('all');
 
   const allSkills = {
-    'Machine Learning': {
+    'Technical': {
       skills: [
-        { name: 'Deep Learning', level: 92, icon: Brain, color: 'from-purple-500 to-indigo-600' },
-        { name: 'Natural Language Processing', level: 88, icon: Code2, color: 'from-blue-500 to-cyan-500' },
-        { name: 'Computer Vision', level: 85, icon: Atom, color: 'from-pink-500 to-rose-500' },
-        { name: 'Reinforcement Learning', level: 82, icon: Network, color: 'from-green-500 to-emerald-600' },
+        { name: 'Python Programming', level: 95, icon: Code2, color: 'from-blue-500 to-cyan-500' },
+        { name: 'SQL & Databases', level: 92, icon: Database, color: 'from-purple-500 to-indigo-600' },
+        { name: 'Process Automation', level: 90, icon: Cpu, color: 'from-green-500 to-emerald-600' },
+        { name: 'Data Analysis', level: 88, icon: BarChart, color: 'from-yellow-500 to-orange-500' },
+        { name: 'Tableau', level: 85, icon: Globe, color: 'from-blue-400 to-indigo-500' }
       ],
     },
-    'Data Engineering': {
+    'Cybersecurity': {
       skills: [
-        { name: 'Big Data Processing', level: 90, icon: Database, color: 'from-yellow-500 to-orange-500' },
-        { name: 'Data Pipelines', level: 87, icon: Network, color: 'from-emerald-500 to-teal-600' },
-        { name: 'Cloud Computing', level: 85, icon: Cloud, color: 'from-blue-400 to-indigo-500' },
-        { name: 'Data Security', level: 83, icon: Lock, color: 'from-red-500 to-pink-500' },
+        { name: 'Network Security', level: 90, icon: Lock, color: 'from-red-500 to-pink-500' },
+        { name: 'System Security', level: 88, icon: Shield, color: 'from-orange-500 to-red-500' },
+        { name: 'Security Tools', level: 85, icon: Wrench, color: 'from-indigo-500 to-purple-500' },
+        { name: 'Compliance & Frameworks', level: 82, icon: Shield, color: 'from-teal-500 to-cyan-500' }
       ],
     },
-    'Development': {
+    'Soft Skills': {
       skills: [
-        { name: 'Python', level: 95, icon: Code2, color: 'from-yellow-400 to-orange-500' },
-        { name: 'SQL', level: 88, icon: Database, color: 'from-blue-500 to-cyan-500' },
-        { name: 'Web Development', level: 85, icon: Globe, color: 'from-purple-500 to-indigo-500' },
-        { name: 'System Design', level: 82, icon: Cpu, color: 'from-green-400 to-emerald-500' },
+        { name: 'Problem Solving', level: 95, icon: Brain, color: 'from-emerald-500 to-teal-600' },
+        { name: 'Communication', level: 90, icon: Users, color: 'from-blue-500 to-indigo-500' },
+        { name: 'Technical Support', level: 88, icon: Wrench, color: 'from-purple-500 to-pink-500' },
+        { name: 'Organization', level: 85, icon: Network, color: 'from-yellow-500 to-amber-500' }
       ],
     },
   };
@@ -55,7 +56,7 @@ const Skills = () => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300
+            className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2
               ${activeTab === tab.id
                 ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-[0_0_15px_rgba(168,85,247,0.5)]'
                 : 'bg-gray-800 text-gray-300 hover:bg-gray-700'

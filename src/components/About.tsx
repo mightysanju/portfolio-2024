@@ -8,35 +8,34 @@ import {
 const About = () => {
   const education = [
     {
-      degree: "Master's in Computer Science",
-      school: "Illinois Institute of Technology",
-      period: "2023 - Present",
+      degree: "Master's in Information Studies",
+      school: "Trine University",
+      period: "2024 - Present",
       description: "Specializing in Data Science and Machine Learning",
       courses: [
         "Advanced Machine Learning",
         "Deep Learning & Neural Networks",
         "Big Data Analytics",
-        "Natural Language Processing",
-        "Computer Vision"
+        "CyberSecurity",
+        "Cloud Computing"
       ],
-      gpa: "3.9/4.0"
+      gpa: "4.0/4.0"
     },
     {
-      degree: "Bachelor's in Computer Science",
-      school: "JNTUH College of Engineering",
-      period: "2015 - 2019",
-      description: "Focused on Software Engineering and Data Structures",
+      degree: "Bachelor's in Electronics & Communication Engineering",
+      school: "Jawaharlal Nehru Technological University ",
+      period: "2014 - 2018",
+      description: "Focused on Electronics & Embedded Programming",
       courses: [
-        "Data Structures & Algorithms",
-        "Database Management Systems",
-        "Operating Systems",
-        "Computer Networks",
-        "Software Engineering"
+        "C Programming & Embedded C",
+        "Electrical and Electronics Engineering",
+        "VLSI Design",
+        "Transmission Lines"
       ],
-      gpa: "3.8/4.0",
+      //gpa: "3.8/4.0",
       achievements: [
-        "Department Topper",
-        "Best Project Award",
+        "Organised Several Workshops and Trained Over 1000+ Under Grads. in Designing PCBs",
+        "Member of Innovation Council",
         "Technical Club Lead"
       ]
     }
@@ -210,7 +209,9 @@ const About = () => {
                       <p className="text-purple-400">{edu.school}</p>
                       <p className="text-gray-400 text-sm">{edu.period}</p>
                     </div>
-                    <span className="text-emerald-400 font-semibold">GPA: {edu.gpa}</span>
+                    {edu.gpa && (
+                      <span className="text-emerald-400 font-semibold">GPA: {edu.gpa}</span>)
+                    }
                   </div>
                   <p className="text-gray-300 mb-4">{edu.description}</p>
                   

@@ -24,7 +24,7 @@ const Hero = () => {
   ];
 
   const handleDownload = () => {
-    const resumeUrl = 'https://drive.google.com/drive/folders/1ZZgvaCOZFXXhQDHtp9bte6tOM1WKyPcB?usp=drive_link/Resume.pdf';
+    const resumeUrl = 'https://acrobat.adobe.com/id/urn:aaid:sc:AP:49be09f1-3984-4ed6-b488-ed3fdf5a4647';
     window.open(resumeUrl, '_blank');
   };
 

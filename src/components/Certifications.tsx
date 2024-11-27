@@ -13,47 +13,156 @@ const Certifications = () => {
 
   const certifications = [
     {
-      title: 'AWS Machine Learning Specialty',
-      issuer: 'Amazon Web Services',
-      date: 'January 2024',
-      description: 'Advanced machine learning on AWS platform',
-      category: 'ml',
-      verification: {
-        type: 'credly',
-        url: 'https://www.credly.com/users/sanju-kumar.671f31d3'
-      }
-    },
-    {
-      title: 'TensorFlow Developer Certificate',
-      issuer: 'Google',
-      date: 'December 2023',
-      description: 'Deep learning and neural networks expertise',
-      category: 'ml',
+      title: 'Computer Networks and Network Security',
+      issuer: 'IBM',
+      date: 'November 2024',
+      description: 'Advanced networking and security concepts',
+      category: 'cybersecurity',
       verification: {
         type: 'coursera',
-        url: 'https://coursera.org/verify/professional-cert/ABCD1234'
+        url: 'https://www.coursera.org/account/accomplishments/records/FJTPL6KHZ81E',
+        id: 'FJTPL6KHZ81E'
       }
     },
     {
-      title: 'Azure Data Engineer Associate',
-      issuer: 'Microsoft',
-      date: 'November 2023',
-      description: 'Data engineering and analytics on Azure',
+      title: 'Cybersecurity Compliance Framework & Standards',
+      issuer: 'IBM',
+      date: 'November 2024',
+      description: 'Security compliance and regulatory frameworks',
+      category: 'cybersecurity',
+      verification: {
+        type: 'coursera',
+        url: 'https://www.coursera.org/account/accomplishments/records/G66JJGPE28E5',
+        id: 'G66JJGPE28E5'
+      }
+    },
+    {
+      title: 'Cybersecurity Roles, Processes & OS Security',
+      issuer: 'Coursera',
+      date: 'November 2024',
+      description: 'Operating system security and cybersecurity roles',
+      category: 'cybersecurity',
+      verification: {
+        type: 'credly',
+        url: 'https://www.credly.com/badges/fddaf826-376c-474f-a2c2-d78ccf9f744b'
+      }
+    },
+    {
+      title: 'Network Security & Database Vulnerabilities',
+      issuer: 'Coursera',
+      date: 'November 2024',
+      description: 'Network and database security concepts',
+      category: 'cybersecurity',
+      verification: {
+        type: 'credly',
+        url: 'https://www.credly.com/badges/3e68931c-cd35-4d10-8d5d-2b72bb6ec3c6'
+      }
+    },
+    {
+      title: 'Operating Systems: Overview & Security',
+      issuer: 'IBM',
+      date: 'November 2024',
+      description: 'Operating system administration and security',
+      category: 'cybersecurity',
+      verification: {
+        type: 'coursera',
+        url: 'https://www.coursera.org/account/accomplishments/records/JW1MPRFGYNQG',
+        id: 'JW1MPRFGYNQG'
+      }
+    },
+    {
+      title: 'Introduction to Cybersecurity Tools & Cyberattacks',
+      issuer: 'IBM',
+      date: 'October 2024',
+      description: 'Fundamental cybersecurity concepts and tools',
+      category: 'cybersecurity',
+      verification: {
+        type: 'coursera',
+        url: 'https://www.coursera.org/account/accomplishments/records/DF1D8YWUKHQP',
+        id: 'DF1D8YWUKHQP'
+      }
+    },
+
+    // Data Science Certifications
+    {
+      title: 'Get Started with Python',
+      issuer: 'Google',
+      date: 'July 2024',
+      description: 'Python programming fundamentals',
+      category: 'data',
+      verification: {
+        type: 'coursera',
+        url: 'https://www.coursera.org/account/accomplishments/records/5L5GCQU636H7',
+        id: '5L5GCQU636H7'
+      }
+    },
+    {
+      title: 'Foundations of Data Science',
+      issuer: 'Google',
+      date: 'June 2024',
+      description: 'Core concepts in data science',
+      category: 'data',
+      verification: {
+        type: 'coursera',
+        url: 'https://www.coursera.org/account/accomplishments/records/D4U243DJGTZQ',
+        id: 'D4U243DJGTZQ'
+      }
+    },
+    {
+      title: 'Building and Deploying Deep Learning Applications with TensorFlow',
+      issuer: 'LinkedIn',
+      date: 'June 2024',
+      description: 'Deep learning implementation with TensorFlow',
       category: 'data',
       verification: {
         type: 'linkedin',
-        url: 'https://www.linkedin.com/in/sanjukumarkanki'
+        url: 'https://www.linkedin.com/learning/certificates/23e35b5c8d2d3ee95469fa1de8ff3838a440aec8c9df00764ce68ece0b92b65d'
+      }
+    },
+
+    // Development Certifications
+    {
+      title: 'Learning GitHub',
+      issuer: 'LinkedIn',
+      date: 'October 2023',
+      description: 'Version control and collaboration with GitHub',
+      category: 'dev',
+      verification: {
+        type: 'linkedin',
+        url: 'https://www.linkedin.com/learning/certificates/1c9f68ee2b6fb9aaf18c7bda6e5e4d9de85fcc054e64a94208204fad5b4176de'
       }
     },
     {
-      title: 'Google Cloud Professional Data Engineer',
-      issuer: 'Google Cloud',
-      date: 'October 2023',
-      description: 'Enterprise data solutions and ML pipelines',
-      category: 'data',
+      title: 'Tableau Essential Training',
+      issuer: 'LinkedIn',
+      date: 'August 2023',
+      description: 'Data visualization with Tableau',
+      category: 'dev',
       verification: {
-        type: 'credly',
-        url: 'https://www.credly.com/users/sanju-kumar.671f31d3'
+        type: 'linkedin',
+        url: 'https://www.linkedin.com/learning/certificates/002606e0f7371ba428965a7ae6b089dc9308ef8b6513a55801a6e4b30ee1c64c'
+      }
+    },
+    {
+      title: 'SQL for Data Analysis',
+      issuer: 'LinkedIn',
+      date: 'July 2023',
+      description: 'Advanced SQL for analytical purposes',
+      category: 'dev',
+      verification: {
+        type: 'linkedin',
+        url: 'https://www.linkedin.com/learning/certificates/88906470416f69188a0f5bdf84d089d8622d344bd511bbea3893353bcd12c0af'
+      }
+    },
+    {
+      title: 'Learning Python',
+      issuer: 'LinkedIn',
+      date: 'June 2021',
+      description: 'Python programming fundamentals',
+      category: 'dev',
+      verification: {
+        type: 'linkedin',
+        url: 'https://www.linkedin.com/learning/certificates/1b192eac592268f63afc92f182dcc6f5b9323dbd95245e47a4c0f2977f521a33'
       }
     }
   ];

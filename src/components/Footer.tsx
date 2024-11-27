@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex flex-col items-center">
           <div className="flex space-x-6 mb-4">
             <a
-              href="https://github.com"
+              href="https://github.com/mightysanju"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors"
@@ -16,7 +16,7 @@ const Footer = () => {
               <Github className="w-6 h-6" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/mightysanju"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors"
@@ -24,7 +24,7 @@ const Footer = () => {
               <Linkedin className="w-6 h-6" />
             </a>
             <a
-              href="mailto:contact@example.com"
+              href="mailto:sanju.k3r+portfolio@gmail.com"
               className="text-gray-400 hover:text-white transition-colors"
             >
               <Mail className="w-6 h-6" />

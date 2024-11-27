@@ -32,11 +32,11 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
   ];
 
   const socialLinks = [
-    { href: "https://github.com/sanjukumarkanki", Icon: Github },
-    { href: "https://linkedin.com/in/sanjukumarkanki", Icon: Linkedin },
-    { href: "https://youtube.com/@sanjukumarkanki", Icon: Youtube },
-    { href: "https://instagram.com/sanjukumarkanki", Icon: Instagram },
-    { href: "mailto:sanju.k3r@gmail.com", Icon: Mail }
+    { href: "https://github.com/mightysanju", Icon: Github },
+    { href: "https://linkedin.com/in/mightysanju", Icon: Linkedin },
+    { href: "https://youtube.com/@sanjukumar", Icon: Youtube },
+    { href: "https://instagram.com/mightysanju3", Icon: Instagram },
+    { href: "mailto:sanju.k3r+portfolio@gmail.com", Icon: Mail }
   ];
 
   return (
