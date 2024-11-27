@@ -44,37 +44,54 @@ const About = () => {
 
   const experience = [
     {
-      role: "Data Scientist",
+      role: "Associate (Support Analyst)",
       company: "Amazon",
-      period: "2019 - 2023",
-      location: "Seattle, WA",
+      period: "May 2022 - November 2023",
+      location: "Hyderabad, India",
       achievements: [
-        "Led machine learning initiatives for inventory optimization, reducing stockouts by 35%",
-        "Developed predictive models for demand forecasting with 92% accuracy",
-        "Implemented automated data pipelines for real-time analytics, processing 1M+ records daily",
-        "Mentored 5 junior data scientists and led a team of 3 ML engineers",
-        "Received 2 Spot Awards for exceptional performance"
+        "Developed a Python-SQL automation application reducing processing time from 19 minutes to 5 seconds (99.56% improvement)",
+        "Created a notification bot achieving 100% SLA compliance through Chime app integration",
+        "Developed DDO Tool reducing carrier-related cases by 70% with permanent issue resolution",
+        "Assisted Program Manager with data mining for strategic planning and decision-making",
+        "Maintained 100% accuracy while achieving 228-fold increase in processing speed"
       ],
       technologies: [
-        "Python", "TensorFlow", "PyTorch", "AWS", "SQL",
-        "Apache Spark", "Kubernetes", "Docker"
+        "Python", "SQL", "Automation", "Data Mining",
+        "Bot Development", "Process Optimization"
       ]
     },
     {
-      role: "ML Engineering Intern",
-      company: "Microsoft",
-      period: "2018 - 2019",
-      location: "Redmond, WA",
+      role: "IT Analyst",
+      company: "AppMinds Inc",
+      period: "June 2019 - June 2021",
+      location: "Banjara Hills, India",
       achievements: [
-        "Developed NLP models for text classification with 88% accuracy",
-        "Contributed to the Azure ML platform's feature engineering pipeline",
-        "Optimized model training pipelines, reducing training time by 40%",
-        "Presented findings at internal tech conferences",
-        "Extended internship due to exceptional performance"
+        "Provided comprehensive IT support ensuring minimal system downtime",
+        "Implemented efficient troubleshooting procedures for employee technical issues",
+        "Maintained system integrity and operational efficiency",
+        "Contributed to IT infrastructure optimization",
+        "Delivered prompt resolution of technical challenges"
       ],
       technologies: [
-        "Python", "Azure ML", "BERT", "FastAPI", "MongoDB",
-        "Docker", "Git", "CI/CD"
+        "IT Support", "System Administration", "Troubleshooting",
+        "Technical Support", "Infrastructure Management"
+      ]
+    },
+    {
+      role: "Student Intern",
+      company: "Defence Research and Development Laboratory (DRDL) - DRDO",
+      period: "June 2017 - August 2017",
+      location: "Hyderabad, India",
+      achievements: [
+        "Developed 'SMART ATTENDANCE SYSTEM' under Technical Officer's guidance",
+        "Gained hands-on experience in defense research organization",
+        "Successfully completed project implementation",
+        "Collaborated with technical team members",
+        "Learned organizational protocols and procedures"
+      ],
+      technologies: [
+        "Project Management", "System Development",
+        "Research Methodology", "Technical Documentation"
       ]
     }
   ];

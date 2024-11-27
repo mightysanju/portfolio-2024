@@ -18,13 +18,13 @@ const Projects = () => {
       blog: '/blog/ats-score-checker'
     },
     {
-      title: 'Sentiment Analysis Dashboard',
-      description: 'Real-time sentiment analysis of social media data using advanced NLP techniques',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-      tags: ['Python', 'NLP', 'Machine Learning'],
+      title: 'Defect Dispute Override Tool',
+      description:
+        'Real-time sentiment analysis of social media data using advanced NLP techniques',
+      image: 'https://i.imgur.com/pqH8SRU.png',
+      tags: ['Python', 'tkinter', 'Data Analysis'],
       github: 'https://github.com/sanjukumarkanki/sentiment-analysis',
-      demo: 'https://sentiment.mightysanju.com',
-      blog: '/blog/predictive-analytics'
+      blog: '/blog/DDO',
     },
     {
       title: 'Smart Agriculture System',
