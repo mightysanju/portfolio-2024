@@ -1,7 +1,29 @@
 import React from 'react';
 import BlogLayout from './BlogLayout';
+import Stakeholder from './stakeholder';
 
 const DDO = () => {
+  //Declaring Stake Holders
+  const stakeholders = [
+    {
+      name: "Jake Porter",
+      role: "Global Logistics | Prepaid Transportation",
+      company: "Amazon",
+      linkedinUrl: "https://www.linkedin.com/in/jake-porter-20083b257/",
+      imageUrl: "https://media.licdn.com/dms/image/v2/D5603AQEgbMCz8YxCGQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1706211347116?e=1738195200&v=beta&t=Xlawp-1UnbR3RdtKzYaSDoRs-BQYGXEu8VwV2uixcF0",
+      contribution: "Jake Porter - The Project Sponsor for the Defect Dispute override tool"
+    },
+    {
+      name: "Jayadev Addepalli",
+      role: "Supply Chain Manager at Amazon",
+      company: "Amazon",
+      linkedinUrl: "https://www.linkedin.com/in/jdaddepalli/",
+      imageUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_640.png",
+      contribution: "Jayadev Addepalli - The Project Manager for the Defect Dispute override tool"
+    }
+  ];
+
+
   return (
     <BlogLayout
       title="Defect Dispute Override Tool"
@@ -152,6 +174,14 @@ const DDO = () => {
         project showcases my ability to develop innovative solutions that
         address real-world business problems and deliver tangible results.
       </p>
+
+      <h2 className="text-2xl font-semibold text-gray-200 mb-4">Project Stakeholders</h2>
+      <div className="grid gap-6 mb-6">
+        {stakeholders.map((stakeholder, index) => (
+          <Stakeholder key={index} {...stakeholder} />
+        ))}
+      </div>
+
     </BlogLayout>
   );
 };
