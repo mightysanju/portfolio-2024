@@ -57,11 +57,11 @@ function App() {
             <ChatButton />
           </div>
         } />
-        <Route path="%PUBLIC_URL%/about" element={<About />} />
-        <Route path="%PUBLIC_URL%/blog/Networkapp" element={<Networkapp />} />
-        <Route path="%PUBLIC_URL%/blog/DDO" element={<DDO />} />
-        <Route path="%PUBLIC_URL%/blog/ats-score-checker" element={<ATSScoreChecker />} />
-        <Route path="%PUBLIC_URL%/ats" element={<ATSApp />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blog/Networkapp" element={<Networkapp />} />
+        <Route path="/blog/DDO" element={<DDO />} />
+        <Route path="/blog/ats-score-checker" element={<ATSScoreChecker />} />
+        <Route path="/ats" element={<ATSApp />} />
       </Routes>
     </Router>
   );
