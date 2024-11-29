@@ -115,7 +115,7 @@ const Hero = () => {
                 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-1">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 backdrop-blur-md" />
                 <img
-                  src="/favicon.png"
+                  src="https://i.imgur.com/nH0Qulz.png"
                   alt="Profile"
                   className="w-full h-full object-cover rounded-[5.8rem] relative z-10"
                 />

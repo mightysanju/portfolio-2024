@@ -53,7 +53,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
             <div className="w-10 h-10 rounded-xl overflow-hidden border-2 border-purple-500/20">
               <img 
                 className="w-full h-full object-cover" 
-                src="/favicon.png" 
+                src="https://i.imgur.com/nH0Qulz.png" 
                 alt="Logo" 
               />
             </div>
