@@ -1,6 +1,6 @@
 import React from 'react';
 import BlogLayout from './BlogLayout';
-//import PerformanceMetricsGraph from './NetworkappGraph';
+import PerformanceChart from './NetworkappGraph';
 
 const Networkapp = () => {
   return (
@@ -66,7 +66,8 @@ const Networkapp = () => {
           <li>Improved Efficiency</li>
           <li>Reduced Manual Effort:</li>
           <li>Enhanced Productivity</li>
-        </ul>
+        </ul><br />
+        <div><PerformanceChart /></div>
       </div>
 
           
@@ -145,7 +146,7 @@ const Networkapp = () => {
           </table>
         </div>
       </div>    
-
+                  
       </div>
 
       <h2 className="text-2xl font-semibold text-gray-200 mb-4">

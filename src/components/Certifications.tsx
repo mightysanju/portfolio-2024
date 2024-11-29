@@ -255,7 +255,7 @@ const Certifications = () => {
           </button>
 
           <a
-            href="https://www.linkedin.com/in/sanjukumarkanki"
+            href="https://www.linkedin.com/in/mightysanju/details/certifications/"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex items-center justify-center px-6 py-2 text-lg font-medium

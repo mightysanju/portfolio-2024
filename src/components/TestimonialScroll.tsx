@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Quote, Linkedin } from 'lucide-react';
 
 const TestimonialScroll = () => {
@@ -41,7 +41,7 @@ const TestimonialScroll = () => {
             className="flex-none w-96 mx-3 bg-gray-800/50 rounded-xl border border-gray-700 backdrop-blur-sm
               hover:transform hover:scale-105 transition-all duration-300 neon-card nebula-glow cursor-pointer
               hover:bg-gray-800/70"
-            onClick={() => window.open('https://linkedin.com', '_blank')}
+            onClick={() => window.open('https://linkedin.com/in/mightysanju/', '_blank')}
           >
             <div className="p-6">
               <div className="flex justify-between items-start mb-4">
