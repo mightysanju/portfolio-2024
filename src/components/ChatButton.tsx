@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send } from 'lucide-react';
+import { MessageCircle, X, Send, SendHorizontal} from 'lucide-react';
 import axios from 'axios';
 
 const ChatButton = () => {
@@ -69,7 +69,7 @@ const ChatButton = () => {
     "Tell me about your experience",
     "What are your key skills?",
     "How can we collaborate?",
-    "Schedule a meeting"
+    "Tell me about yourself"
   ];
 
   return (
@@ -110,20 +110,22 @@ const ChatButton = () => {
       )}
 
       {isOpen && (
-        <div className="fixed bottom-8 right-8 w-80 bg-gray-900/95 rounded-2xl shadow-2xl z-[100]
+        <div className="fixed bottom-8 right-8 w-96 bg-gray-900/95 rounded-3xl shadow-2xl z-[100]
           border border-gray-700/50 overflow-hidden backdrop-blur-sm"
           style={{
             boxShadow: '0 0 30px rgba(0,0,0,0.3), 0 0 20px rgba(168,85,247,0.2)',
-          }}
-        >
-          <div className="p-4 bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-between">
+          }}>
+        
+
+          
+          {/*<div className="p-4 bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <img
-                src="https://cdn.dribbble.com/users/77598/screenshots/16399264/robo_selfie_1600x1200_dribbble.gif"
+                src="https://static.thenounproject.com/png/6953280-512.png"
                 alt="Bot"
                 className="w-8 h-8 rounded-lg"
               />
-              <h3 className="text-white font-bold">Ask Sanju!</h3>
+              <h2 className="text-white font-bold">Ask Sanju !</h2>
             </div>
             <button
               onClick={handleClose}
@@ -131,9 +133,26 @@ const ChatButton = () => {
             >
               <X className="w-5 h-5" />
             </button>
+          </div>*/}
+
+          <div className="p-2 bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-between rounded-t-3xl">
+            <div className="flex items-center space-x-2">
+              <img
+                src="https://static.thenounproject.com/png/6953280-512.png"
+                alt="Bot"
+                className="w-6 h-6 rounded-lg"
+              />
+              <h2 className="text-white font-bold text-lg">Ask Sanju !</h2>
+            </div>
+            <button
+              onClick={handleClose}
+              className="text-white/80 hover:text-white transition-colors p-1 hover:bg-white/10 rounded-full"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
 
-          <div className="h-96 overflow-y-auto p-4 space-y-4">
+          {/*<div className="h-96 overflow-y-auto p-4 space-y-4">
             {messages.length === 0 && (
               <div className="space-y-3">
                 <p className="text-gray-300 text-sm">Hello! How can I help you today?</p>
@@ -152,7 +171,30 @@ const ChatButton = () => {
                   ))}
                 </div>
               </div>
+            )}*/}
+
+          <div className="h-96 overflow-y-auto p-4 space-y-4">
+            {messages.length === 0 && (
+              <div className="space-y-3">
+                <p className="text-gray-300 text-sm">Hello! How can I help you today?</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {presetMessages.map((preset, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handlePresetMessage(preset)}
+                      className="flex items-center justify-between px-3 py-2 text-left text-xs text-gray-300
+                        bg-gray-800/50 rounded-2xl hover:bg-gray-700/50 transition-colors duration-200
+                        border border-gray-700/50 group"
+                    >
+                      <span>{preset}</span>
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             )}
+
+
             
             {messages.map((msg, index) => (
               <div
@@ -161,7 +203,7 @@ const ChatButton = () => {
               >
                 {!msg.isUser && !msg.isLoading && (
                   <img
-                    src="https://mightysanju.com/favicon.ico"
+                    src="/favicon.png"
                     alt="Sanju"
                     className="w-8 h-8 rounded-lg mr-2 self-end"
                   />
@@ -196,16 +238,19 @@ const ChatButton = () => {
                 type="text"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Type your message..."
-                className="flex-1 bg-gray-800/90 text-gray-200 rounded-full px-4 py-2 focus:outline-none
-                  focus:ring-2 focus:ring-purple-500 border border-gray-700/50"
+                placeholder="Ask Sanju ..."
+                className="flex-1 bg-gray-800/90 text-gray-200 rounded-2xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 border border-gray-700/50"
+                //className="flex-1 bg-gray-800/90 text-gray-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 border border-gray-700/50"
               />
               <button
                 type="submit"
-                className="p-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white
-                  hover:shadow-lg transition-all duration-300"
+                className="w-10 h-10 rounded-2xl bg-gradient-to-r from-purple-500 to-blue-500 text-white
+                  hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+              
+                //className="p-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white
+                  //hover:shadow-lg transition-all duration-300"
               >
-                <Send className="w-5 h-5" />
+                <SendHorizontal className="w-4 h-4" />
               </button>
             </div>
           </form>

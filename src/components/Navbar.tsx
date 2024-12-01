@@ -52,8 +52,9 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
           <div className="flex items-center">
             <div className="w-10 h-10 rounded-xl overflow-hidden border-2 border-purple-500/20">
               <img 
-                className="w-full h-full object-cover" 
-                src="https://i.imgur.com/nH0Qulz.png" 
+                className="w-full h-full object-cover"
+                src="/favicon.png" 
+                //src="https://i.imgur.com/nH0Qulz.png" 
                 alt="Logo" 
               />
             </div>
@@ -83,6 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-700/50 
                   transition-all duration-300 hover:scale-110"
+                aria-labelledby="social-links"
               >
                 <social.Icon className="w-5 h-5" />
               </a>
@@ -129,6 +131,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-700/50 
                     transition-all duration-300"
+                  aria-labelledby="social-links"
                 >
                   <social.Icon className="w-5 h-5" />
                 </a>

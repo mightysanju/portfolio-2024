@@ -27,7 +27,7 @@ const DDO = () => {
   return (
     <BlogLayout
       title="Defect Dispute Override Tool"
-      date="March 10, 2024"
+      date="March 10, 2023"
       readTime="8 min read"
       tags={['Data Science', 'Machine Learning', 'Analytics']}
       image="https://i.imgur.com/pqH8SRU.png"

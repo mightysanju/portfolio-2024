@@ -6,7 +6,7 @@ const Networkapp = () => {
   return (
     <BlogLayout
       title="Network App"
-      date="March 15, 2023"
+      date="April 15, 2023"
       readTime="10 min read"
       tags={['Automation', 'Advanced SQL', 'Python']}
       image="https://i.imgur.com/VxGPpEB.png"

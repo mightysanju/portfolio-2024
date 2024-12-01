@@ -3,6 +3,7 @@ import { Brain, Code2, Database, Cloud, Globe, Cpu, Download, User } from 'lucid
 import { Link } from 'react-router-dom';
 import TestimonialScroll from './TestimonialScroll';
 
+
 const SkillBubble = ({ Icon, delay, position }: { Icon: any, delay: number, position: string }) => (
   <div
     className={`absolute ${position} w-12 h-12 rounded-full bg-gray-800/40 backdrop-blur-sm
@@ -56,11 +57,11 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
           <div className="w-full md:w-1/2 text-left space-y-6">
             <div className="relative">
-              <h1 className="text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text">
+              <h1 className="text-6xl md:text-7xl font-bold mb-1 bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text" style={{ lineHeight: 1.1 }}  >
                 I'm Sanju
               </h1>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text
-                animate-gradient-x">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text
+                animate-gradient-x" style={{ lineHeight: 1.1 }} >
                 Data Scientist & ML Engineer
               </h2>
               
@@ -115,7 +116,8 @@ const Hero = () => {
                 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-1">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 backdrop-blur-md" />
                 <img
-                  src="https://i.imgur.com/nH0Qulz.png"
+                  src="/favicon.png"
+                  //src="https://i.imgur.com/nH0Qulz.png"
                   alt="Profile"
                   className="w-full h-full object-cover rounded-[5.8rem] relative z-10"
                 />
