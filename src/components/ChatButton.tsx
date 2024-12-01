@@ -110,10 +110,10 @@ const ChatButton = () => {
       )}
 
       {isOpen && (
-        <div className="fixed bottom-8 right-8 w-96 bg-gray-900/95 rounded-3xl shadow-2xl z-[100]
-          border border-gray-700/50 overflow-hidden backdrop-blur-sm"
+        <div className="fixed bottom-8 right-8 w-80 bg-gray-900/90 rounded-3xl shadow-2xl z-[100]
+          border border-gray-700/90 overflow-hidden backdrop-blur-sm"
           style={{
-            boxShadow: '0 0 30px rgba(0,0,0,0.3), 0 0 20px rgba(168,85,247,0.2)',
+            boxShadow: '0 0 30px rgba(0,0,0,0.3), 0 0 20px rgba(168,85,247,0.3)',
           }}>
         
 
@@ -135,20 +135,20 @@ const ChatButton = () => {
             </button>
           </div>*/}
 
-          <div className="p-2 bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-between rounded-t-3xl">
+          <div className="p-2 bg-gradient-to-r from-purple-500/70 to-blue-500/70 flex items-center justify-between rounded-t-3xl">
             <div className="flex items-center space-x-2">
               <img
                 src="https://static.thenounproject.com/png/6953280-512.png"
                 alt="Bot"
                 className="w-6 h-6 rounded-lg"
               />
-              <h2 className="text-white font-bold text-lg">Ask Sanju !</h2>
+              <h2 className="text-black font-bold text-xl">Ask Sanju !</h2>
             </div>
             <button
               onClick={handleClose}
-              className="text-white/80 hover:text-white transition-colors p-1 hover:bg-white/10 rounded-full"
+              className="text-black/80 hover:text-white transition-colors p-1 hover:bg-white/10 rounded-br-md rounded-bl-md rounded-tl-md rounded-tr-2xl"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5" />
             </button>
           </div>
 
@@ -182,12 +182,18 @@ const ChatButton = () => {
                     <button
                       key={index}
                       onClick={() => handlePresetMessage(preset)}
-                      className="flex items-center justify-between px-3 py-2 text-left text-xs text-gray-300
+                      
+                      className="relative flex items-center justify-between px-3 py-2 text-left text-xs text-gray-300
                         bg-gray-800/50 rounded-2xl hover:bg-gray-700/50 transition-colors duration-200
-                        border border-gray-700/50 group"
-                    >
+                        border border-gray-700/50 group overflow-hidden"
+                    >{/*added overflow-hidden and relative to this class to contain the mirroe effect */}
                       <span>{preset}</span>
                       <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                      {/* Mirror Effect */}
+                      <div className="absolute inset-0 flex justify-center overflow-hidden rounded-2xl pointer-events-none">
+                      <div className="w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent 
+                                      transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                      </div>
                     </button>
                   ))}
                 </div>
@@ -232,25 +238,25 @@ const ChatButton = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          <form onSubmit={handleSubmit} className="p-4 border-t border-gray-800/50">
-            <div className="flex space-x-2">
+          <form onSubmit={handleSubmit} className="p-2 border-t-2 bg-gray-800/50 border-gray-800">
+            <div className="flex space-x-1.5">
               <input
                 type="text"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Ask Sanju ..."
-                className="flex-1 bg-gray-800/90 text-gray-200 rounded-2xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 border border-gray-700/50"
+                className="flex-1 bg-gray-800/50 text-gray-200 rounded-tr-md rounded-br-md rounded-2xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 border border-gray-700/50"
                 //className="flex-1 bg-gray-800/90 text-gray-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 border border-gray-700/50"
               />
               <button
                 type="submit"
-                className="w-10 h-10 rounded-2xl bg-gradient-to-r from-purple-500 to-blue-500 text-white
+                className="w-10 h-10 rounded-tl-md rounded-bl-md rounded-2xl bg-gradient-to-r from-purple-500/70 to-blue-500/70 text-white
                   hover:shadow-lg transition-all duration-300 flex items-center justify-center"
               
                 //className="p-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white
                   //hover:shadow-lg transition-all duration-300"
               >
-                <SendHorizontal className="w-4 h-4" />
+                <SendHorizontal className="w-5 h-5" />
               </button>
             </div>
           </form>
