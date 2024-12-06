@@ -27,16 +27,14 @@ const DDO = () => {
 
   return (
     <HelmetProvider>
-    {/* HELMET START */}
 
-    <Helmet>
-    <title>Defect Dispute Override (DDO): A Tool for Efficient Logistics and Supply Chain Management</title>
-    <meta name="description" content="This article explores Defect Dispute Override (DDO), a Python-based application designed to streamline carrier performance evaluation in logistics and supply chain management. DDO leverages real-time data analysis and automates dispute resolution, reducing discrepancies and enhancing efficiency.">
-    <meta name="keywords" content="Defect Dispute Override (DDO), logistics, supply chain management, carrier performance evaluation, real-time data analysis, automated dispute resolution, efficiency">
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5301414262654683"
-     crossorigin="anonymous"></script>
-    </Helmet>
+      <Helmet>
+      <title>Defect Dispute Override (DDO): A Tool for Efficient Logistics and Supply Chain Management</title>
+      <meta name="description" content="This article explores Defect Dispute Override (DDO), a Python-based application designed to streamline carrier performance evaluation in logistics and supply chain management. DDO leverages real-time data analysis and automates dispute resolution, reducing discrepancies and enhancing efficiency."/>
+      <meta name="keywords" content="Defect Dispute Override (DDO), logistics, supply chain management, carrier performance evaluation, real-time data analysis, automated dispute resolution, efficiency"/>
+      
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5301414262654683" crossorigin="anonymous"></script>
+      </Helmet>
 
     <BlogLayout
       title="Defect Dispute Override Tool"
