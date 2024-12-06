@@ -4,6 +4,7 @@ import {
   ArrowLeft, GraduationCap, Briefcase, Star, Shield, Heart, 
   Award, Code2, Brain, Target, Users, Lightbulb, Globe
 } from 'lucide-react';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const About = () => {
   const education = [
@@ -163,7 +164,18 @@ const About = () => {
   ];
 
   return (
+    <HelmetProvider>
+      {/* HELMET START */}
+
+      <Helmet>
+      <title>Sanju Kumar | Know More About Me </title>
+      <meta name="description" content="Sanju Kumar is a skilled Data Scientist and ML Engineer with a strong academic background and hands-on experience in Python, TensorFlow, PyTorch, Scikit-learn, SQL, AWS, Azure, Docker, Kubernetes, Git, and more. Explore his projects, publications, and insights into the world of data science and machine learning.">
+      <meta name="keywords" content="data science, machine learning, data scientist, ML engineer, Python, TensorFlow, PyTorch, Scikit-learn, SQL, AWS, Azure, Docker, Kubernetes, Git, Sanju Kumar">
+      </Helmet>
+
+      {/* END OF HELMET ---------------------------------------------------------*/}
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 opacity-50">
           <div
@@ -424,6 +436,7 @@ const About = () => {
         </div>
       </div>
     </div>
+    </ HelmetProvider>
   );
 };
 

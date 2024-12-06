@@ -1,9 +1,22 @@
 import React from 'react';
 import BlogLayout from './BlogLayout';
 import PerformanceChart from './NetworkappGraph';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+
 
 const Networkapp = () => {
   return (
+    <HelmetProvider>
+    {/* HELMET START */}
+
+    <Helmet>
+    <title>Network App: Automating Network Balancing SIMs</title>
+    <meta name="description" content="Streamline your network balancing processes with the Network App. This innovative tool automates data retrieval, email drafting, and communication, saving you time and effort. Improve efficiency and reduce errors with this powerful solution.">
+    <meta name="keywords" content="Network App, network balancing, SIM, automation, Python, SQL, data retrieval, email automation, efficiency">
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5301414262654683"
+     crossorigin="anonymous"></script>
+    </Helmet>
     <BlogLayout
       title="Network App"
       date="April 15, 2023"
@@ -169,6 +182,7 @@ const Networkapp = () => {
       <p className="text-gray-300 mb-6">We are excited about the potential of the Network App to revolutionize our network balancing processes and look forward to its continued development and deployment.
       </p>
     </BlogLayout>
+    </ HelmetProvide>
   );
 };
 

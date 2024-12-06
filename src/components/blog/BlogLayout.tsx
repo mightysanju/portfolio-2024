@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowLeft, Calendar, Clock, Tag, Github, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+
 interface BlogLayoutProps {
   title: string;
   date: string;
@@ -24,6 +25,7 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
   githubLink
 }) => {
   return (
+
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 opacity-50">
