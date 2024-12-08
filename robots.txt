@@ -1,0 +1,8 @@
+# This is a robots.txt file
+# It tells search engines how to crawl your website
+
+User-agent: *
+Allow: /src/
+Allow: /public/
+Allow: /src/components/
+Allow: /src/components/blog/
