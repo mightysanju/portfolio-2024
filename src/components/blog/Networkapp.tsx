@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BlogLayout from './BlogLayout';
 import PerformanceChart from './NetworkappGraph';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import MagicalNebulaCursor from '../MagicalCursor';
 
 const Networkapp = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top on component mount
+  }, []);
   return (
+    
+
   <HelmetProvider>
       <Helmet>
       <title>Network App: Automating Network Balancing SIMs</title>
@@ -179,7 +183,6 @@ const Networkapp = () => {
       <p className="text-gray-300 mb-6">We are excited about the potential of the Network App to revolutionize our network balancing processes and look forward to its continued development and deployment.
       </p>
     </BlogLayout>
-    <MagicalNebulaCursor />
   </HelmetProvider>
   );
 };

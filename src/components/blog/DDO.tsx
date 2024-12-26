@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BlogLayout from './BlogLayout';
 import Stakeholder from './stakeholder';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import MagicalNebulaCursor from '../MagicalCursor';
 const DDO = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top on component mount
+  }, []);
+
   //Declaring Stake Holders
   const stakeholders = [
     {
@@ -194,7 +198,6 @@ const DDO = () => {
       </div>
 
     </BlogLayout>
-    <MagicalNebulaCursor />
     </HelmetProvider>
   );
 };

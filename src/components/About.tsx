@@ -5,7 +5,6 @@ import {
   Award, Code2, Brain, Target, Users, Lightbulb, Globe
 } from 'lucide-react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import MagicalNebulaCursor from './MagicalCursor';
 
 const About = () => {
   const education = [
@@ -434,7 +433,6 @@ const About = () => {
         </div>
       </div>
     </div>
-    <MagicalNebulaCursor />
   </HelmetProvider>
   );
 };

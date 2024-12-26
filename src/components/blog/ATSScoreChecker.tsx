@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BlogLayout from './BlogLayout';
 
 const ATSScoreChecker = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top on component mount
+  }, []);
+
   return (
     <BlogLayout
       title="Building an AI-Powered ATS Score Checker"

@@ -34,7 +34,7 @@ const ChatButton = () => {
     
     // Add loading message
     setMessages(prev => [...prev, { text: '', isUser: false, isLoading: true }]);
-
+    //'https://flaskragbot-1e1040a057f8.herokuapp.com/api/query' 
     try {
       const response = await axios.post('https://flaskragbot-1e1040a057f8.herokuapp.com/api/query', { 
         query: text 
