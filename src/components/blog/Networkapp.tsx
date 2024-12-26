@@ -2,7 +2,7 @@ import React from 'react';
 import BlogLayout from './BlogLayout';
 import PerformanceChart from './NetworkappGraph';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-
+import MagicalNebulaCursor from '../MagicalCursor';
 
 const Networkapp = () => {
   return (
@@ -179,6 +179,7 @@ const Networkapp = () => {
       <p className="text-gray-300 mb-6">We are excited about the potential of the Network App to revolutionize our network balancing processes and look forward to its continued development and deployment.
       </p>
     </BlogLayout>
+    <MagicalNebulaCursor />
   </HelmetProvider>
   );
 };

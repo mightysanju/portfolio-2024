@@ -15,6 +15,8 @@ import DDO from './components/blog/DDO';
 import ATSScoreChecker from './components/blog/ATSScoreChecker';
 import ATSApp from './components/ats/ATSApp';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import MagicalNebulaCursor from './components/MagicalCursor';
+
 function App() {
   const [activeSection, setActiveSection] = useState('home');
 
@@ -25,14 +27,18 @@ function App() {
   };
 
   return (
+    
     <HelmetProvider>
+      
     <Helmet>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5301414262654683" crossorigin="anonymous"></script>
     </Helmet>
+    
     <Router>
       <Routes>
         <Route path="/" element={
           <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+            
             <Navbar activeSection={activeSection} onNavigate={scrollToSection} />
             
             <main className="relative">
@@ -68,6 +74,7 @@ function App() {
         <Route path="/ats" element={<ATSApp />} />
       </Routes>
     </Router>
+    <MagicalNebulaCursor />
     </HelmetProvider>
   );
 }

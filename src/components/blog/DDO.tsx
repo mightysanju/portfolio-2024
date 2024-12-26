@@ -2,7 +2,7 @@ import React from 'react';
 import BlogLayout from './BlogLayout';
 import Stakeholder from './stakeholder';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-
+import MagicalNebulaCursor from '../MagicalCursor';
 const DDO = () => {
   //Declaring Stake Holders
   const stakeholders = [
@@ -194,6 +194,7 @@ const DDO = () => {
       </div>
 
     </BlogLayout>
+    <MagicalNebulaCursor />
     </HelmetProvider>
   );
 };
