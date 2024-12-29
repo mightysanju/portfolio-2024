@@ -113,7 +113,7 @@ const Certifications = () => {
       issuer: 'LinkedIn',
       date: 'June 2024',
       description: 'Deep learning implementation with TensorFlow',
-      category: 'data',
+      category: 'Machine Learning',
       verification: {
         type: 'linkedin',
         url: 'https://www.linkedin.com/learning/certificates/23e35b5c8d2d3ee95469fa1de8ff3838a440aec8c9df00764ce68ece0b92b65d'
