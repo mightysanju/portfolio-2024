@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Award, Brain, Database, Code2, ExternalLink, Shield, Linkedin } from 'lucide-react';
+import { Award, Brain, Database, Code2, ExternalLink, Shield, Linkedin, ShieldCheck } from 'lucide-react';
 
 const Certifications = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -9,6 +9,7 @@ const Certifications = () => {
     { id: 'ml', label: 'Machine Learning', icon: Brain },
     { id: 'data', label: 'Data Engineering', icon: Database },
     { id: 'dev', label: 'Development', icon: Code2 },
+    { id: 'cybersecurity', label: 'cybersecurity', icon: ShieldCheck },
   ];
 
   const certifications = [
@@ -113,7 +114,7 @@ const Certifications = () => {
       issuer: 'LinkedIn',
       date: 'June 2024',
       description: 'Deep learning implementation with TensorFlow',
-      category: 'Machine Learning',
+      category: 'ml',
       verification: {
         type: 'linkedin',
         url: 'https://www.linkedin.com/learning/certificates/23e35b5c8d2d3ee95469fa1de8ff3838a440aec8c9df00764ce68ece0b92b65d'
