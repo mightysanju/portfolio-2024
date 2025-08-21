@@ -91,7 +91,7 @@
 .animate-morph { animation: morph 15s ease-in-out infinite; }
 .animate-pulse-subtle { animation: pulse-subtle 3s ease-in-out infinite; }
 .animate-spin-slow { animation: spin 20s linear infinite; }
-.animate-scroll-fast { animation: scroll 10s linear infinite; }
+.animate-scroll-fast { animation: scroll 7s linear infinite; }
 .animate-nebula { animation: nebula 8s ease-in-out infinite; }
 .animate-fade-in { animation: fade-in 0.5s ease-out forwards; }
 .animate-celebrate { animation: celebrate 1s ease-in-out infinite; }
