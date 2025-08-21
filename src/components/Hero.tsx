@@ -25,7 +25,7 @@ const Hero = () => {
   ];
 
   const handleDownload = () => {
-    const resumeUrl = 'https://acrobat.adobe.com/id/urn:aaid:sc:AP:49be09f1-3984-4ed6-b488-ed3fdf5a4647';
+    const resumeUrl = 'https://acrobat.adobe.com/id/urn:aaid:sc:AP:c816e211-3b4d-43d3-826d-cfc17d4011e4';
     window.open(resumeUrl, '_blank');
   };
 
