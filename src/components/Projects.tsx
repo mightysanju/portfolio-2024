@@ -7,17 +7,15 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'ATS Score Checker',
-      description:
-        'AI-powered resume analyzer that provides instant ATS compatibility scores and suggestions',
-      image:
-        'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80',
-      tags: ['Machine Learning', 'NLP', 'React'],
+      title: 'Linked Inn Job Notification',
+      description:'Automated Smart Linked Inn Job Notification, Be an early Applicant.',
+      image:'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzdlbTV3ZHljejEzNXdqcWhmbHpoNGYzcmVlNG9vZ2Nnb294czR1bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UWWUDiZOyNwuEsNsmA/giphy.gif',
+      tags: ['Web Scraping', 'SMTP', 'Python'],
       // Production URL commented for future use
       // demo: 'https://ats.mightysanju.com',
-      demo: '/ats',
+      demo: '/LinkedInn',
       github: 'https://github.com/sanjukumarkanki',
-      blog: '/blog/ats-score-checker',
+      blog: '/blog/Linkedinn',
     },
     {
       title: 'Defect Dispute Override Tool',
@@ -37,6 +35,19 @@ const Projects = () => {
       //github: 'https://github.com/sanjukumarkanki/smart-agriculture',
       //demo: 'https://agriculture.mightysanju.com',
       blog: '/blog/Networkapp',
+    },
+    {
+      title: 'ATS Score Checker',
+      description:
+        'AI-powered resume analyzer that provides instant ATS compatibility scores and suggestions',
+      image:
+        'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80',
+      tags: ['Machine Learning', 'NLP', 'React'],
+      // Production URL commented for future use
+      // demo: 'https://ats.mightysanju.com',
+      demo: '/ats',
+      github: 'https://github.com/mightysanju',
+      blog: '/blog/ats-score-checker',
     },
   ];
 

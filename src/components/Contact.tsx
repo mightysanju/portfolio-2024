@@ -84,7 +84,7 @@ const Contact = () => {
               </div>
               <div className="flex items-center text-gray-300">
                 <MapPin className="w-5 h-5 mr-3 text-purple-400" />
-                <span>Glenview, IL</span>
+                <span>Naperville, IL</span>
               </div>
             </div>
           </div>

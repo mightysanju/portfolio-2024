@@ -12,6 +12,7 @@ import ChatButton from './components/ChatButton';
 import About from './components/About';
 import Networkapp from './components/blog/Networkapp';
 import DDO from './components/blog/DDO';
+import Linkedinn from './components/blog/Linkedinn';
 import ATSScoreChecker from './components/blog/ATSScoreChecker';
 import ATSApp from './components/ats/ATSApp';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
@@ -71,6 +72,7 @@ function App() {
         <Route path="/blog/DDO" element={<DDO />} />
         <Route path="/blog/ats-score-checker" element={<ATSScoreChecker />} />
         <Route path="/ats" element={<ATSApp />} />
+        <Route path="/blog/Linkedinn" element={<Linkedinn />} />
       </Routes>
     </Router>
     </HelmetProvider>
