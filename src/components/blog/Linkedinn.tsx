@@ -45,7 +45,7 @@ const DDO = () => {
       date="March 10, 2023"
       readTime="8 min read"
       tags={['Data Science', 'Machine Learning', 'Analytics']}
-      image="https://pouch.jumpshare.com/preview/ZcrMFxXXgFSxsMnII6VdzqJz0DVUv63YBdZyPlrrJr-xwZzX2dkvhVYtqlpct-hbzAplRWaz549icnWmq9SIgXh_R19glRvcKamlPczJvr8"
+      image="https://i.imgur.com/hNa0ROb.jpeg"
       //demoLink="https://sentiment.mightysanju.com"
       githubLink="https://github.com/mightysanju/DDO-Tool-Code-for-Public"
     >

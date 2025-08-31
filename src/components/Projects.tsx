@@ -10,7 +10,7 @@ const Projects = () => {
       title: 'Linked Inn Job Notification',
       description:'Automated Smart Linked Inn Job Notification, Be an early Applicant.',
       //image:'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzdlbTV3ZHljejEzNXdqcWhmbHpoNGYzcmVlNG9vZ2Nnb294czR1bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UWWUDiZOyNwuEsNsmA/giphy.gif',
-      image:'https://pouch.jumpshare.com/preview/ZcrMFxXXgFSxsMnII6VdzqJz0DVUv63YBdZyPlrrJr-xwZzX2dkvhVYtqlpct-hbzAplRWaz549icnWmq9SIgXh_R19glRvcKamlPczJvr8',
+      image:'https://i.imgur.com/hNa0ROb.jpeg',
       tags: ['Web Scraping', 'SMTP', 'Python'],
       // Production URL commented for future use
       // demo: 'https://ats.mightysanju.com',
