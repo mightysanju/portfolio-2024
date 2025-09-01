@@ -8,25 +8,6 @@ const DDO = () => {
     window.scrollTo(0, 0); // Scroll to the top on component mount
   }, []);
 
-  //Declaring Stake Holders
-  const stakeholders = [
-    {
-      name: "Jake Porter",
-      role: "Global Logistics | Prepaid Transportation",
-      company: "Amazon",
-      linkedinUrl: "https://www.linkedin.com/in/jake-porter-20083b257/",
-      imageUrl: "https://media.licdn.com/dms/image/v2/D5603AQEgbMCz8YxCGQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1706211347116?e=1738195200&v=beta&t=Xlawp-1UnbR3RdtKzYaSDoRs-BQYGXEu8VwV2uixcF0",
-      contribution: "Jake Porter - The Project Sponsor for the Defect Dispute override tool"
-    },
-    {
-      name: "Jayadev Addepalli",
-      role: "Supply Chain Manager at Amazon",
-      company: "Amazon",
-      linkedinUrl: "https://www.linkedin.com/in/jdaddepalli/",
-      imageUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_640.png",
-      contribution: "Jayadev Addepalli - The Project Manager for the Defect Dispute override tool"
-    }
-  ];
 
 
   return (
@@ -42,9 +23,9 @@ const DDO = () => {
 
     <BlogLayout
       title="Defect Dispute Override Tool"
-      date="March 10, 2023"
-      readTime="8 min read"
-      tags={['Data Science', 'Machine Learning', 'Analytics']}
+      date="August 31, 2025"
+      readTime="6 min read"
+      tags={['Data Science', 'Web Scraping', 'Python']}
       image="https://i.imgur.com/hNa0ROb.jpeg"
       //demoLink="https://sentiment.mightysanju.com"
       githubLink="https://github.com/mightysanju/DDO-Tool-Code-for-Public"
@@ -53,65 +34,41 @@ const DDO = () => {
         Introduction
       </h2>
       <p className="text-gray-300 mb-6">
-        In the realm of logistics and supply chain management, accurate carrier
-        performance evaluation is paramount. Discrepancies in carrier rankings
-        can lead to significant financial implications and operational
-        inefficiencies. To address this challenge, I developed the Defect
-        Dispute Override Tool (DDO), a Windows desktop application designed to
-        streamline the process of identifying and resolving carrier performance
-        issues.
+      In today's competitive job market, being one of the first to apply for a new role can significantly increase your chances of getting noticed. The "early applicant" advantage is a well-known strategy for success. To address this, I developed the LinkedIn Early Applicant Automation tool, a Python-based script designed to automate the process of finding new job listings and provide immediate notifications, ensuring users can act on opportunities the moment they arise.
       </p>
 
       <h2 className="text-2xl font-semibold text-gray-200 mb-4">
         The Problem Statement
       </h2>
       <p className="text-gray-300 mb-6">
-        Before the introduction of DDO, the process of handling carrier disputes
-        and defects was manual and time-consuming. Associates were burdened with
-        the task of manually recording and analyzing disputes over the phone,
-        often leading to errors and delays. To alleviate this issue, a more
-        efficient and automated solution was necessary.
+      Before this tool, the process of finding new job listings was manual and highly repetitive. Job seekers would have to spend hours each day refreshing LinkedIn, re-running the same searches, and sifting through results to find new postings. This tedious process often led to missed opportunities, as promising roles could be posted and inundated with applicants before they were even discovered. A more efficient, automated solution was needed.
+
+
       </p>
 
       <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-        Solution: The DDO Tool
+        Solution: The Automation Tool
       </h2>
       <p className="text-gray-300 mb-6">
-        DDO is a Python-based application built using the Tkinter library,
-        offering a user-friendly graphical user interface (GUI). It leverages
-        SQL for seamless database interaction, enabling real-time data retrieval
-        and updates.
+      The LinkedIn Early Applicant Automation is a Python script that leverages web scraping to monitor job listings based on user-defined criteria. It runs at scheduled intervals, detects new postings that haven't been seen before, and automatically sends an email notification with a direct link to the job, empowering the user to be among the very first applicants.
+
+
       </p>
 
       <h2 className="text-2xl font-semibold text-gray-200 mb-4">
         Key Features
       </h2>
       <p className="text-gray-300 mb-6">
-        DDO is a Python-based application built using the Tkinter library,
-        offering a user-friendly graphical user interface (GUI). It leverages
-        SQL for seamless database interaction, enabling real-time data retrieval
-        and updates.
+      The tool is built with efficiency and user control in mind, offering a powerful way to stay ahead in the job search.
         <ul className="list-disc list-inside text-gray-300 space-y-2">
           <li>
-            <b>Intuitive GUI:</b> A simple and easy-to-use interface that
-            empowers users to navigate the application effortlessly.
+            <b>Automated Job Monitoring:</b> The script runs automatically in the background at user-defined intervals (e.g., every 30 minutes), requiring no manual intervention.
           </li>
           <li>
-            <b>Efficient Data Processing:</b> Multithreading and multiprocessing
-            techniques ensure a responsive user experience, even during
-            intensive data processing tasks.
+            <b>ECustomizable Search Filters:</b> Users can easily configure the script to search for specific job titles, keywords, locations, and other LinkedIn filters.
           </li>
           <li>
-            <b>Real-time Data Analysis:</b> The application can analyze carrier
-            performance data in real-time, allowing for timely decision-making.
-          </li>
-          <li>
-            <b>Automated Dispute Resolution:</b> DDO streamlines the dispute
-            resolution process by automating data entry and analysis.
-          </li>
-          <li>
-            <b>Accurate Carrier Ranking:</b> By identifying and correcting
-            discrepancies, DDO helps to ensure accurate carrier rankings.
+            <b>Instant Email Notifications:</b> As soon as a new, relevant job is detected, an email is sent directly to the user's inbox with the job title, company, and a clickable link to the application page.
           </li>
         </ul>
       </p>
@@ -121,10 +78,10 @@ const DDO = () => {
           Core Features
         </h3>
         <ul className="list-disc list-inside text-gray-300 space-y-2">
-          <li>Real-time data processing</li>
-          <li>Multi Processing & Multi Threading</li>
-          <li>User Friendly Graphic Interface</li>
-          <li>One Click Data Fetch and Upload</li>
+          <li>Automated Web Scraping</li>
+          <li>Customizable Job Filters</li>
+          <li>Scheduled Email Alerts</li>
+          <li>Scheduled Background Execution</li>
         </ul>
       </div>
 
@@ -133,17 +90,12 @@ const DDO = () => {
       </h2>
 
       <p className="text-gray-300 mb-6">
-        The development of DDO involved a combination of Python programming
-        skills, SQL database expertise, and a deep understanding of concurrency
-        concepts. Key technical aspects of the project include: <br />
+      The development of this tool involved a combination of web scraping techniques, email protocol integration, and process scheduling. Key technical aspects include: <br />
         <li>
-          <b>Python Programming:</b> Utilizing Python's Tkinter library for GUI
-          development, core Python functionalities for data manipulation and
-          processing, and SQL for database interactions.
+          <b>Python Programming:</b>Utilizing libraries like Selenium for navigating and scraping dynamic JavaScript-heavy websites like LinkedIn and smtplib for handling the email notification functionality.
         </li>
         <li>
-          <b>Concurrency:</b> Implementing multithreading and multiprocessing
-          techniques to optimize performance and responsiveness.
+          <b>Web Scraping:</b> The script intelligently handles LinkedIn logins, applies search filters, and parses the HTML to extract crucial job data like the job title, company name, and application URL.
         </li>
       </p>
 
@@ -160,42 +112,26 @@ const DDO = () => {
         </p>
         <ul className="list-disc list-inside text-gray-300 space-y-2">
           <li>
-            <b>Reduced Discrepancies:</b> A 70% reduction in carrier ranking
-            discrepancies, leading to improved accuracy and fairness in carrier
-            evaluations.
+            <b>Drastically Increased Application Speed:</b> Enables users to consistently be within the first wave of applicants, often within an hour of a job being posted.
           </li>
           <li>
-            Enhanced Efficiency: 100% efficiency in root cause identification,
-            enabling faster resolution of disputes and minimizing operational
-            disruptions.
+            <b>Significant Time Savings:</b> Eliminates the need for hours of manual, repetitive searching, allowing the user to focus on tailoring applications and preparing for interviews.
           </li>
           <li>
-            Streamlined Workflows: Automated data entry and analysis have
-            streamlined workflows, saving time and effort for associates.
+            <b>Never Miss an Opportunity:</b> The automated and constant monitoring ensures that no relevant job posting goes unnoticed.
           </li>
           <li>
-            Improved Decision-Making: Real-time data analysis empowers
-            stakeholders to make informed decisions.
+            <b>Enhanced Competitive Edge:</b> By applying early, users increase the probability of their application being reviewed by recruiters.
           </li>
         </ul>
       </div>
 
       <h2 className="text-2xl font-semibold text-gray-200 mb-4">Conclusion</h2>
       <p className="text-gray-300 mb-6">
-        DDO is a powerful tool that has revolutionized the way carrier
-        performance issues are handled. By leveraging advanced technologies and
-        a user-centric design, this application has significantly improved
-        efficiency, accuracy, and decision-making within the organization. This
-        project showcases my ability to develop innovative solutions that
-        address real-world business problems and deliver tangible results.
+        The LinkedIn Early Applicant Automation is a powerful tool that transforms a passive job search into a proactive, automated hunt for opportunities. By leveraging modern Python libraries for web scraping and task scheduling, this script provides a significant advantage in a crowded job market. This project showcases the ability to build practical, efficient solutions that solve real-world problems and deliver immediate, valuable results.
       </p>
 
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">Project Stakeholders</h2>
-      <div className="grid gap-6 mb-6">
-        {stakeholders.map((stakeholder, index) => (
-          <Stakeholder key={index} {...stakeholder} />
-        ))}
-      </div>
+      
 
     </BlogLayout>
     </HelmetProvider>
