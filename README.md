@@ -36,3 +36,5 @@ npm install
 
 # Start development server
 npm run dev
+
+Hosted on Netlify.app
