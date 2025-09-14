@@ -7,7 +7,7 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'LinkedInn Early Applicant',
+      title: 'LinkedIn Early Applicant',
       description:'Automated Smart Linked Inn Job Notification, Be an early Applicant.',
       //image:'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzdlbTV3ZHljejEzNXdqcWhmbHpoNGYzcmVlNG9vZ2Nnb294czR1bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UWWUDiZOyNwuEsNsmA/giphy.gif',
       image:'https://i.imgur.com/hNa0ROb.jpeg',
