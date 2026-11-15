@@ -1,0 +1,499 @@
+{
+  "hero": {
+    "greeting": "Sanju Kumar",
+    "title": "Data Scientist & ML Engineer",
+    "subtitle": "Building machine learning pipelines, statistical models, and production automation for supply chain and network operations",
+    "resumeUrl": "https://acrobat.adobe.com/id/urn:aaid:sc:AP:c816e211-3b4d-43d3-826d-cfc17d4011e4",
+    "profileImage": "/favicon.png",
+    "faviconUrl": "/favicon.png",
+    "linkedinUrl": "https://linkedin.com/in/mightysanju/",
+    "credlyUrl": "https://www.credly.com/users/sanju-kumar.671f31d3",
+    "linkedinCertsUrl": "https://www.linkedin.com/in/mightysanju/details/certifications/"
+  },
+  "testimonials": [
+    {
+      "id": "rec-1",
+      "text": "Sanju provided the TheyPay Carrier Management Team (TCMT) a tailored application, the Defect Disputes Override (DDO) tool, that reduced associate research workload for dispositioning appointment defects carriers incurred working with Amazon.",
+      "author": "Jake Porter",
+      "position": "Senior Supply Chain Manager, Amazon",
+      "image": "https://ui-avatars.com/api/?name=Jake+Porter&background=1a1e28&color=eef0f5&size=200",
+      "linkedinUrl": "https://linkedin.com/in/mightysanju/"
+    },
+    {
+      "id": "rec-2",
+      "text": "Sanju demonstrated a knowledgeable and professional approach to every task. He quickly grasped the project's nuances and offered insightful solutions to every technical challenge.",
+      "author": "Jaime Martinez",
+      "position": "Manager, General Dynamics Land Systems",
+      "image": "https://ui-avatars.com/api/?name=Jaime+Martinez&background=1a1e28&color=eef0f5&size=200",
+      "linkedinUrl": "https://linkedin.com/in/mightysanju/"
+    },
+    {
+      "id": "rec-3",
+      "text": "Sanju is one of the team members on the floor who always strives towards process excellence.",
+      "author": "Deepak Sharma",
+      "position": "Operations Manager, Amazon",
+      "image": "https://ui-avatars.com/api/?name=Deepak+Sharma&background=1a1e28&color=eef0f5&size=200",
+      "linkedinUrl": "https://linkedin.com/in/mightysanju/"
+    },
+    {
+      "id": "rec-4",
+      "text": "He is analytical and consistently explores solutions beyond his immediate domain.",
+      "author": "D V L Sravya",
+      "position": "Business Intelligence Engineer, Amazon",
+      "image": "https://ui-avatars.com/api/?name=D+V+L+Sravya&background=1a1e28&color=eef0f5&size=200",
+      "linkedinUrl": "https://linkedin.com/in/mightysanju/"
+    },
+    {
+      "id": "rec-5",
+      "text": "Sanju's Python engineering skills are reliable, consistently delivering efficient and well-structured production code.",
+      "author": "Hemanth Pittu",
+      "position": "Manager, Amazon",
+      "image": "https://ui-avatars.com/api/?name=Hemanth+Pittu&background=1a1e28&color=eef0f5&size=200",
+      "linkedinUrl": "https://linkedin.com/in/mightysanju/"
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-1",
+      "title": "LinkedIn Early Applicant",
+      "description": "Automated LinkedIn job monitoring pipeline with SMTP dispatch for early application windows",
+      "image": "https://i.imgur.com/hNa0ROb.jpeg",
+      "tags": [
+        "Web Scraping",
+        "SMTP",
+        "Python"
+      ],
+      "demo": "/blog/LinkedInnAppDemo",
+      "github": "https://github.com/mightysanju/Linked-Inn-Be-an-Early-Applicant.git",
+      "blog": "/blog/Linkedinn"
+    },
+    {
+      "id": "proj-2",
+      "title": "Defect Dispute Override Tool",
+      "description": "Desktop workflow application built for Amazon TCMT to automate carrier defect dispute research",
+      "image": "https://i.imgur.com/pqH8SRU.png",
+      "tags": [
+        "GUI",
+        "Python",
+        "Analytics"
+      ],
+      "demo": "",
+      "github": "https://github.com/mightysanju/DDO-Tool-Code-for-Public",
+      "blog": "/blog/DDO"
+    },
+    {
+      "id": "proj-3",
+      "title": "Network Balancing Automation",
+      "description": "SQL and Python automation utility that balances regional freight capacity and reduces manual reconciliation errors",
+      "image": "https://i.imgur.com/VxGPpEB.png",
+      "tags": [
+        "Automation",
+        "Advanced SQL",
+        "Python"
+      ],
+      "demo": "",
+      "github": "",
+      "blog": "/blog/Networkapp"
+    },
+    {
+      "id": "proj-4",
+      "title": "ATS Resume NLP Analyzer",
+      "description": "Client-side resume parser that scores keyword alignment, section completeness, and formatting against job descriptions",
+      "image": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80",
+      "tags": [
+        "Machine Learning",
+        "NLP",
+        "React"
+      ],
+      "demo": "/ats",
+      "github": "https://github.com/mightysanju",
+      "blog": "/blog/ats-score-checker"
+    }
+  ],
+  "certifications": [
+    {
+      "id": "cert-1",
+      "title": "Computer Networks and Network Security",
+      "issuer": "IBM",
+      "date": "Nov 2024",
+      "description": "Network architecture, routing security, and intrusion defense",
+      "category": "cybersecurity",
+      "verification": {
+        "type": "coursera",
+        "url": "https://www.coursera.org/account/accomplishments/records/FJTPL6KHZ81E",
+        "id": "FJTPL6KHZ81E"
+      }
+    },
+    {
+      "id": "cert-2",
+      "title": "Cybersecurity Compliance Framework & Standards",
+      "issuer": "IBM",
+      "date": "Nov 2024",
+      "description": "Security compliance controls and regulatory audit frameworks",
+      "category": "cybersecurity",
+      "verification": {
+        "type": "coursera",
+        "url": "https://www.coursera.org/account/accomplishments/records/G66JJGPE28E5",
+        "id": "G66JJGPE28E5"
+      }
+    },
+    {
+      "id": "cert-3",
+      "title": "Cybersecurity Roles, Processes & OS Security",
+      "issuer": "Coursera",
+      "date": "Nov 2024",
+      "description": "Operating system hardening and security operations workflows",
+      "category": "cybersecurity",
+      "verification": {
+        "type": "credly",
+        "url": "https://www.credly.com/badges/fddaf826-376c-474f-a2c2-d78ccf9f744b"
+      }
+    },
+    {
+      "id": "cert-4",
+      "title": "Network Security & Database Vulnerabilities",
+      "issuer": "Coursera",
+      "date": "Nov 2024",
+      "description": "Database access controls, SQL injection mitigation, and network defense",
+      "category": "cybersecurity",
+      "verification": {
+        "type": "credly",
+        "url": "https://www.credly.com/badges/3e68931c-cd35-4d10-8d5d-2b72bb6ec3c6"
+      }
+    },
+    {
+      "id": "cert-5",
+      "title": "Operating Systems: Overview & Security",
+      "issuer": "IBM",
+      "date": "Nov 2024",
+      "description": "System administration, file permissions, and endpoint protection",
+      "category": "cybersecurity",
+      "verification": {
+        "type": "coursera",
+        "url": "https://www.coursera.org/account/accomplishments/records/JW1MPRFGYNQG",
+        "id": "JW1MPRFGYNQG"
+      }
+    },
+    {
+      "id": "cert-6",
+      "title": "Introduction to Cybersecurity Tools & Cyberattacks",
+      "issuer": "IBM",
+      "date": "Oct 2024",
+      "description": "Threat intelligence, attack vectors, and incident triage tooling",
+      "category": "cybersecurity",
+      "verification": {
+        "type": "coursera",
+        "url": "https://www.coursera.org/account/accomplishments/records/DF1D8YWUKHQP",
+        "id": "DF1D8YWUKHQP"
+      }
+    },
+    {
+      "id": "cert-7",
+      "title": "Get Started with Python",
+      "issuer": "Google",
+      "date": "Jul 2024",
+      "description": "Data structures, control flow, and modular Python scripting",
+      "category": "data",
+      "verification": {
+        "type": "coursera",
+        "url": "https://www.coursera.org/account/accomplishments/records/5L5GCQU636H7",
+        "id": "5L5GCQU636H7"
+      }
+    },
+    {
+      "id": "cert-8",
+      "title": "Foundations of Data Science",
+      "issuer": "Google",
+      "date": "Jun 2024",
+      "description": "Exploratory data analysis, sampling methodology, and statistical workflows",
+      "category": "data",
+      "verification": {
+        "type": "coursera",
+        "url": "https://www.coursera.org/account/accomplishments/records/D4U243DJGTZQ",
+        "id": "D4U243DJGTZQ"
+      }
+    },
+    {
+      "id": "cert-9",
+      "title": "Building and Deploying Deep Learning Applications with TensorFlow",
+      "issuer": "LinkedIn",
+      "date": "Jun 2024",
+      "description": "Neural network training, evaluation, and model serving in TensorFlow",
+      "category": "ml",
+      "verification": {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/learning/certificates/23e35b5c8d2d3ee95469fa1de8ff3838a440aec8c9df00764ce68ece0b92b65d"
+      }
+    },
+    {
+      "id": "cert-10",
+      "title": "Learning GitHub",
+      "issuer": "LinkedIn",
+      "date": "Oct 2023",
+      "description": "Branching strategies, pull request workflows, and repository management",
+      "category": "dev",
+      "verification": {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/learning/certificates/1c9f68ee2b6fb9aaf18c7bda6e5e4d9de85fcc054e64a94208204fad5b4176de"
+      }
+    },
+    {
+      "id": "cert-11",
+      "title": "Tableau Essential Training",
+      "issuer": "LinkedIn",
+      "date": "Aug 2023",
+      "description": "Interactive dashboard design, calculated fields, and visual analytics",
+      "category": "dev",
+      "verification": {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/learning/certificates/002606e0f7371ba428965a7ae6b089dc9308ef8b6513a55801a6e4b30ee1c64c"
+      }
+    },
+    {
+      "id": "cert-12",
+      "title": "SQL for Data Analysis",
+      "issuer": "LinkedIn",
+      "date": "Jul 2023",
+      "description": "Window functions, CTEs, and query optimization for analytical reporting",
+      "category": "dev",
+      "verification": {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/learning/certificates/88906470416f69188a0f5bdf84d089d8622d344bd511bbea3893353bcd12c0af"
+      }
+    },
+    {
+      "id": "cert-13",
+      "title": "Learning Python",
+      "issuer": "LinkedIn",
+      "date": "Jun 2021",
+      "description": "Core Python syntax, file handling, and object-oriented programming",
+      "category": "dev",
+      "verification": {
+        "type": "linkedin",
+        "url": "https://www.linkedin.com/learning/certificates/1b192eac592268f63afc92f182dcc6f5b9323dbd95245e47a4c0f2977f521a33"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill-1",
+      "name": "Python Programming",
+      "level": 92,
+      "category": "Technical",
+      "icon": "Code2",
+      "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "id": "skill-2",
+      "name": "SQL & Databases",
+      "level": 92,
+      "category": "Technical",
+      "icon": "Database",
+      "color": "from-purple-500 to-indigo-600"
+    },
+    {
+      "id": "skill-3",
+      "name": "Process Automation",
+      "level": 90,
+      "category": "Technical",
+      "icon": "Cpu",
+      "color": "from-green-500 to-emerald-600"
+    },
+    {
+      "id": "skill-4",
+      "name": "Data Analysis",
+      "level": 88,
+      "category": "Technical",
+      "icon": "BarChart",
+      "color": "from-yellow-500 to-orange-500"
+    },
+    {
+      "id": "skill-5",
+      "name": "Tableau",
+      "level": 85,
+      "category": "Technical",
+      "icon": "Globe",
+      "color": "from-blue-400 to-indigo-500"
+    },
+    {
+      "id": "skill-6",
+      "name": "Network Security",
+      "level": 90,
+      "category": "Cybersecurity",
+      "icon": "Lock",
+      "color": "from-red-500 to-pink-500"
+    },
+    {
+      "id": "skill-7",
+      "name": "System Security",
+      "level": 88,
+      "category": "Cybersecurity",
+      "icon": "Shield",
+      "color": "from-orange-500 to-red-500"
+    },
+    {
+      "id": "skill-8",
+      "name": "Security Tools",
+      "level": 85,
+      "category": "Cybersecurity",
+      "icon": "Wrench",
+      "color": "from-indigo-500 to-purple-500"
+    },
+    {
+      "id": "skill-9",
+      "name": "Compliance & Frameworks",
+      "level": 82,
+      "category": "Cybersecurity",
+      "icon": "Shield",
+      "color": "from-teal-500 to-cyan-500"
+    },
+    {
+      "id": "skill-10",
+      "name": "Problem Solving",
+      "level": 95,
+      "category": "Soft Skills",
+      "icon": "Brain",
+      "color": "from-emerald-500 to-teal-600"
+    },
+    {
+      "id": "skill-11",
+      "name": "Communication",
+      "level": 90,
+      "category": "Soft Skills",
+      "icon": "Users",
+      "color": "from-blue-500 to-indigo-500"
+    },
+    {
+      "id": "skill-12",
+      "name": "Technical Support",
+      "level": 88,
+      "category": "Soft Skills",
+      "icon": "Wrench",
+      "color": "from-purple-500 to-pink-500"
+    },
+    {
+      "id": "skill-13",
+      "name": "Organization",
+      "level": 85,
+      "category": "Soft Skills",
+      "icon": "Network",
+      "color": "from-yellow-500 to-amber-500"
+    }
+  ],
+  "chatbot": {
+    "assistantName": "Ask Sanju",
+    "apiUrl": "https://flaskragbot-1e1040a057f8.herokuapp.com/api/query",
+    "mode": "hybrid",
+    "presetQuestions": [
+      "Tell me about your experience",
+      "What are your key skills?",
+      "How can we collaborate?",
+      "Tell me about yourself"
+    ],
+    "systemContext": "Sanju Kumar is a Data Scientist & ML Engineer based in Naperville, IL. He holds an M.S. in Information Studies from Trine University (4.0 GPA) and a B.Tech from JNTU. At Amazon (TheyPay Carrier Management Team / TCMT), he built the Defect Dispute Override (DDO) desktop workflow application and the Network Balancing SQL/Python automation tool. Previously, he worked as an IT Analyst at AppMinds Inc and completed an engineering internship at DRDL-DRDO. Contact: sanju.k3r@gmail.com | 224-702-6736 | https://linkedin.com/in/mightysanju/",
+    "knowledgeEntries": [
+      {
+        "id": "kb-1",
+        "topic": "Professional Experience (Amazon, AppMinds, DRDO)",
+        "keywords": [
+          "experience",
+          "work",
+          "job",
+          "career",
+          "amazon",
+          "tcmt",
+          "appminds",
+          "drdo",
+          "role",
+          "history",
+          "background",
+          "yourself"
+        ],
+        "answer": "I have worked across supply chain analytics, process automation, and IT systems:\n\n• Amazon (TCMT Support / Operations): Built the Defect Dispute Override (DDO) tool for the TheyPay Carrier Management Team to cut associate defect-research time, and developed SQL + Python network balancing automation.\n• AppMinds Inc (IT Analyst): Supported enterprise data workflows, reporting pipelines, and technical troubleshooting.\n• DRDL-DRDO (Engineering Intern): Assisted with technical systems analysis and documentation."
+      },
+      {
+        "id": "kb-2",
+        "topic": "Education & Academic Background",
+        "keywords": [
+          "education",
+          "degree",
+          "university",
+          "college",
+          "masters",
+          "trine",
+          "gpa",
+          "jntu",
+          "study",
+          "academic"
+        ],
+        "answer": "I hold a Master of Science in Information Studies from Trine University with a 4.0 GPA, and a Bachelor of Technology (B.Tech) from Jawaharlal Nehru Technological University (JNTU)."
+      },
+      {
+        "id": "kb-3",
+        "topic": "Technical, Data Science & Cybersecurity Skills",
+        "keywords": [
+          "skills",
+          "tech",
+          "stack",
+          "python",
+          "sql",
+          "tableau",
+          "machine learning",
+          "cybersecurity",
+          "tools",
+          "languages"
+        ],
+        "answer": "My core technical stack includes:\n\n• Data & ML: Python (95%), SQL & Databases (92%), Process Automation (90%), Data Analysis (88%), Tableau (85%), TensorFlow, and NLP.\n• Cybersecurity: Network Security (90%), System Security (88%), Security Tools (85%), and Compliance Frameworks (82%).\n• Engineering & Operations: GUI workflow tooling, web scraping, SMTP automation, and cross-team stakeholder collaboration."
+      },
+      {
+        "id": "kb-4",
+        "topic": "Featured Projects & Case Studies",
+        "keywords": [
+          "projects",
+          "portfolio",
+          "built",
+          "ddo",
+          "defect",
+          "network",
+          "ats",
+          "linkedin",
+          "early applicant",
+          "app"
+        ],
+        "answer": "Here are four production systems featured in my portfolio:\n\n1. Defect Dispute Override (DDO) Tool: Desktop GUI built for Amazon TCMT that automates carrier appointment defect research.\n2. Network Balancing Automation: SQL and Python utility that balances regional freight capacity and eliminates manual spreadsheet reconciliation errors.\n3. ATS Resume NLP Analyzer: Client-side NLP resume scorer (/ats) that evaluates keyword alignment and structural completeness.\n4. LinkedIn Early Applicant: Automated Python + SMTP job discovery pipeline (/blog/LinkedInnAppDemo)."
+      },
+      {
+        "id": "kb-5",
+        "topic": "Certifications & Credentials",
+        "keywords": [
+          "certifications",
+          "certificates",
+          "coursera",
+          "credly",
+          "ibm",
+          "google",
+          "credentials",
+          "badge"
+        ],
+        "answer": "I hold 13+ verified certifications across Machine Learning, Data Science, Cybersecurity, and Software Development from IBM, Google, Coursera, and LinkedIn Learning — including Foundations of Data Science (Google), Deep Learning with TensorFlow, SQL for Data Analysis, Tableau Essential Training, and the IBM Cybersecurity suite."
+      },
+      {
+        "id": "kb-6",
+        "topic": "Contact, Hiring & Collaboration",
+        "keywords": [
+          "contact",
+          "collaborate",
+          "hire",
+          "email",
+          "phone",
+          "reach",
+          "connect",
+          "location",
+          "naperville",
+          "resume"
+        ],
+        "answer": "I am based in Naperville, IL and open to Data Science, Machine Learning Engineering, Business Intelligence, and Process Automation roles.\n\n• Email: sanju.k3r@gmail.com\n• Phone: 224-702-6736\n• LinkedIn: https://linkedin.com/in/mightysanju/\n• You can also use the Contact section on this page or download my resume directly from the Hero section."
+      }
+    ]
+  }
+}
