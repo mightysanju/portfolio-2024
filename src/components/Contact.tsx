@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, UserCheck, Star } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, UserCheck } from 'lucide-react';
 
 type Role = 'recruiter' | 'other';
 
@@ -10,12 +10,12 @@ interface FormData {
   role: Role;
 }
 
-const Contact = () => {
+const Contact: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: '',
-    role: 'other'
+    role: 'other',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -29,16 +29,19 @@ const Contact = () => {
       const response = await fetch('https://formspree.io/f/manyjkkr', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
           message: formData.message,
           role: formData.role,
-          _subject: formData.role === 'recruiter' ? '⭐ [RECRUITER] New Contact Form Submission' : 'New Contact Form Submission',
-          _replyto: formData.email
-        })
+          _subject:
+            formData.role === 'recruiter'
+              ? '[Recruiter] New Contact Form Submission'
+              : 'New Contact Form Submission',
+          _replyto: formData.email,
+        }),
       });
 
       if (response.ok) {
@@ -47,7 +50,7 @@ const Contact = () => {
       } else {
         setSubmitStatus('error');
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -59,78 +62,106 @@ const Contact = () => {
   ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-        Get in Touch
-      </h2>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mb-10">
+        <p className="font-mono text-xs text-[#7a8296] mb-2">
+          04 / Contact
+        </p>
+        <h2 className="text-2xl sm:text-3xl font-medium tracking-[-0.02em] text-[#eef0f5] mb-2">
+          Get in touch
+        </h2>
+        <p className="text-sm sm:text-base text-[#a3a9b8] max-w-xl">
+          Direct inquiries for engineering roles, consulting, or technical collaboration.
+        </p>
+      </div>
 
-      <div className="grid md:grid-cols-2 gap-12">
-        <div>
-          <div className="mb-8">
-            <h3 className="text-2xl font-semibold text-gray-200 mb-4">Contact Information</h3>
-            <div className="space-y-4">
-              <div className="flex items-center text-gray-300">
-                <Mail className="w-5 h-5 mr-3 text-purple-400" />
-                <span>sanju.k3r@gmail.com</span>
+      <div className="grid md:grid-cols-12 gap-8">
+        <div className="md:col-span-5">
+          <div className="p-6 rounded-[14px] bg-[#11141c]/75 backdrop-blur-xl border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] space-y-5">
+            <h3 className="text-base font-medium text-[#eef0f5]">
+              Direct channels
+            </h3>
+            <div className="space-y-3.5 text-sm">
+              <div className="flex items-center gap-3 text-[#a3a9b8]">
+                <Mail className="w-4 h-4 text-[#7a8296] flex-shrink-0" strokeWidth={1.5} />
+                <a
+                  href="mailto:sanju.k3r@gmail.com"
+                  className="hover:text-[#eef0f5] transition-colors duration-150"
+                >
+                  sanju.k3r@gmail.com
+                </a>
               </div>
-              <div className="flex items-center text-gray-300">
-                <Phone className="w-5 h-5 mr-3 text-purple-400" />
-                <span>224 7026736</span>
+              <div className="flex items-center gap-3 text-[#a3a9b8]">
+                <Phone className="w-4 h-4 text-[#7a8296] flex-shrink-0" strokeWidth={1.5} />
+                <span className="font-mono tabular-nums">224 702 6736</span>
               </div>
-              <div className="flex items-center text-gray-300">
-                <MapPin className="w-5 h-5 mr-3 text-purple-400" />
+              <div className="flex items-center gap-3 text-[#a3a9b8]">
+                <MapPin className="w-4 h-4 text-[#7a8296] flex-shrink-0" strokeWidth={1.5} />
                 <span>Naperville, IL</span>
               </div>
             </div>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-gray-300 
-                focus:outline-none focus:ring-2 focus:ring-purple-500"
-              required
-            />
-          </div>
-          
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-gray-300 
-                focus:outline-none focus:ring-2 focus:ring-purple-500"
-              required
-            />
+        <form
+          onSubmit={handleSubmit}
+          className="md:col-span-7 p-6 rounded-[14px] bg-[#11141c]/75 backdrop-blur-xl border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] space-y-5"
+        >
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-xs font-medium text-[#a3a9b8] mb-1.5"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full h-10 px-3.5 rounded-[8px] bg-[#1a1e28]/70 backdrop-blur-md border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] text-sm text-[#eef0f5] placeholder-[#7a8296] focus:outline-none focus:border-white/[0.24] transition-colors duration-150"
+                required
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-xs font-medium text-[#a3a9b8] mb-1.5"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full h-10 px-3.5 rounded-[8px] bg-[#1a1e28]/70 backdrop-blur-md border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] text-sm text-[#eef0f5] placeholder-[#7a8296] focus:outline-none focus:border-white/[0.24] transition-colors duration-150"
+                required
+              />
+            </div>
           </div>
 
           <div>
-            <label htmlFor="role" className="block text-sm font-medium text-gray-300 mb-2">
-              I am a
+            <label className="block text-xs font-medium text-[#a3a9b8] mb-1.5">
+              Inquiry type
             </label>
-            <div className="flex gap-4">
-              <label className={`flex-1 relative cursor-pointer ${
-                formData.role === 'recruiter' ? 'bg-purple-500/20 border-purple-500' : 'bg-gray-800 border-gray-700'
-              } border rounded-lg p-4 transition-colors duration-200`}>
+            <div className="grid grid-cols-2 gap-3">
+              <label
+                className={`cursor-pointer h-10 px-3.5 rounded-[8px] border flex items-center justify-center gap-2 text-sm font-medium transition-colors duration-150 ${
+                  formData.role === 'recruiter'
+                    ? 'bg-[#1a1e28]/70 backdrop-blur-md border-white/[0.2] text-[#eef0f5] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]'
+                    : 'bg-[#0b0d14]/70 border-white/[0.10] text-[#a3a9b8] hover:text-[#eef0f5]'
+                }`}
+              >
                 <input
                   type="radio"
                   name="role"
@@ -139,22 +170,17 @@ const Contact = () => {
                   onChange={handleChange}
                   className="sr-only"
                 />
-                <div className="flex items-center justify-center">
-                  <UserCheck className={`w-5 h-5 ${
-                    formData.role === 'recruiter' ? 'text-purple-400' : 'text-gray-400'
-                  } mr-2`} />
-                  <span className={formData.role === 'recruiter' ? 'text-purple-300' : 'text-gray-300'}>
-                    Recruiter
-                  </span>
-                  {formData.role === 'recruiter' && (
-                    <Star className="w-4 h-4 text-yellow-400 ml-2 animate-pulse" />
-                  )}
-                </div>
+                <UserCheck className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+                <span>Recruiter</span>
               </label>
 
-              <label className={`flex-1 relative cursor-pointer ${
-                formData.role === 'other' ? 'bg-purple-500/20 border-purple-500' : 'bg-gray-800 border-gray-700'
-              } border rounded-lg p-4 transition-colors duration-200`}>
+              <label
+                className={`cursor-pointer h-10 px-3.5 rounded-[8px] border flex items-center justify-center gap-2 text-sm font-medium transition-colors duration-150 ${
+                  formData.role === 'other'
+                    ? 'bg-[#1a1e28]/70 backdrop-blur-md border-white/[0.2] text-[#eef0f5] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]'
+                    : 'bg-[#0b0d14]/70 border-white/[0.10] text-[#a3a9b8] hover:text-[#eef0f5]'
+                }`}
+              >
                 <input
                   type="radio"
                   name="role"
@@ -163,20 +189,17 @@ const Contact = () => {
                   onChange={handleChange}
                   className="sr-only"
                 />
-                <div className="flex items-center justify-center">
-                  <Mail className={`w-5 h-5 ${
-                    formData.role === 'other' ? 'text-purple-400' : 'text-gray-400'
-                  } mr-2`} />
-                  <span className={formData.role === 'other' ? 'text-purple-300' : 'text-gray-300'}>
-                    Other
-                  </span>
-                </div>
+                <Mail className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+                <span>General inquiry</span>
               </label>
             </div>
           </div>
-          
+
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+            <label
+              htmlFor="message"
+              className="block text-xs font-medium text-[#a3a9b8] mb-1.5"
+            >
               Message
             </label>
             <textarea
@@ -185,38 +208,27 @@ const Contact = () => {
               value={formData.message}
               onChange={handleChange}
               rows={4}
-              className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-gray-300 
-                focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
+              className="w-full p-3.5 rounded-[8px] bg-[#1a1e28]/70 backdrop-blur-md border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] text-sm text-[#eef0f5] placeholder-[#7a8296] focus:outline-none focus:border-white/[0.24] resize-none transition-colors duration-150"
               required
             />
           </div>
-          
+
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-medium rounded-lg
-              hover:from-purple-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2
-              focus:ring-offset-gray-900 transition-colors duration-200 flex items-center justify-center disabled:opacity-50
-              relative overflow-hidden group"
+            className="w-full h-10 px-5 rounded-[8px] bg-[#eef0f5] text-[#0b0d14] text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:bg-white disabled:opacity-50 inline-flex items-center justify-center gap-2 transition-colors duration-150"
           >
-            <div className="absolute inset-0 flex justify-center overflow-hidden">
-              <div className="w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent 
-                transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-            </div>
-            <Send className="w-5 h-5 mr-2" />
-            <span className="relative">
-              {isSubmitting ? 'Sending...' : 'Send Message'}
-            </span>
-            {formData.role === 'recruiter' && (
-              <Star className="w-4 h-4 text-yellow-400 ml-2 animate-pulse" />
-            )}
+            <Send className="w-4 h-4" strokeWidth={1.5} />
+            <span>{isSubmitting ? 'Sending...' : 'Send message'}</span>
           </button>
 
           {submitStatus === 'success' && (
-            <p className="text-green-400 text-sm mt-2">Message sent successfully!</p>
+            <p className="text-[#4cc38a] text-xs">Message sent.</p>
           )}
           {submitStatus === 'error' && (
-            <p className="text-red-400 text-sm mt-2">Failed to send message. Please try again.</p>
+            <p className="text-red-400 text-xs">
+              Failed to send message. Please try again.
+            </p>
           )}
         </form>
       </div>

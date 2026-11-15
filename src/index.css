@@ -1,47 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
+:root {
+  --bg-deep: #07080d;
+  --bg-page: #0b0d14;
+  --bg-card: rgba(17, 20, 28, 0.75);
+  --bg-raised: rgba(26, 30, 40, 0.7);
+  --border-hairline: rgba(238, 240, 245, 0.1);
+  --text-primary: #eef0f5;
+  --text-secondary: #a3a9b8;
+  --text-muted: #7a8296;
+  --accent-blue: #3b82f6;
+  --status-emerald: #4cc38a;
+  --ease-out-quart: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes gradient-x {
-  0%, 100% {
-    background-size: 200% 200%;
-    background-position: left center;
+@layer base {
+  html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #0b0d14;
+    color: #eef0f5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
   }
-  50% {
-    background-size: 200% 200%;
-    background-position: right center;
-  }
-}
 
-@keyframes morph {
-  0%, 100% {
-    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-    transform: translate(100px, 100px) rotate(0deg);
+  body {
+    background-color: #0b0d14;
+    color: #eef0f5;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
-  34% {
-    border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
-    transform: translate(100px, 100px) rotate(120deg);
-  }
-  67% {
-    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
-    transform: translate(100px, 100px) rotate(240deg);
-  }
-}
 
-@keyframes nebula {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+  }
 
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+  }
 }
 
 @keyframes scroll {
@@ -52,7 +54,7 @@
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -60,70 +62,56 @@
   }
 }
 
-/* Score-based animations */
-@keyframes firework {
-  0% { transform: translate(var(--x), var(--initialY)); width: var(--size); opacity: 1; }
-  50% { width: 0.5vmin; opacity: 1; }
-  100% { width: var(--size); opacity: 0; transform: translate(var(--x), var(--finalY)); }
+.animate-scroll-fast {
+  animation: scroll 38s linear infinite;
 }
 
-@keyframes confetti {
-  0% { transform: rotateZ(15deg) rotateY(0deg) translate(0,0); }
-  25% { transform: rotateZ(5deg) rotateY(360deg) translate(var(--x),25vh); }
-  50% { transform: rotateZ(15deg) rotateY(720deg) translate(calc(var(--x) * -1),50vh); }
-  75% { transform: rotateZ(5deg) rotateY(1080deg) translate(var(--x),75vh); }
-  100% { transform: rotateZ(15deg) rotateY(1440deg) translate(0,100vh); }
+.animate-fade-in {
+  animation: fade-in 0.24s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-@keyframes celebrate {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+/* Frosted Ink Glass Utilities (Zero Neon Glow) */
+.surface-card {
+  background-color: rgba(17, 20, 28, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(238, 240, 245, 0.1);
+  border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
-@keyframes sparkle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.5); }
+.surface-raised {
+  background-color: rgba(26, 30, 40, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(238, 240, 245, 0.1);
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-.animate-float { animation: float 6s ease-in-out infinite; }
-.animate-gradient-x { animation: gradient-x 15s ease infinite; }
-.animate-morph { animation: morph 15s ease-in-out infinite; }
-.animate-pulse-subtle { animation: pulse-subtle 3s ease-in-out infinite; }
-.animate-spin-slow { animation: spin 20s linear infinite; }
-.animate-scroll-fast { animation: scroll 7s linear infinite; }
-.animate-nebula { animation: nebula 8s ease-in-out infinite; }
-.animate-fade-in { animation: fade-in 0.5s ease-out forwards; }
-.animate-celebrate { animation: celebrate 1s ease-in-out infinite; }
-.animate-sparkle { animation: sparkle 2s ease-in-out infinite; }
-
-.firework {
-  position: absolute;
-  pointer-events: none;
-  animation: firework 2s ease-in-out infinite;
+.glass-pill {
+  background-color: rgba(7, 8, 13, 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(238, 240, 245, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
-.confetti {
-  position: absolute;
-  pointer-events: none;
-  animation: confetti 5s ease-in-out infinite;
+.bento-card {
+  background-color: rgba(17, 20, 28, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(238, 240, 245, 0.1);
+  border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: border-color 150ms cubic-bezier(0.22, 1, 0.36, 1), background-color 150ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.card-glow {
-  @apply relative overflow-hidden;
-  background: linear-gradient(
-    135deg,
-    rgba(168, 85, 247, 0.05) 0%,
-    rgba(59, 130, 246, 0.05) 100%
-  );
-  transition: all 0.3s ease-in-out;
+.bento-card:hover {
+  border-color: rgba(238, 240, 245, 0.18);
 }
 
-.card-glow:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(168, 85, 247, 0.1) 0%,
-    rgba(59, 130, 246, 0.1) 100%
-  );
-  transform: translateY(-2px);
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }

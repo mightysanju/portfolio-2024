@@ -3,187 +3,124 @@ import BlogLayout from './BlogLayout';
 import PerformanceChart from './NetworkappGraph';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-const Networkapp = () => {
+const Networkapp: React.FC = () => {
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top on component mount
+    window.scrollTo(0, 0);
   }, []);
+
   return (
-    
-
-  <HelmetProvider>
+    <HelmetProvider>
       <Helmet>
-      <title>Network App: Automating Network Balancing SIMs</title>
-      <meta name="description" content="Streamline your network balancing processes with the Network App. This innovative tool automates data retrieval, email drafting, and communication, saving you time and effort. Improve efficiency and reduce errors with this powerful solution."/>
-      <meta name="keywords" content="Network App, network balancing, SIM, automation, Python, SQL, data retrieval, email automation, efficiency"/>
-      
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5301414262654683" crossorigin="anonymous"></script>
+        <title>Network App: Automating Network Balancing SIMs</title>
+        <meta
+          name="description"
+          content="Network App automates SQL data retrieval, payload formatting, and fulfillment center notifications for network balancing SIM workflows."
+        />
       </Helmet>
-    <BlogLayout
-      title="Network App"
-      date="April 15, 2023"
-      readTime="10 min read"
-      tags={['Automation', 'Advanced SQL', 'Python']}
-      image="https://i.imgur.com/VxGPpEB.png"
-      //demoLink="https://agriculture.mightysanju.com"
-      //githubLink="https://github.com/sanjukumarkanki/smart-agriculture"
-    >
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-        Introduction
-      </h2>
-      <p className="text-gray-300 mb-6">
-      Tired of the tedious manual tasks associated with network balancing SIMs? The Network App is here to revolutionize your workflow. This innovative tool automates data retrieval, email drafting, and communication, saving you time and effort.
+      <BlogLayout
+        title="Network App"
+        date="April 15, 2023"
+        readTime="10 min read"
+        tags={['Automation', 'Advanced SQL', 'Python']}
+        image="https://i.imgur.com/VxGPpEB.png"
+      >
+        <h2 className="text-xl font-medium text-[#eef0f5] mb-3">Introduction</h2>
+        <p className="text-[#a3a9b8] text-base leading-relaxed mb-6">
+          Network balancing operations require rapid coordination across fulfillment centers. The
+          Network App automates SQL extraction, redirectable volume aggregation, and structured
+          notification drafting—reducing average handling time per SIM by 94.36%.
+        </p>
 
-      <br />By streamlining your processes, the Network App empowers you to focus on more strategic tasks and improve overall efficiency.
-      </p>
+        <h2 className="text-xl font-medium text-[#eef0f5] mb-3">Problem statement</h2>
+        <p className="text-[#a3a9b8] text-base leading-relaxed mb-6">
+          In daily operations, analysts spent substantial manual effort executing repetitive queries
+          across multiple sources, collating vendor redirectable volume, and formatting approval
+          requests for fulfillment centers. Manual assembly introduced latency and transcription
+          errors.
+        </p>
 
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-        The Problem Statement
-      </h2>
-      <p className="text-gray-300 mb-6">
-      In our daily operations, a significant amount of time was spent on manual tasks related to network balancing SIMs. This involved pulling data from multiple sources, collating it, and then drafting and sending emails to FC for approvals. These manual processes were time-consuming, prone to errors, and hindered productivity.
-      </p>
-
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-        Solution: The Network App
-      </h2>
-      <p className="text-gray-300 mb-6">
-      To streamline this process and improve efficiency, we developed the Network App. 
-      This innovative tool leverages Python and SQL to automate the data retrieval and email drafting process. 
-      By automating these tasks, we aim to:
-      <ul className="list-disc list-inside text-gray-300 space-y-2">
+        <h2 className="text-xl font-medium text-[#eef0f5] mb-3">Solution architecture</h2>
+        <p className="text-[#a3a9b8] text-base leading-relaxed mb-4">
+          We built the Network App in Python and SQL to execute end-to-end data retrieval and
+          dispatch preparation in a single workflow:
+        </p>
+        <ul className="list-disc list-inside text-[#a3a9b8] text-sm space-y-2 mb-6 leading-relaxed">
           <li>
-            <b>Intuitive GUI:</b> A simple and easy-to-use interface that
-            empowers users to navigate the application effortlessly.
+            <span className="text-[#eef0f5] font-medium">Automated SQL extraction:</span> Queries
+            live operational tables and aggregates redirectable volume by lane.
           </li>
           <li>
-            <b>Reduce manual effort: </b> Eliminate repetitive tasks and free up employees to focus on more strategic work.
+            <span className="text-[#eef0f5] font-medium">Deterministic formatting:</span> Generates
+            standardized approval payloads without manual copy-paste.
           </li>
           <li>
-            <b>Improve accuracy: </b> Minimize errors associated with manual data entry and processing.
-          </li>
-          <li>
-            <b>Accelerate communication: </b> Quickly and efficiently communicate vendor redirectable volume to FC.
-          </li>
-          <li>
-            <b>Enhance productivity: </b> Streamline the workflow and reduce overall processing time.
+            <span className="text-[#eef0f5] font-medium">Rapid dispatch:</span> Routes formatted
+            requests directly to target facility stakeholders.
           </li>
         </ul>
-      </p>
-      {/*----------Core Features */}
-      <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-6">
-        <h3 className="text-xl font-semibold text-gray-200 mb-4">
-          Core Features
-        </h3>
-        <ul className="list-disc list-inside text-gray-300 space-y-2">
-          <li>Automated Data Retrieval</li>
-          <li>Intelligant Email Drafting</li>
-          <li>Improved Efficiency</li>
-          <li>Reduced Manual Effort:</li>
-          <li>Enhanced Productivity</li>
-        </ul><br />
-        <div><PerformanceChart /></div>
-      </div>
 
-          
+        <div className="bg-[#1a1e28] border border-white/[0.08] rounded-[10px] p-6 mb-6">
+          <h3 className="text-base font-medium text-[#eef0f5] mb-4">Performance telemetry</h3>
+          <PerformanceChart />
+        </div>
 
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-        How it works
-      </h2>
-      <p className="text-gray-300 mb-6">
-      The Network App operates in a straightforward manner:<br />
-      <ol className="list-decimal list-inside text-gray-300 space-y-2">
-        <li>
-          <b>Data Retrieval: </b>The app executes a SQL query to extract the necessary information from the database.
-        </li>
-        <li>
-          <b>Email Drafting: </b>The retrieved data is then passed to a Python script, which automatically generates a well-formatted email.
-        </li>
-        <li>
-          <b>Email Dispatch: </b>The generated email is sent to the designated recipients, providing timely and accurate communication.
-        </li>
-      </ol>
-        
-      </p>
-      
-
-      
-
-
-      <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-6">
-        <h3 className="text-xl font-semibold text-gray-200 mb-4">
-        Pilot Results
-        </h3>
-        <p className="text-gray-300 mb-6">
-        A pilot study was conducted to evaluate the performance of the Network App compared to the manual process. The results were impressive:
+        <h2 className="text-xl font-medium text-[#eef0f5] mb-3">Pilot study results</h2>
+        <p className="text-[#a3a9b8] text-base leading-relaxed mb-4">
+          Across a 149-SIM pilot evaluation comparing manual processing against the Network App:
         </p>
-        <ul className="list-disc list-inside text-gray-300 space-y-2">
-          <li>
-            <b>Significant reduction in AHT: </b> The Network App reduced the average handling time (AHT) per SIM by over 94%.
-          </li>
-          <li>
-            <b>Improved efficiency: </b>The automated process significantly accelerated the entire workflow.
-          </li>
-          <li>
-            <b>Enhanced accuracy: </b>The risk of errors was minimized, ensuring accurate and reliable data.
-          </li>
-        </ul><br />
-        {/*-------------------Table Introduction----------------*/}
-      <div className="flex justify-center items-center p-4 ">
-        <div className="w-full max-w-4xl bg-gray-800 shadow-xl rounded-2xl overflow-hidden">
-          <table className="w-full">
+
+        <div className="overflow-x-auto rounded-[10px] border border-white/[0.08] bg-[#0b0d14] mb-6">
+          <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-gray-700 text-gray-200">
-                {['Total SIM', 'Time Taken', 'Total Time Human', 'Average time Human', 'Total Time Network app', 'Average time Network app', 'Network App Speed', 'AHT Saved by this Tool'].map((header, index) => (
-                  <th key={index} className="px-4 py-3 text-sm font-semibold text-center">{header}</th>
-                ))}
+              <tr className="border-b border-white/[0.08] bg-[#1a1e28] text-xs font-mono text-[#a3a9b8]">
+                <th className="px-4 py-3 font-medium">Metric</th>
+                <th className="px-4 py-3 font-medium">Unit</th>
+                <th className="px-4 py-3 font-medium">Manual (149 SIMs)</th>
+                <th className="px-4 py-3 font-medium">Manual Avg</th>
+                <th className="px-4 py-3 font-medium">Network App Total</th>
+                <th className="px-4 py-3 font-medium">Network App Avg</th>
+                <th className="px-4 py-3 font-medium">Speedup</th>
+                <th className="px-4 py-3 font-medium">AHT Saved</th>
               </tr>
             </thead>
-            <tbody>
-              <tr className="border-b border-gray-700">
-                <td rowSpan={2} className="bg-gray-900 text-center font-bold text-2xl p-4 text-gray-200">149</td>
-                <td className="bg-gray-700 text-gray-200 text-center font-semibold p-3">Minutes</td>
-                <td className="text-center p-3 text-gray-300">708.3</td>
-                <td className="text-center p-3 text-gray-300">4.75</td>
-                <td className="text-center p-3 text-gray-300">39.97</td>
-                <td className="text-center p-3 text-gray-300">0.27</td>
-                <td rowSpan={2} className="bg-gray-600 text-center font-bold p-4 text-gray-200">17.72x</td>
-                <td rowSpan={2} className="bg-gray-600 text-center font-bold p-4 text-gray-200">94.36%</td>
+            <tbody className="divide-y divide-white/[0.08] text-xs font-mono tabular-nums text-[#eef0f5]">
+              <tr>
+                <td className="px-4 py-3 text-[#a3a9b8]">Duration</td>
+                <td className="px-4 py-3 text-[#7a8296]">Minutes</td>
+                <td className="px-4 py-3">708.30</td>
+                <td className="px-4 py-3">4.75</td>
+                <td className="px-4 py-3">39.97</td>
+                <td className="px-4 py-3 text-[#3b82f6]">0.27</td>
+                <td className="px-4 py-3 text-[#4cc38a]">17.72x</td>
+                <td className="px-4 py-3 text-[#4cc38a]">94.36%</td>
               </tr>
               <tr>
-                <td className="bg-gray-700 text-gray-200 text-center font-semibold p-3">Seconds</td>
-                <td className="text-center p-3 text-gray-300">42498</td>
-                <td className="text-center p-3 text-gray-300">285.22</td>
-                <td className="text-center p-3 text-gray-300">2398.2</td>
-                <td className="text-center p-3 text-gray-300">16.10</td>
+                <td className="px-4 py-3 text-[#a3a9b8]">Duration</td>
+                <td className="px-4 py-3 text-[#7a8296]">Seconds</td>
+                <td className="px-4 py-3">42,498.0</td>
+                <td className="px-4 py-3">285.22</td>
+                <td className="px-4 py-3">2,398.2</td>
+                <td className="px-4 py-3 text-[#3b82f6]">16.10</td>
+                <td className="px-4 py-3 text-[#4cc38a]">17.72x</td>
+                <td className="px-4 py-3 text-[#4cc38a]">94.36%</td>
               </tr>
             </tbody>
           </table>
         </div>
-      </div>    
-                  
-      </div>
 
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-        Future Scope
-      </h2>
-      <p className="text-gray-300 mb-6">
-      We are committed to continuously improving the Network App. Future enhancements will include:
-      
-      <ol className="list-decimal list-inside text-gray-300 space-y-2">
-        <li>
-          <b>Automatic email alias integration: </b>Simplifying the process of identifying origin and destination facilities.</li>
-        <li>
-          <b>Trailer tag status verification: </b>Ensuring that only eligible trailers are considered for redirection.</li>
-        
-      </ol><br />
-      By implementing these features, we aim to further streamline operations, improve communication, and enhance safety and compliance. 
-      </p>
-
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">Conclusion</h2>
-      <p className="text-gray-300 mb-6">We are excited about the potential of the Network App to revolutionize our network balancing processes and look forward to its continued development and deployment.
-      </p>
-    </BlogLayout>
-  </HelmetProvider>
+        <h2 className="text-xl font-medium text-[#eef0f5] mb-3">Roadmap</h2>
+        <ol className="list-decimal list-inside text-[#a3a9b8] text-sm space-y-2 leading-relaxed">
+          <li>
+            <span className="text-[#eef0f5] font-medium">Automated facility alias resolution:</span>{' '}
+            Direct lookup of origin and destination distribution lists.
+          </li>
+          <li>
+            <span className="text-[#eef0f5] font-medium">Trailer tag status verification:</span>{' '}
+            Pre-flight validation ensuring only eligible trailers are flagged for redirection.
+          </li>
+        </ol>
+      </BlogLayout>
+    </HelmetProvider>
   );
 };
 

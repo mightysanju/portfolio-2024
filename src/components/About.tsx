@@ -1,439 +1,521 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowLeft, GraduationCap, Briefcase, Star, Shield, Heart, 
-  Award, Code2, Brain, Target, Users, Lightbulb, Globe
+import {
+  ArrowLeft,
+  GraduationCap,
+  Briefcase,
+  Shield,
+  Award,
+  Code2,
+  Brain,
+  Target,
+  Users,
+  Lightbulb,
+  Globe,
+  CheckCircle2,
 } from 'lucide-react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-const About = () => {
+const About: React.FC = () => {
   const education = [
     {
+      id: 'EDU-01',
       degree: "Master's in Information Studies",
-      school: "Trine University",
-      period: "2024 - Present",
-      description: "Specializing in Data Science and Machine Learning",
+      school: 'Trine University',
+      period: '2024 – Present',
+      description: 'Specializing in Data Science and Machine Learning',
       courses: [
-        "Advanced Machine Learning",
-        "Deep Learning & Neural Networks",
-        "Big Data Analytics",
-        "CyberSecurity",
-        "Cloud Computing"
+        'Advanced Machine Learning',
+        'Deep Learning & Neural Networks',
+        'Big Data Analytics',
+        'Cybersecurity',
+        'Cloud Computing',
       ],
-      gpa: "4.0/4.0"
+      gpa: '4.0 / 4.0',
     },
     {
+      id: 'EDU-02',
       degree: "Bachelor's in Electronics & Communication Engineering",
-      school: "Jawaharlal Nehru Technological University ",
-      period: "2014 - 2018",
-      description: "Focused on Electronics & Embedded Programming",
+      school: 'Jawaharlal Nehru Technological University',
+      period: '2014 – 2018',
+      description: 'Focused on Electronics & Embedded Programming',
       courses: [
-        "C Programming & Embedded C",
-        "Electrical and Electronics Engineering",
-        "VLSI Design",
-        "Transmission Lines"
+        'C Programming & Embedded C',
+        'Electrical and Electronics Engineering',
+        'VLSI Design',
+        'Transmission Lines',
       ],
-      //gpa: "3.8/4.0",
       achievements: [
-        "Organised Several Workshops and Trained Over 1000+ Under Grads. in Designing PCBs",
-        "Member of Innovation Council",
-        "Technical Club Lead"
-      ]
-    }
+        'Organized workshops and trained 1,000+ undergraduates in PCB design',
+        'Member of Innovation Council',
+        'Technical Club Lead',
+      ],
+    },
   ];
 
   const experience = [
     {
-      role: "Associate (Support Analyst)",
-      company: "Amazon",
-      period: "May 2022 - November 2023",
-      location: "Hyderabad, India",
+      id: 'EXP-01',
+      role: 'Associate (Support Analyst)',
+      company: 'Amazon',
+      period: 'May 2022 – Nov 2023',
+      location: 'Hyderabad, India',
       achievements: [
-        "Developed a Python-SQL automation application reducing processing time from 19 minutes to 5 seconds (99.56% improvement)",
-        "Created a notification bot achieving 100% SLA compliance through Chime app integration",
-        "Developed DDO Tool reducing carrier-related cases by 70% with permanent issue resolution",
-        "Assisted Program Manager with data mining for strategic planning and decision-making",
-        "Maintained 100% accuracy while achieving 228-fold increase in processing speed"
+        'Developed a Python-SQL automation application reducing processing time from 19 minutes to 5 seconds (99.56% improvement)',
+        'Created a notification bot achieving 100% SLA compliance through Amazon Chime integration',
+        'Developed the Defect Dispute Override (DDO) tool reducing carrier-related cases by 70% with permanent issue resolution',
+        'Assisted Program Manager with data mining for strategic planning and operational decision-making',
+        'Maintained 100% accuracy while achieving a 228x increase in processing throughput',
       ],
       technologies: [
-        "Python", "SQL", "Automation", "Data Mining",
-        "Bot Development", "Process Optimization"
-      ]
+        'Python',
+        'SQL',
+        'Automation',
+        'Data Mining',
+        'Bot Development',
+        'Process Optimization',
+      ],
     },
     {
-      role: "IT Analyst",
-      company: "AppMinds Inc",
-      period: "June 2019 - June 2021",
-      location: "Banjara Hills, India",
+      id: 'EXP-02',
+      role: 'IT Analyst',
+      company: 'AppMinds Inc',
+      period: 'Jun 2019 – Jun 2021',
+      location: 'Hyderabad, India',
       achievements: [
-        "Provided comprehensive IT support ensuring minimal system downtime",
-        "Implemented efficient troubleshooting procedures for employee technical issues",
-        "Maintained system integrity and operational efficiency",
-        "Contributed to IT infrastructure optimization",
-        "Delivered prompt resolution of technical challenges"
+        'Provided comprehensive IT support ensuring minimal system downtime',
+        'Implemented structured troubleshooting procedures for employee technical issues',
+        'Maintained system integrity and operational reliability',
+        'Contributed to IT infrastructure optimization',
+        'Delivered prompt resolution of technical incidents',
       ],
       technologies: [
-        "IT Support", "System Administration", "Troubleshooting",
-        "Technical Support", "Infrastructure Management"
-      ]
+        'IT Support',
+        'System Administration',
+        'Troubleshooting',
+        'Technical Support',
+        'Infrastructure Management',
+      ],
     },
     {
-      role: "Student Intern",
-      company: "Defence Research and Development Laboratory (DRDL) - DRDO",
-      period: "June 2017 - August 2017",
-      location: "Hyderabad, India",
+      id: 'EXP-03',
+      role: 'Student Intern',
+      company: 'Defence Research and Development Laboratory (DRDL) – DRDO',
+      period: 'Jun 2017 – Aug 2017',
+      location: 'Hyderabad, India',
       achievements: [
-        "Developed 'SMART ATTENDANCE SYSTEM' under Technical Officer's guidance",
-        "Gained hands-on experience in defense research organization",
-        "Successfully completed project implementation",
-        "Collaborated with technical team members",
-        "Learned organizational protocols and procedures"
+        'Developed a Smart Attendance System under Technical Officer guidance',
+        'Gained hands-on engineering experience in a defense research organization',
+        'Completed end-to-end project implementation and testing',
+        'Collaborated with cross-functional technical team members',
+        'Followed strict defense research protocols and documentation standards',
       ],
       technologies: [
-        "Project Management", "System Development",
-        "Research Methodology", "Technical Documentation"
-      ]
-    }
+        'Project Management',
+        'System Development',
+        'Research Methodology',
+        'Technical Documentation',
+      ],
+    },
   ];
 
   const skills = {
     technical: [
-      "Python", "TensorFlow", "PyTorch", "Scikit-learn",
-      "SQL", "AWS", "Azure", "Docker", "Kubernetes",
-      "Git", "REST APIs", "Microservices"
+      'Python',
+      'TensorFlow',
+      'PyTorch',
+      'Scikit-learn',
+      'SQL',
+      'AWS',
+      'Azure',
+      'Docker',
+      'Kubernetes',
+      'Git',
+      'REST APIs',
+      'Microservices',
     ],
     ml: [
-      "Deep Learning", "NLP", "Computer Vision",
-      "Reinforcement Learning", "Time Series Analysis",
-      "Feature Engineering", "Model Optimization"
+      'Deep Learning',
+      'NLP',
+      'Computer Vision',
+      'Reinforcement Learning',
+      'Time Series Analysis',
+      'Feature Engineering',
+      'Model Optimization',
     ],
     soft: [
-      "Leadership", "Problem Solving", "Communication",
-      "Team Management", "Mentoring", "Project Planning"
-    ]
+      'Leadership',
+      'Problem Solving',
+      'Communication',
+      'Team Management',
+      'Mentoring',
+      'Project Planning',
+    ],
   };
 
   const strengths = [
     {
-      title: "Problem-solving Excellence",
-      description: "Strong analytical mindset with proven track record in solving complex technical challenges"
+      title: 'Analytical problem solving',
+      description:
+        'Rigorous engineering mindset with a track record of resolving high-volume operational bottlenecks.',
     },
     {
-      title: "Technical Leadership",
-      description: "Experience in leading and mentoring teams while driving technical initiatives"
+      title: 'Technical leadership',
+      description:
+        'Experience leading and mentoring peers while shipping self-serve internal tools.',
     },
     {
-      title: "Fast Learner",
-      description: "Quick to adapt to new technologies and methodologies"
+      title: 'Rapid systems adaptation',
+      description:
+        'Quick to evaluate, adopt, and integrate modern data and ML toolchains into production workflows.',
     },
     {
-      title: "Communication",
-      description: "Excellent in translating technical concepts to non-technical stakeholders"
+      title: 'Cross-functional communication',
+      description:
+        'Translates statistical findings and system trade-offs clearly for non-technical stakeholders.',
     },
     {
-      title: "Mathematical Foundation",
-      description: "Strong background in statistics, calculus, and linear algebra"
-    }
+      title: 'Mathematical foundation',
+      description:
+        'Grounded in applied statistics, linear algebra, and quantitative optimization.',
+    },
   ];
 
   const areasOfImprovement = [
     {
-      area: "Public Speaking",
-      plan: "Actively participating in tech conferences and meetups"
+      area: 'Public speaking',
+      plan: 'Participating in technical meetups and presenting architecture walkthroughs.',
     },
     {
-      area: "Work-life Balance",
-      plan: "Implementing structured time management techniques"
+      area: 'Work-life balance',
+      plan: 'Maintaining structured time-blocking and sprint boundaries.',
     },
     {
-      area: "Perfectionism",
-      plan: "Learning to balance perfect vs good enough through agile methodologies"
+      area: 'Pragmatic iteration',
+      plan: 'Balancing deep optimization with incremental shipping milestones.',
     },
     {
-      area: "Detail Focus",
-      plan: "Developing better high-level strategic thinking skills"
-    }
+      area: 'Systems-level abstraction',
+      plan: 'Pairing low-level implementation detail with long-horizon product architecture.',
+    },
   ];
 
   const interests = [
-    "Artificial General Intelligence",
-    "Quantum Computing",
-    "Robotics",
-    "Sustainable Technology",
-    "Edge Computing"
+    'Artificial General Intelligence',
+    'Quantum Computing',
+    'Robotics',
+    'Sustainable Technology',
+    'Edge Computing',
   ];
 
   return (
     <HelmetProvider>
       <Helmet>
-      <title>Sanju Kumar | Know More About Me </title>
-      <meta name="description" content="Sanju Kumar is a skilled Data Scientist and ML Engineer with a strong academic background and hands-on experience in Python, TensorFlow, PyTorch, Scikit-learn, SQL, AWS, Azure, Docker, Kubernetes, Git, and more. Explore his projects, publications, and insights into the world of data science and machine learning."/>
-      <meta name="keywords" content="data science, machine learning, data scientist, ML engineer, Python, TensorFlow, PyTorch, Scikit-learn, SQL, AWS, Azure, Docker, Kubernetes, Git, Sanju Kumar"/>
+        <title>Sanju Kumar | Background &amp; Experience</title>
+        <meta
+          name="description"
+          content="Sanju Kumar is a Data Scientist and ML Engineer with hands-on experience in Python, TensorFlow, PyTorch, SQL, and enterprise process automation."
+        />
       </Helmet>
 
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 opacity-50">
-          <div
-            className="absolute inset-0 animate-nebula"
-            style={{
-              background: 'radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.15))',
-              filter: 'blur(40px)',
-            }}
-          />
-        </div>
-      </div>
+      <div className="min-h-screen bg-[#0b0d14] text-[#eef0f5]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="mb-10">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 h-9 px-3.5 rounded-[8px] bg-[#1a1e28]/70 backdrop-blur-md hover:bg-[#222734]/80 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] text-xs font-medium text-[#eef0f5] transition-colors duration-150 mb-8"
+            >
+              <ArrowLeft className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+              <span>Back to portfolio</span>
+            </Link>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 py-16">
-        <Link 
-          to="/"
-          className="inline-flex items-center text-purple-400 hover:text-purple-300 mb-8 group"
-        >
-          <ArrowLeft className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" />
-          Back to Home
-        </Link>
+            <p className="font-mono text-xs text-[#7a8296] mb-2">
+              PROFILE / DOSSIER
+            </p>
+            <h1 className="text-3xl sm:text-4xl font-medium tracking-[-0.02em] text-[#eef0f5] mb-2">
+              Background &amp; engineering experience
+            </h1>
+            <p className="text-sm sm:text-base text-[#a3a9b8] max-w-2xl">
+              Academic credentials, production systems shipped at Amazon, and core technical competencies.
+            </p>
+          </div>
 
-        <h1 className="text-4xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-          About Me
-        </h1>
-
-        <div className="space-y-12">
-          {/* Education Section */}
-          <section>
-            <div className="flex items-center mb-6">
-              <GraduationCap className="w-6 h-6 text-purple-400 mr-2" />
-              <h2 className="text-2xl font-semibold text-gray-200">Education</h2>
-            </div>
-            <div className="space-y-6">
-              {education.map((edu, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 backdrop-blur-sm
-                    hover:transform hover:scale-[1.02] transition-all duration-300"
-                >
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-200">{edu.degree}</h3>
-                      <p className="text-purple-400">{edu.school}</p>
-                      <p className="text-gray-400 text-sm">{edu.period}</p>
-                    </div>
-                    {edu.gpa && (
-                      <span className="text-emerald-400 font-semibold">GPA: {edu.gpa}</span>)
-                    }
-                  </div>
-                  <p className="text-gray-300 mb-4">{edu.description}</p>
-                  
-                  <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-gray-300 mb-2">Key Courses</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {edu.courses.map((course, i) => (
-                        <span
-                          key={i}
-                          className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-sm"
-                        >
-                          {course}
+          <div className="space-y-14">
+            {/* Education Section */}
+            <section>
+              <div className="flex items-center gap-2.5 mb-5">
+                <GraduationCap className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+                <h2 className="text-lg font-medium text-[#eef0f5]">Education</h2>
+              </div>
+              <div className="space-y-4">
+                {education.map((edu) => (
+                  <div
+                    key={edu.id}
+                    className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-6 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+                  >
+                    <div className="flex flex-wrap justify-between items-start gap-4 mb-3">
+                      <div>
+                        <span className="font-mono tabular-nums text-xs text-[#7a8296] block mb-1">
+                          {edu.id} · {edu.period}
                         </span>
-                      ))}
+                        <h3 className="text-base font-medium text-[#eef0f5]">
+                          {edu.degree}
+                        </h3>
+                        <p className="text-sm text-[#a3a9b8]">{edu.school}</p>
+                      </div>
+                      {edu.gpa && (
+                        <span className="font-mono tabular-nums text-xs text-[#4cc38a] bg-[#1a1e28]/70 backdrop-blur-md border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] px-2.5 py-1 rounded-[6px]">
+                          GPA {edu.gpa}
+                        </span>
+                      )}
                     </div>
-                  </div>
+                    <p className="text-sm text-[#a3a9b8] mb-4">{edu.description}</p>
 
-                  {edu.achievements && (
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-300 mb-2">Achievements</h4>
-                      <ul className="space-y-1">
-                        {edu.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-center text-gray-300">
-                            <Award className="w-4 h-4 text-yellow-400 mr-2" />
-                            {achievement}
+                    <div className="mb-4">
+                      <h4 className="text-xs font-medium text-[#7a8296] mb-2">
+                        Key coursework
+                      </h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {edu.courses.map((course, i) => (
+                          <span
+                            key={i}
+                            className="px-2.5 py-1 rounded-[6px] bg-[#1a1e28]/70 backdrop-blur-md text-[#a3a9b8] border border-white/[0.10] text-xs"
+                          >
+                            {course}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {edu.achievements && (
+                      <div className="pt-4 border-t border-white/[0.10]">
+                        <h4 className="text-xs font-medium text-[#7a8296] mb-2">
+                          Highlights
+                        </h4>
+                        <ul className="space-y-1.5">
+                          {edu.achievements.map((achievement, i) => (
+                            <li
+                              key={i}
+                              className="flex items-start gap-2 text-sm text-[#a3a9b8]"
+                            >
+                              <Award
+                                className="w-4 h-4 text-[#7a8296] mt-0.5 flex-shrink-0"
+                                strokeWidth={1.5}
+                              />
+                              <span>{achievement}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Experience Section */}
+            <section>
+              <div className="flex items-center gap-2.5 mb-5">
+                <Briefcase className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+                <h2 className="text-lg font-medium text-[#eef0f5]">Experience</h2>
+              </div>
+              <div className="space-y-4">
+                {experience.map((exp) => (
+                  <div
+                    key={exp.id}
+                    className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-6 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+                  >
+                    <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
+                      <div>
+                        <span className="font-mono tabular-nums text-xs text-[#7a8296] block mb-1">
+                          {exp.id} · {exp.period}
+                        </span>
+                        <h3 className="text-base font-medium text-[#eef0f5]">
+                          {exp.role}
+                        </h3>
+                        <p className="text-sm text-[#a3a9b8]">{exp.company}</p>
+                      </div>
+                      <span className="inline-flex items-center gap-1.5 text-xs text-[#7a8296] bg-[#1a1e28]/70 backdrop-blur-md border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] px-2.5 py-1 rounded-[6px]">
+                        <Globe className="w-3.5 h-3.5 text-[#7a8296]" strokeWidth={1.5} />
+                        {exp.location}
+                      </span>
+                    </div>
+
+                    <div className="mb-5">
+                      <h4 className="text-xs font-medium text-[#7a8296] mb-2.5">
+                        Key outcomes
+                      </h4>
+                      <ul className="space-y-2">
+                        {exp.achievements.map((achievement, i) => (
+                          <li
+                            key={i}
+                            className="flex items-start gap-2.5 text-sm text-[#a3a9b8]"
+                          >
+                            <CheckCircle2
+                              className="w-4 h-4 text-[#4cc38a] mt-0.5 flex-shrink-0"
+                              strokeWidth={1.5}
+                            />
+                            <span>{achievement}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </section>
 
-          {/* Experience Section */}
-          <section>
-            <div className="flex items-center mb-6">
-              <Briefcase className="w-6 h-6 text-purple-400 mr-2" />
-              <h2 className="text-2xl font-semibold text-gray-200">Experience</h2>
-            </div>
-            <div className="space-y-6">
-              {experience.map((exp, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 backdrop-blur-sm
-                    hover:transform hover:scale-[1.02] transition-all duration-300"
-                >
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-200">{exp.role}</h3>
-                      <p className="text-purple-400">{exp.company}</p>
-                      <p className="text-gray-400 text-sm">{exp.period}</p>
-                    </div>
-                    <span className="text-gray-400 flex items-center">
-                      <Globe className="w-4 h-4 mr-1" />
-                      {exp.location}
-                    </span>
-                  </div>
-
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-gray-300 mb-2">Key Achievements</h4>
-                    <ul className="space-y-2">
-                      {exp.achievements.map((achievement, i) => (
-                        <li key={i} className="flex items-start text-gray-300">
-                          <Star className="w-4 h-4 text-yellow-400 mr-2 mt-1 flex-shrink-0" />
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="text-sm font-semibold text-gray-300 mb-2">Technologies Used</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-sm"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                    <div className="pt-4 border-t border-white/[0.10]">
+                      <h4 className="text-xs font-medium text-[#7a8296] mb-2">
+                        Technologies
+                      </h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {exp.technologies.map((tech, i) => (
+                          <span
+                            key={i}
+                            className="px-2.5 py-1 rounded-[6px] bg-[#1a1e28]/70 backdrop-blur-md text-[#a3a9b8] border border-white/[0.10] text-xs"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Skills Section */}
-          <section>
-            <div className="flex items-center mb-6">
-              <Code2 className="w-6 h-6 text-purple-400 mr-2" />
-              <h2 className="text-2xl font-semibold text-gray-200">Skills</h2>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 backdrop-blur-sm">
-                <div className="flex items-center mb-4">
-                  <Code2 className="w-5 h-5 text-blue-400 mr-2" />
-                  <h3 className="text-lg font-semibold text-gray-200">Technical</h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {skills.technical.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 backdrop-blur-sm">
-                <div className="flex items-center mb-4">
-                  <Brain className="w-5 h-5 text-purple-400 mr-2" />
-                  <h3 className="text-lg font-semibold text-gray-200">Machine Learning</h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {skills.ml.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 backdrop-blur-sm">
-                <div className="flex items-center mb-4">
-                  <Users className="w-5 h-5 text-green-400 mr-2" />
-                  <h3 className="text-lg font-semibold text-gray-200">Soft Skills</h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {skills.soft.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Strengths Section */}
-          <section>
-            <div className="flex items-center mb-6">
-              <Shield className="w-6 h-6 text-purple-400 mr-2" />
-              <h2 className="text-2xl font-semibold text-gray-200">Core Strengths</h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-6">
-              {strengths.map((strength, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 backdrop-blur-sm
-                    hover:transform hover:scale-[1.02] transition-all duration-300"
-                >
-                  <h3 className="text-lg font-semibold text-purple-300 mb-2">{strength.title}</h3>
-                  <p className="text-gray-300">{strength.description}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Areas of Improvement Section */}
-          <section>
-            <div className="flex items-center mb-6">
-              <Target className="w-6 h-6 text-purple-400 mr-2" />
-              <h2 className="text-2xl font-semibold text-gray-200">Growth Areas & Action Plans</h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-6">
-              {areasOfImprovement.map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 backdrop-blur-sm"
-                >
-                  <h3 className="text-lg font-semibold text-blue-300 mb-2">{item.area}</h3>
-                  <p className="text-gray-300">{item.plan}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Interests Section */}
-          <section>
-            <div className="flex items-center mb-6">
-              <Lightbulb className="w-6 h-6 text-purple-400 mr-2" />
-              <h2 className="text-2xl font-semibold text-gray-200">Research Interests</h2>
-            </div>
-            <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 backdrop-blur-sm">
-              <div className="flex flex-wrap gap-3">
-                {interests.map((interest, index) => (
-                  <span
-                    key={index}
-                    className="px-4 py-2 rounded-full bg-yellow-500/20 text-yellow-300 text-sm
-                      border border-yellow-500/30"
-                  >
-                    {interest}
-                  </span>
                 ))}
               </div>
-            </div>
-          </section>
+            </section>
+
+            {/* Skills Section */}
+            <section>
+              <div className="flex items-center gap-2.5 mb-5">
+                <Code2 className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+                <h2 className="text-lg font-medium text-[#eef0f5]">Domain stack</h2>
+              </div>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-5 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Code2 className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+                    <h3 className="text-sm font-medium text-[#eef0f5]">Technical</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {skills.technical.map((skill, i) => (
+                      <span
+                        key={i}
+                        className="px-2.5 py-1 rounded-[6px] bg-[#1a1e28]/70 backdrop-blur-md text-[#a3a9b8] border border-white/[0.10] text-xs"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-5 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Brain className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+                    <h3 className="text-sm font-medium text-[#eef0f5]">
+                      Machine learning
+                    </h3>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {skills.ml.map((skill, i) => (
+                      <span
+                        key={i}
+                        className="px-2.5 py-1 rounded-[6px] bg-[#1a1e28]/70 backdrop-blur-md text-[#a3a9b8] border border-white/[0.10] text-xs"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-5 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Users className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+                    <h3 className="text-sm font-medium text-[#eef0f5]">Operations</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {skills.soft.map((skill, i) => (
+                      <span
+                        key={i}
+                        className="px-2.5 py-1 rounded-[6px] bg-[#1a1e28]/70 backdrop-blur-md text-[#a3a9b8] border border-white/[0.10] text-xs"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Strengths Section */}
+            <section>
+              <div className="flex items-center gap-2.5 mb-5">
+                <Shield className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+                <h2 className="text-lg font-medium text-[#eef0f5]">Core strengths</h2>
+              </div>
+              <div className="grid md:grid-cols-2 gap-4">
+                {strengths.map((strength, index) => (
+                  <div
+                    key={index}
+                    className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-5 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+                  >
+                    <h3 className="text-sm font-medium text-[#eef0f5] mb-1.5">
+                      {strength.title}
+                    </h3>
+                    <p className="text-sm text-[#a3a9b8] leading-relaxed">
+                      {strength.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Areas of Improvement Section */}
+            <section>
+              <div className="flex items-center gap-2.5 mb-5">
+                <Target className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+                <h2 className="text-lg font-medium text-[#eef0f5]">
+                  Current focus &amp; growth areas
+                </h2>
+              </div>
+              <div className="grid md:grid-cols-2 gap-4">
+                {areasOfImprovement.map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-5 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+                  >
+                    <h3 className="text-sm font-medium text-[#eef0f5] mb-1.5">
+                      {item.area}
+                    </h3>
+                    <p className="text-sm text-[#a3a9b8] leading-relaxed">
+                      {item.plan}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Interests Section */}
+            <section>
+              <div className="flex items-center gap-2.5 mb-5">
+                <Lightbulb className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+                <h2 className="text-lg font-medium text-[#eef0f5]">
+                  Research interests
+                </h2>
+              </div>
+              <div className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-5 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+                <div className="flex flex-wrap gap-2">
+                  {interests.map((interest, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1.5 rounded-[6px] bg-[#1a1e28]/70 backdrop-blur-md text-[#eef0f5] text-xs font-medium border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+                    >
+                      {interest}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </div>
         </div>
       </div>
-    </div>
-  </HelmetProvider>
+    </HelmetProvider>
   );
 };
 

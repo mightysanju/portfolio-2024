@@ -2,7 +2,6 @@ import React from 'react';
 import { ArrowLeft, Calendar, Clock, Tag, Github, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-
 interface BlogLayoutProps {
   title: string;
   date: string;
@@ -24,94 +23,93 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
   demoLink,
   githubLink
 }) => {
+  const isInternalDemo = demoLink?.startsWith('/');
+
   return (
-
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 opacity-50">
-          <div
-            className="absolute inset-0 animate-nebula"
-            style={{
-              background: 'radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.15))',
-              filter: 'blur(40px)',
-            }}
-          />
-        </div>
-      </div>
-
-      <div className="relative z-10 max-w-4xl mx-auto px-4 py-16">
-        <Link 
+    <div className="min-h-screen bg-[#0b0d14] text-[#eef0f5]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
+        <Link
           to="/"
-          className="inline-flex items-center text-purple-400 hover:text-purple-300 mb-8 group"
+          className="inline-flex items-center gap-2 text-sm font-medium text-[#a3a9b8] hover:text-[#eef0f5] mb-8 transition-colors duration-150"
         >
-          <ArrowLeft className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" />
-          Back to Projects
+          <ArrowLeft className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+          <span>Back to projects</span>
         </Link>
 
-        <article className="prose prose-invert max-w-none">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
+        <article className="max-w-none">
+          <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-medium tracking-[-0.025em] text-[#eef0f5] leading-[1.15] mb-5">
             {title}
           </h1>
 
-          <div className="flex flex-wrap items-center gap-6 text-gray-400 mb-8">
-            <div className="flex items-center">
-              <Calendar className="w-4 h-4 mr-2" />
+          <div className="flex flex-wrap items-center gap-5 text-xs text-[#7a8296] mb-6 pb-6 border-b border-white/[0.10]">
+            <div className="inline-flex items-center gap-1.5 font-mono tabular-nums">
+              <Calendar className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
               <span>{date}</span>
             </div>
-            <div className="flex items-center">
-              <Clock className="w-4 h-4 mr-2" />
+            <div className="inline-flex items-center gap-1.5 font-mono tabular-nums">
+              <Clock className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
               <span>{readTime}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="flex items-center px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-sm"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[6px] bg-[#1a1e28]/70 backdrop-blur-md border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] text-[#a3a9b8] text-xs font-mono"
                 >
-                  <Tag className="w-3 h-3 mr-1" />
-                  {tag}
+                  <Tag className="w-3 h-3 text-[#7a8296]" strokeWidth={1.5} />
+                  <span>{tag}</span>
                 </span>
               ))}
             </div>
           </div>
 
           {(demoLink || githubLink) && (
-            <div className="flex gap-4 mb-8">
-              {demoLink && (
-                <a
-                  href={demoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 rounded-lg bg-purple-500 text-white hover:bg-purple-600 transition-colors"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Live Demo
-                </a>
-              )}
+            <div className="flex flex-wrap gap-3 mb-8">
+              {demoLink &&
+                (isInternalDemo ? (
+                  <Link
+                    to={demoLink}
+                    className="h-10 px-4 rounded-[8px] bg-[#eef0f5] text-[#0b0d14] hover:bg-white text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] inline-flex items-center gap-2 transition-colors duration-150"
+                  >
+                    <ExternalLink className="w-4 h-4 text-[#0b0d14]" strokeWidth={1.5} />
+                    <span>Live demo</span>
+                  </Link>
+                ) : (
+                  <a
+                    href={demoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-10 px-4 rounded-[8px] bg-[#eef0f5] text-[#0b0d14] hover:bg-white text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] inline-flex items-center gap-2 transition-colors duration-150"
+                  >
+                    <ExternalLink className="w-4 h-4 text-[#0b0d14]" strokeWidth={1.5} />
+                    <span>Live demo</span>
+                  </a>
+                ))}
               {githubLink && (
                 <a
                   href={githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 rounded-lg bg-gray-700 text-white hover:bg-gray-600 transition-colors"
+                  className="h-10 px-4 rounded-[8px] bg-[#1a1e28]/70 backdrop-blur-md text-[#eef0f5] hover:bg-[#222734]/80 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] text-sm font-medium inline-flex items-center gap-2 transition-colors duration-150"
                 >
-                  <Github className="w-4 h-4 mr-2" />
-                  View Code
+                  <Github className="w-4 h-4 text-[#a3a9b8]" strokeWidth={1.5} />
+                  <span>View code</span>
                 </a>
               )}
             </div>
           )}
 
-          <div className="relative rounded-xl overflow-hidden mb-8 group">
-            <img
-              src={image}
-              alt={title}
-              className="w-full object-cover transform transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-50" />
-          </div>
+          {image && (
+            <div className="relative rounded-[14px] overflow-hidden mb-8 border border-white/[0.10] bg-[#11141c]/75 backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+              <img
+                src={image}
+                alt={title}
+                className="w-full max-h-[420px] object-cover"
+              />
+            </div>
+          )}
 
-          <div className="bg-gray-800/30 rounded-xl p-8 backdrop-blur-sm border border-gray-700/50">
+          <div className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-6 sm:p-8 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
             {children}
           </div>
         </article>

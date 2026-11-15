@@ -18,32 +18,42 @@ const Stakeholder: React.FC<StakeholderProps> = ({
   imageUrl,
   contribution
 }) => {
+  const fallbackAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+    name
+  )}&background=1a1e28&color=eef0f5&size=200`;
+
   return (
-    <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 backdrop-blur-sm
-      hover:transform hover:scale-105 transition-all duration-300">
-      <div className="flex items-center space-x-4 mb-4">
+    <div className="bg-[#1a1e28]/70 backdrop-blur-md rounded-[10px] p-5 border border-white/[0.10] hover:border-white/[0.18] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition-colors duration-150">
+      <div className="flex items-center gap-4 mb-3">
         <img
-          src={imageUrl}
+          src={imageUrl || fallbackAvatar}
           alt={name}
-          className="w-16 h-16 rounded-full object-cover border-2 border-purple-500/20"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (target.src !== fallbackAvatar) {
+              target.src = fallbackAvatar;
+            }
+          }}
+          className="w-12 h-12 rounded-full object-cover border border-white/[0.10] bg-[#11141c] flex-shrink-0"
         />
-        <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-200">{name}</h3>
-          <p className="text-purple-400">{role}</p>
-          <p className="text-gray-400 text-sm">{company}</p>
+        <div className="flex-1 min-w-0">
+          <h3 className="text-base font-medium text-[#eef0f5] truncate">{name}</h3>
+          <p className="text-xs text-[#a3a9b8] truncate">{role}</p>
+          <p className="text-xs font-mono text-[#7a8296] truncate">{company}</p>
         </div>
         <a
           href={linkedinUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 rounded-full bg-blue-500/20 hover:bg-blue-500/30 transition-colors"
+          aria-label={`${name} LinkedIn`}
+          className="h-9 w-9 inline-flex items-center justify-center rounded-[8px] bg-[#11141c]/75 backdrop-blur-xl border border-white/[0.10] text-[#7a8296] hover:text-[#eef0f5] transition-colors duration-150 flex-shrink-0"
         >
-          <Linkedin className="w-5 h-5 text-blue-400" />
+          <Linkedin className="w-4 h-4" strokeWidth={1.5} />
         </a>
       </div>
       {contribution && (
-        <p className="text-gray-300 text-sm italic">
-          "{contribution}"
+        <p className="text-[#a3a9b8] text-sm leading-relaxed border-t border-white/[0.10] pt-3">
+          {contribution}
         </p>
       )}
     </div>

@@ -1,133 +1,176 @@
 import React from 'react';
-import { Brain, Code2, Database, Cloud, Globe, Cpu, Download, User } from 'lucide-react';
+import { Download, User, ArrowUpRight, Terminal } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import TestimonialScroll from './TestimonialScroll';
+import { usePortfolio } from '../context/PortfolioContext';
 
+const SYSTEM_RECORDS = [
+  {
+    id: 'SYS-01',
+    label: 'Defect Dispute Override (Amazon TCMT)',
+    metric: 'Python · GUI'
+  },
+  {
+    id: 'SYS-02',
+    label: 'Network Balancing Automation',
+    metric: 'SQL · ETL'
+  },
+  {
+    id: 'SYS-03',
+    label: 'ATS Resume NLP Analyzer',
+    metric: 'NLP · React'
+  },
+  {
+    id: 'EDU',
+    label: 'M.S. Information Studies (4.0 GPA)',
+    metric: 'Trine Univ'
+  }
+];
 
-const SkillBubble = ({ Icon, delay, position }: { Icon: any, delay: number, position: string }) => (
-  <div
-    className={`absolute ${position} w-12 h-12 rounded-full bg-gray-800/40 backdrop-blur-sm
-      border border-gray-700/50 flex items-center justify-center animate-float`}
-    style={{ animationDelay: `${delay}s` }}
-  >
-    <Icon className="w-6 h-6 text-purple-400" />
-  </div>
-);
-
-const Hero = () => {
-  const skillBubbles = [
-    { Icon: Brain, position: '-right-20 top-0', delay: 0 },
-    { Icon: Code2, position: '-right-32 top-1/4', delay: 1 },
-    { Icon: Database, position: '-right-20 top-2/4', delay: 2 },
-    { Icon: Cloud, position: '-right-32 top-3/4', delay: 3 },
-    { Icon: Globe, position: '-left-32 top-1/4', delay: 1.5 },
-    { Icon: Cpu, position: '-left-20 top-3/4', delay: 2.5 },
-  ];
+const Hero: React.FC = () => {
+  const { data } = usePortfolio();
+  const { hero } = data;
 
   const handleDownload = () => {
-    const resumeUrl = 'https://acrobat.adobe.com/id/urn:aaid:sc:AP:c816e211-3b4d-43d3-826d-cfc17d4011e4';
-    window.open(resumeUrl, '_blank');
+    const resumeUrl =
+      hero.resumeUrl ||
+      'https://acrobat.adobe.com/id/urn:aaid:sc:AP:c816e211-3b4d-43d3-826d-cfc17d4011e4';
+    window.open(resumeUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center pt-32">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 backdrop-blur-3xl animate-nebula">
-          <div className="absolute inset-0" aria-hidden="true">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute animate-float"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 5}s`,
-                  width: `${Math.random() * 6 + 2}px`,
-                  height: `${Math.random() * 6 + 2}px`,
-                }}
-              >
-                <div className="w-full h-full rounded-full bg-white/20 blur-sm" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
-          <div className="w-full md:w-1/2 text-left space-y-6">
-            <div className="relative">
-              <h1 className="text-6xl md:text-7xl font-bold mb-1 bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text" style={{ lineHeight: 1.1 }}  >
-                I'm Sanju
-              </h1>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text
-                animate-gradient-x" style={{ lineHeight: 1.1 }} >
-                Data Scientist & ML Engineer
-              </h2>
-              
-              <p className="text-xl text-gray-300 max-w-xl mb-8
-                hover:text-gray-100 transition-colors duration-300">
-                Transforming complex data into actionable insights through innovative machine learning solutions
-                and advanced analytics.
+    <div className="relative min-h-screen flex flex-col justify-between pt-28 pb-12 bg-[#0b0d14]">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start lg:items-center">
+          {/* Left Column: Editorial Headline & Direct Actions */}
+          <div className="lg:col-span-7 space-y-6 text-left">
+            {/* Quiet Status Line */}
+            <div className="inline-flex items-center gap-2.5 text-sm text-[#a3a9b8]">
+              <span className="h-2 w-2 rounded-full bg-[#4cc38a] flex-shrink-0" />
+              <span>Naperville, IL · Data Science &amp; ML Engineering</span>
+            </div>
+
+            {/* Display Headline */}
+            <div className="space-y-2">
+              <p className="font-mono text-xs text-[#7a8296] tabular-nums">
+                {hero.greeting || "I'm Sanju"}
               </p>
+              <h1 className="text-[36px] sm:text-[48px] lg:text-[56px] font-medium tracking-[-0.03em] text-[#eef0f5] leading-[1.08]">
+                {hero.title || 'Data Scientist & ML Engineer'}
+              </h1>
+            </div>
 
-              <div className="flex flex-wrap gap-4">
-                <button
-                  onClick={handleDownload}
-                  className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-medium text-white/90
-                    transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none
-                    overflow-hidden rounded-2xl bg-white/10 backdrop-blur-md border border-white/20
-                    hover:bg-white/20 hover:border-white/30 hover:text-white"
-                >
-                  <span className="relative flex items-center space-x-2">
-                    <Download className="w-5 h-5 transition-transform group-hover:translate-y-1" />
-                    <span>Download Resume</span>
-                  </span>
-                  <div className="absolute inset-0 flex justify-center overflow-hidden rounded-2xl pointer-events-none">
-                    <div className="w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent 
-                      transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                  </div>
-                </button>
+            {/* Secondary Subhead */}
+            <p className="text-base sm:text-lg text-[#a3a9b8] max-w-[60ch] leading-[1.6]">
+              {hero.subtitle ||
+                'Transforming complex data into actionable insights through innovative machine learning solutions and advanced analytics.'}
+            </p>
 
-                <Link
-                  to="/about"
-                  className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-medium text-white/90
-                    transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none
-                    overflow-hidden rounded-2xl bg-gradient-to-r from-purple-500/20 to-blue-500/20 backdrop-blur-md 
-                    border border-white/20 hover:border-white/30 hover:text-white"
-                >
-                  <span className="relative flex items-center space-x-2">
-                    <User className="w-5 h-5 transition-transform group-hover:rotate-12" />
-                    <span>About Me</span>
-                  </span>
-                  <div className="absolute inset-0 flex justify-center overflow-hidden rounded-2xl pointer-events-none">
-                    <div className="w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent 
-                      transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                  </div>
-                </Link>
-              </div>
+            {/* Primary & Secondary Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <button
+                onClick={handleDownload}
+                className="h-11 px-5 rounded-[8px] bg-[#eef0f5] text-[#0b0d14] hover:bg-white font-medium text-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] inline-flex items-center gap-2 transition-colors duration-150 focus:outline-none"
+              >
+                <Download className="w-4 h-4 text-[#0b0d14]" strokeWidth={1.5} />
+                <span>Download resume</span>
+              </button>
+
+              <Link
+                to="/about"
+                className="h-11 px-5 rounded-[8px] bg-[#1a1e28]/70 backdrop-blur-md text-[#eef0f5] hover:bg-[#222734]/80 font-medium text-sm border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] inline-flex items-center gap-2 transition-colors duration-150 focus:outline-none"
+              >
+                <User className="w-4 h-4 text-[#a3a9b8]" strokeWidth={1.5} />
+                <span>About</span>
+              </Link>
             </div>
           </div>
 
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-            <div className="relative w-64 h-64">
-              <div className="w-64 h-64 relative z-10 rounded-[6rem] overflow-hidden border-4 border-white/5 shadow-2xl
-                animate-pulse-subtle hover:scale-105 transition-transform duration-300
-                bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-1">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 backdrop-blur-md" />
-                <img
-                  src="/favicon.png"
-                  //src="https://i.imgur.com/nH0Qulz.png"
-                  alt="Profile"
-                  className="w-full h-full object-cover rounded-[5.8rem] relative z-10"
-                />
+          {/* Right Column: Engineering Telemetry & Profile Panel (The Moment) */}
+          <div className="lg:col-span-5 w-full">
+            <div className="bg-[#11141c]/75 backdrop-blur-xl border border-white/[0.10] rounded-[14px] p-6 space-y-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+              {/* Top Profile Header */}
+              <div className="flex items-center justify-between gap-4 pb-5 border-b border-white/[0.10]">
+                <div className="flex items-center gap-3.5 min-w-0">
+                  <div className="w-14 h-14 rounded-[8px] overflow-hidden bg-[#1a1e28]/70 backdrop-blur-md border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex-shrink-0">
+                    <img
+                      src={hero.profileImage || '/favicon.png'}
+                      alt={hero.greeting || 'Sanju Kumar'}
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <h2 className="text-base font-medium text-[#eef0f5] truncate">
+                        Sanju Kumar
+                      </h2>
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#4cc38a]" />
+                    </div>
+                    <p className="text-xs text-[#a3a9b8] truncate">
+                      Supply Chain Analytics · ML Systems
+                    </p>
+                    <p className="font-mono text-[11px] text-[#7a8296] tabular-nums mt-0.5">
+                      ID: SK-2024 · ACTIVE
+                    </p>
+                  </div>
+                </div>
+
+                <a
+                  href={hero.linkedinUrl || 'https://linkedin.com/in/mightysanju/'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-8 px-2.5 rounded-[8px] bg-[#1a1e28]/70 backdrop-blur-md border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] text-xs font-medium text-[#a3a9b8] hover:text-[#eef0f5] inline-flex items-center gap-1 transition-colors duration-150 flex-shrink-0"
+                >
+                  <span>LinkedIn</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#7a8296]" strokeWidth={1.5} />
+                </a>
+              </div>
+
+              {/* System Records Table */}
+              <div className="space-y-2.5">
+                <div className="flex items-center justify-between text-xs text-[#7a8296]">
+                  <span className="inline-flex items-center gap-1.5 font-mono">
+                    <Terminal className="w-3.5 h-3.5 text-[#7a8296]" strokeWidth={1.5} />
+                    <span>SHIPPED_SYSTEMS</span>
+                  </span>
+                  <span className="font-mono tabular-nums">4 RECORDS</span>
+                </div>
+
+                <div className="divide-y divide-white/[0.10] border border-white/[0.10] rounded-[8px] bg-[#0b0d14]/60 backdrop-blur-md">
+                  {SYSTEM_RECORDS.map((record) => (
+                    <div
+                      key={record.id}
+                      className="px-3.5 py-2.5 flex items-center justify-between gap-3 text-xs"
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span className="font-mono text-[#3b82f6] tabular-nums flex-shrink-0">
+                          {record.id}
+                        </span>
+                        <span className="text-[#7a8296]">·</span>
+                        <span className="font-mono text-[#eef0f5] tabular-nums truncate">
+                          {record.label}
+                        </span>
+                      </div>
+                      <span className="font-mono text-[11px] text-[#7a8296] tabular-nums flex-shrink-0">
+                        {record.metric}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Telemetry Footer */}
+              <div className="pt-1 flex items-center justify-between text-xs font-mono text-[#7a8296] tabular-nums">
+                <span>STACK: PYTHON · SQL · TENSORFLOW</span>
+                <span className="text-[#4cc38a]">VERIFIED</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="relative w-full overflow-hidden">
+      {/* Recommendations Marquee */}
+      <div className="w-full mt-8 border-t border-white/[0.10] pt-4">
         <TestimonialScroll />
       </div>
     </div>

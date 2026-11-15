@@ -2,202 +2,123 @@ import React, { useEffect } from 'react';
 import BlogLayout from './BlogLayout';
 import Stakeholder from './stakeholder';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-const DDO = () => {
 
+const DDO: React.FC = () => {
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top on component mount
+    window.scrollTo(0, 0);
   }, []);
 
-  //Declaring Stake Holders
   const stakeholders = [
     {
-      name: "Jake Porter",
-      role: "Global Logistics | Prepaid Transportation",
-      company: "Amazon",
-      linkedinUrl: "https://www.linkedin.com/in/jake-porter-20083b257/",
-      imageUrl: "https://media.licdn.com/dms/image/v2/D5603AQEgbMCz8YxCGQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1706211347116?e=1738195200&v=beta&t=Xlawp-1UnbR3RdtKzYaSDoRs-BQYGXEu8VwV2uixcF0",
-      contribution: "Jake Porter - The Project Sponsor for the Defect Dispute override tool"
+      name: 'Jake Porter',
+      role: 'Global Logistics · Prepaid Transportation',
+      company: 'Amazon',
+      linkedinUrl: 'https://www.linkedin.com/in/jake-porter-20083b257/',
+      imageUrl:
+        'https://ui-avatars.com/api/?name=Jake+Porter&background=1a1e28&color=eef0f5&size=200',
+      contribution: 'Project sponsor for the Defect Dispute Override (DDO) application.'
     },
     {
-      name: "Jayadev Addepalli",
-      role: "Supply Chain Manager at Amazon",
-      company: "Amazon",
-      linkedinUrl: "https://www.linkedin.com/in/jdaddepalli/",
-      imageUrl: "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_640.png",
-      contribution: "Jayadev Addepalli - The Project Manager for the Defect Dispute override tool"
+      name: 'Jayadev Addepalli',
+      role: 'Supply Chain Manager',
+      company: 'Amazon',
+      linkedinUrl: 'https://www.linkedin.com/in/jdaddepalli/',
+      imageUrl:
+        'https://ui-avatars.com/api/?name=Jayadev+Addepalli&background=1a1e28&color=eef0f5&size=200',
+      contribution: 'Project manager for the Defect Dispute Override (DDO) deployment.'
     }
   ];
 
-
   return (
     <HelmetProvider>
-
       <Helmet>
-      <title>Defect Dispute Override (DDO): A Tool for Efficient Logistics and Supply Chain Management</title>
-      <meta name="description" content="This article explores Defect Dispute Override (DDO), a Python-based application designed to streamline carrier performance evaluation in logistics and supply chain management. DDO leverages real-time data analysis and automates dispute resolution, reducing discrepancies and enhancing efficiency."/>
-      <meta name="keywords" content="Defect Dispute Override (DDO), logistics, supply chain management, carrier performance evaluation, real-time data analysis, automated dispute resolution, efficiency"/>
-      
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5301414262654683" crossorigin="anonymous"></script>
+        <title>Defect Dispute Override (DDO): Logistics &amp; Supply Chain Automation</title>
+        <meta
+          name="description"
+          content="Defect Dispute Override (DDO) is a Python desktop application built to streamline carrier performance evaluation and dispute dispositioning in supply chain operations."
+        />
       </Helmet>
 
-    <BlogLayout
-      title="Defect Dispute Override Tool"
-      date="March 10, 2023"
-      readTime="8 min read"
-      tags={['Data Science', 'Machine Learning', 'Analytics']}
-      image="https://i.imgur.com/pqH8SRU.png"
-      //demoLink="https://sentiment.mightysanju.com"
-      githubLink="https://github.com/mightysanju/DDO-Tool-Code-for-Public"
-    >
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-        Introduction
-      </h2>
-      <p className="text-gray-300 mb-6">
-        In the realm of logistics and supply chain management, accurate carrier
-        performance evaluation is paramount. Discrepancies in carrier rankings
-        can lead to significant financial implications and operational
-        inefficiencies. To address this challenge, I developed the Defect
-        Dispute Override Tool (DDO), a Windows desktop application designed to
-        streamline the process of identifying and resolving carrier performance
-        issues.
-      </p>
-
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-        The Problem Statement
-      </h2>
-      <p className="text-gray-300 mb-6">
-        Before the introduction of DDO, the process of handling carrier disputes
-        and defects was manual and time-consuming. Associates were burdened with
-        the task of manually recording and analyzing disputes over the phone,
-        often leading to errors and delays. To alleviate this issue, a more
-        efficient and automated solution was necessary.
-      </p>
-
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-        Solution: The DDO Tool
-      </h2>
-      <p className="text-gray-300 mb-6">
-        DDO is a Python-based application built using the Tkinter library,
-        offering a user-friendly graphical user interface (GUI). It leverages
-        SQL for seamless database interaction, enabling real-time data retrieval
-        and updates.
-      </p>
-
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-        Key Features
-      </h2>
-      <p className="text-gray-300 mb-6">
-        DDO is a Python-based application built using the Tkinter library,
-        offering a user-friendly graphical user interface (GUI). It leverages
-        SQL for seamless database interaction, enabling real-time data retrieval
-        and updates.
-        <ul className="list-disc list-inside text-gray-300 space-y-2">
-          <li>
-            <b>Intuitive GUI:</b> A simple and easy-to-use interface that
-            empowers users to navigate the application effortlessly.
-          </li>
-          <li>
-            <b>Efficient Data Processing:</b> Multithreading and multiprocessing
-            techniques ensure a responsive user experience, even during
-            intensive data processing tasks.
-          </li>
-          <li>
-            <b>Real-time Data Analysis:</b> The application can analyze carrier
-            performance data in real-time, allowing for timely decision-making.
-          </li>
-          <li>
-            <b>Automated Dispute Resolution:</b> DDO streamlines the dispute
-            resolution process by automating data entry and analysis.
-          </li>
-          <li>
-            <b>Accurate Carrier Ranking:</b> By identifying and correcting
-            discrepancies, DDO helps to ensure accurate carrier rankings.
-          </li>
-        </ul>
-      </p>
-
-      <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-6">
-        <h3 className="text-xl font-semibold text-gray-200 mb-4">
-          Core Features
-        </h3>
-        <ul className="list-disc list-inside text-gray-300 space-y-2">
-          <li>Real-time data processing</li>
-          <li>Multi Processing & Multi Threading</li>
-          <li>User Friendly Graphic Interface</li>
-          <li>One Click Data Fetch and Upload</li>
-        </ul>
-      </div>
-
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-        Technical Implementation
-      </h2>
-
-      <p className="text-gray-300 mb-6">
-        The development of DDO involved a combination of Python programming
-        skills, SQL database expertise, and a deep understanding of concurrency
-        concepts. Key technical aspects of the project include: <br />
-        <li>
-          <b>Python Programming:</b> Utilizing Python's Tkinter library for GUI
-          development, core Python functionalities for data manipulation and
-          processing, and SQL for database interactions.
-        </li>
-        <li>
-          <b>Concurrency:</b> Implementing multithreading and multiprocessing
-          techniques to optimize performance and responsiveness.
-        </li>
-      </p>
-
-      
-
-      
-
-      <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-6">
-        <h3 className="text-xl font-semibold text-gray-200 mb-4">
-          Impact and Results
-        </h3>
-        <p className="text-gray-300 mb-6">
-          The successful deployment of DDO has yielded significant benefits:
+      <BlogLayout
+        title="Defect Dispute Override Tool"
+        date="March 10, 2023"
+        readTime="8 min read"
+        tags={['Data Science', 'Python', 'SQL', 'Analytics']}
+        image="https://i.imgur.com/pqH8SRU.png"
+        githubLink="https://github.com/mightysanju/DDO-Tool-Code-for-Public"
+      >
+        <h2 className="text-xl font-medium text-[#eef0f5] mb-3">Introduction</h2>
+        <p className="text-[#a3a9b8] text-base leading-relaxed mb-6">
+          In logistics and supply chain operations, accurate carrier performance evaluation directly
+          impacts network reliability and cost. Discrepancies in carrier defect rankings create
+          financial friction and manual research overhead. I engineered the Defect Dispute Override
+          (DDO) desktop application for Amazon&apos;s Carrier Management Team (TCMT) to automate
+          defect research and dispositioning.
         </p>
-        <ul className="list-disc list-inside text-gray-300 space-y-2">
+
+        <h2 className="text-xl font-medium text-[#eef0f5] mb-3">Problem statement</h2>
+        <p className="text-[#a3a9b8] text-base leading-relaxed mb-6">
+          Prior to DDO, resolving carrier appointment defect disputes required associates to
+          manually query multiple tables and cross-check timestamps during live calls. That workflow
+          was slow, repetitive, and susceptible to inconsistent dispositioning.
+        </p>
+
+        <h2 className="text-xl font-medium text-[#eef0f5] mb-3">Solution architecture</h2>
+        <p className="text-[#a3a9b8] text-base leading-relaxed mb-4">
+          DDO is a Python desktop application built with Tkinter and backed by parameterized SQL
+          pipelines. It retrieves appointment telemetry in real time and validates dispute criteria
+          automatically:
+        </p>
+        <ul className="list-disc list-inside text-[#a3a9b8] text-sm space-y-2 mb-6 leading-relaxed">
           <li>
-            <b>Reduced Discrepancies:</b> A 70% reduction in carrier ranking
-            discrepancies, leading to improved accuracy and fairness in carrier
-            evaluations.
+            <span className="text-[#eef0f5] font-medium">Structured operator GUI:</span> Single-pane
+            interface for looking up carrier appointment records and defect codes.
           </li>
           <li>
-            Enhanced Efficiency: 100% efficiency in root cause identification,
-            enabling faster resolution of disputes and minimizing operational
-            disruptions.
+            <span className="text-[#eef0f5] font-medium">Concurrent query execution:</span>{' '}
+            Multithreading and multiprocessing keep the UI responsive during bulk SQL fetches.
           </li>
           <li>
-            Streamlined Workflows: Automated data entry and analysis have
-            streamlined workflows, saving time and effort for associates.
+            <span className="text-[#eef0f5] font-medium">Real-time validation:</span> Evaluates
+            carrier performance logs immediately to surface root-cause indicators.
           </li>
           <li>
-            Improved Decision-Making: Real-time data analysis empowers
-            stakeholders to make informed decisions.
+            <span className="text-[#eef0f5] font-medium">One-click disposition upload:</span>{' '}
+            Standardizes override logging and eliminates manual transcription errors.
           </li>
         </ul>
-      </div>
 
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">Conclusion</h2>
-      <p className="text-gray-300 mb-6">
-        DDO is a powerful tool that has revolutionized the way carrier
-        performance issues are handled. By leveraging advanced technologies and
-        a user-centric design, this application has significantly improved
-        efficiency, accuracy, and decision-making within the organization. This
-        project showcases my ability to develop innovative solutions that
-        address real-world business problems and deliver tangible results.
-      </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <div className="bg-[#1a1e28] border border-white/[0.08] rounded-[10px] p-5">
+            <p className="font-mono text-xs text-[#7a8296] mb-1">RANKING DISCREPANCIES</p>
+            <p className="font-mono text-2xl font-medium text-[#eef0f5] tabular-nums">-70%</p>
+            <p className="text-xs text-[#a3a9b8] mt-1">
+              Reduction in carrier ranking discrepancies across evaluated disputes
+            </p>
+          </div>
+          <div className="bg-[#1a1e28] border border-white/[0.08] rounded-[10px] p-5">
+            <p className="font-mono text-xs text-[#7a8296] mb-1">ROOT-CAUSE COVERAGE</p>
+            <p className="font-mono text-2xl font-medium text-[#4cc38a] tabular-nums">100%</p>
+            <p className="text-xs text-[#a3a9b8] mt-1">
+              Automated root-cause classification across supported appointment defect types
+            </p>
+          </div>
+        </div>
 
-      <h2 className="text-2xl font-semibold text-gray-200 mb-4">Project Stakeholders</h2>
-      <div className="grid gap-6 mb-6">
-        {stakeholders.map((stakeholder, index) => (
-          <Stakeholder key={index} {...stakeholder} />
-        ))}
-      </div>
+        <h2 className="text-xl font-medium text-[#eef0f5] mb-3">Technical implementation</h2>
+        <p className="text-[#a3a9b8] text-base leading-relaxed mb-6">
+          Built in Python using Tkinter for the operator interface, concurrent worker pools for I/O
+          bound SQL queries, and automated validation rules that reconcile carrier-submitted
+          evidence against warehouse gate and appointment logs.
+        </p>
 
-    </BlogLayout>
+        <h2 className="text-xl font-medium text-[#eef0f5] mb-3">Project stakeholders</h2>
+        <div className="grid gap-4">
+          {stakeholders.map((stakeholder, index) => (
+            <Stakeholder key={index} {...stakeholder} />
+          ))}
+        </div>
+      </BlogLayout>
     </HelmetProvider>
   );
 };

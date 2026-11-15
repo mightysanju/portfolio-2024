@@ -1,88 +1,82 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Quote, Linkedin } from 'lucide-react';
+import { usePortfolio } from '../context/PortfolioContext';
 
-const TestimonialScroll = () => {
+const TestimonialScroll: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
+  const { data } = usePortfolio();
+  const testimonials = data.testimonials || [];
 
-  const testimonials = [
-    {
-      text: '"Sanju provided the TheyPay Carrier Management Team (TCMT) a tailored application "Defect Disputes Override" tool or "DDO" that reduced associate research workload for dispositioning appointment defects carrier incurred working with Amazon.',
-      author: 'Jake Porter',
-      position: 'Senior Supply Chain Manager, Amazon',
-      image:
-        'https://media.licdn.com/dms/image/v2/D5603AQEgbMCz8YxCGQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1706211347116?e=1758758400&v=beta&t=ukCwXKsLtMiuNwAHG0mZpixama_JF0wUmBwlF_vo50w',
-    },
-    {
-      text: "Sanju demonstrated a knowledgeable and professional approach to every task. He quickly grasped the project's nuances and offered insightful solutions to every technical challenge.",
-      author: 'Jaime Martinez',
-      position: 'Manager, General Dynamics Land Systems',
-      image:
-        'https://media.licdn.com/dms/image/v2/D5603AQGgN7ybGzbAwA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1726678183711?e=1758758400&v=beta&t=kEeb-mnqJBOH8Z07BfXVSO_1Q_oHNjaJv3h1SOTNBtI',
-    },
-    {
-      text: 'Sanju is one of the team members on the floor who always strive towards process excellence.',
-      author: 'Deepak Sharma',
-      position: 'Operations Manager, Amazon',
-      image:
-        'https://media.licdn.com/dms/image/v2/D5603AQERROWVAu8dow/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1670845258471?e=1758758400&v=beta&t=ErdqPpc_32QCS0CyJSgf5u_bD25zNBCIq6j-GBy8PS4',
-    },
-    {
-      text: 'He is highly innovative and would love to explore above and beyond his domain.',
-      author: 'D V L Sravya',
-      position: 'BIE, Amazon',
-      image:
-        'https://media.licdn.com/dms/image/v2/C4D03AQHAZWXY64qv1w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1611839569487?e=1758758400&v=beta&t=IeuMibPc6oDIvOWmoDGhYGan3OO09jsC62JvJarwDHk',
-    },
-    {
-      text: "Sanju's Python programming skills are top-notch, and they consistently deliver efficient and well-structured code.",
-      author: 'Hemanth Pittu',
-      position: 'Manager, Amazon',
-      image:
-        'https://media.licdn.com/dms/image/v2/D5603AQGuajNYh2Cl7A/profile-displayphoto-shrink_800_800/B56ZbKtd57GsAc-/0/1747157639537?e=1758758400&v=beta&t=mheENDSn7tOImA2ULTuQwiea2We6kZF2GeHsVtChoA8',
-    },
-  ];
+  if (testimonials.length === 0) {
+    return null;
+  }
 
   return (
-    <div className="w-full overflow-hidden py-8">
+    <div className="w-full overflow-hidden py-6 marquee-mask">
       <div
-        className={`flex ${isPaused ? '' : 'animate-scroll-fast'}`}
+        className="flex w-max animate-scroll-fast"
+        style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        {[...testimonials, ...testimonials].map((testimonial, index) => (
-          <div
-            key={index}
-            className="flex-none w-96 mx-3 bg-gray-800/50 rounded-xl border border-gray-700 backdrop-blur-sm
-              hover:transform hover:scale-105 transition-all duration-300 neon-card nebula-glow cursor-pointer
-              hover:bg-gray-800/70"
-            onClick={() => window.open('https://linkedin.com/in/mightysanju/', '_blank')}
-          >
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-4">
-                <Quote className="w-6 h-6 text-purple-400" />
-                <Linkedin className="w-5 h-5 text-blue-400 hover:text-blue-300 transition-colors" />
+        {[...testimonials, ...testimonials].map((testimonial, index) => {
+          const fallbackAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+            testimonial.author
+          )}&background=1a1e28&color=eef0f5&size=200`;
+
+          const avatarSrc =
+            testimonial.image && !testimonial.image.includes('ui-avatars.com')
+              ? testimonial.image
+              : fallbackAvatar;
+
+          return (
+            <div
+              key={`${testimonial.id || index}-${index}`}
+              className="flex-none w-96 min-h-[210px] mx-3 p-6 rounded-[14px] bg-[#11141c]/75 backdrop-blur-xl border border-white/[0.10] hover:border-white/[0.18] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex flex-col justify-between cursor-pointer transition-colors duration-150"
+              onClick={() =>
+                window.open(
+                  testimonial.linkedinUrl ||
+                    data.hero.linkedinUrl ||
+                    'https://linkedin.com/in/mightysanju/',
+                  '_blank',
+                  'noopener,noreferrer'
+                )
+              }
+            >
+              <div>
+                <div className="flex justify-between items-start mb-3">
+                  <Quote className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+                  <Linkedin className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+                </div>
+                <p className="text-[#a3a9b8] text-sm leading-relaxed line-clamp-4">
+                  {testimonial.text}
+                </p>
               </div>
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                {testimonial.text}
-              </p>
-              <div className="flex items-center">
+
+              <div className="flex items-center pt-4 mt-4 border-t border-white/[0.10]">
                 <img
-                  src={testimonial.image}
+                  src={avatarSrc}
                   alt={testimonial.author}
-                  className="w-10 h-10 rounded-full mr-3"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src !== fallbackAvatar) {
+                      target.src = fallbackAvatar;
+                    }
+                  }}
+                  className="w-9 h-9 rounded-full mr-3 object-cover border border-white/[0.10] bg-[#1a1e28]/70 flex-shrink-0"
                 />
-                <div>
-                  <p className="text-gray-200 font-medium text-sm">
+                <div className="min-w-0">
+                  <p className="text-[#eef0f5] font-medium text-sm truncate">
                     {testimonial.author}
                   </p>
-                  <p className="text-gray-400 text-xs">
+                  <p className="text-[#7a8296] text-xs truncate">
                     {testimonial.position}
                   </p>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
