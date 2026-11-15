@@ -61,7 +61,8 @@
       "tags": [
         "Web Scraping",
         "SMTP",
-        "Python"
+        "Python",
+        "Automation"
       ],
       "demo": "/blog/LinkedInnAppDemo",
       "github": "https://github.com/mightysanju/Linked-Inn-Be-an-Early-Applicant.git",
@@ -294,7 +295,7 @@
     {
       "id": "skill-3",
       "name": "Process Automation",
-      "level": 90,
+      "level": 80,
       "category": "Technical",
       "icon": "Cpu",
       "color": "from-green-500 to-emerald-600"
