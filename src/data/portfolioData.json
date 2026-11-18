@@ -70,8 +70,8 @@
         "System Architecture",
         "Tailwind CSS"
       ],
-      "demo": "",
-      "github": "https://github.com/mightysanju",
+      "demo": "https://cashdrawermanagement.netlify.app/",
+      "github": "",
       "blog": "/blog/frontdesk-pro-p2p-hotel-cash-drawer-shift-operations",
       "blogContent": {
         "subtitle": "How we built a real-time, multi-terminal hotel cash till management and shift operations system powered by WebRTC LAN sync, optimistic UI state machines, and non-invasive PMS DOM auto-injection.",
