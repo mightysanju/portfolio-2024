@@ -1,32 +1,42 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
+import { usePortfolio } from '../../context/PortfolioContext';
 
-const LinkedinnApp = () => {
-  // State management for form inputs, API data, and UI status
+interface JobRecord {
+  job_title: string;
+  company_name: string;
+  location: string;
+  Link: string;
+  num_applicants: string;
+  time_posted: string;
+}
+
+const LinkedinnApp: React.FC = () => {
+  const { data } = usePortfolio();
+  const linkedInnDemo = data.standalonePages?.linkedInnDemo;
+  
   const [jobTitleSelect, setJobTitleSelect] = useState('Network Engineer');
   const [jobTitleManual, setJobTitleManual] = useState('');
   const [location, setLocation] = useState('Chicago');
-  const [timeSlider, setTimeSlider] = useState(24);
+  const [timeSlider, setTimeSlider] = useState<number>(24);
   const [activeFilter, setActiveFilter] = useState('All');
   
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState<JobRecord[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [hasSearched, setHasSearched] = useState(false); // To control visibility of the results section
+  const [error, setError] = useState<string | null>(null);
+  const [hasSearched, setHasSearched] = useState(false);
 
-  const resultsRef = useRef(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
   const filterOptions = ["All", "Be among the first 25 applicants"];
 
-  // Scroll to results when search is complete
   useEffect(() => {
-    if (hasSearched && !isLoading) {
-      resultsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (hasSearched && !isLoading && resultsRef.current) {
+      resultsRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [isLoading, hasSearched]);
 
-  // Helper function to format the slider output text
-  const formatHours = (hours) => {
-    const h = parseInt(hours, 10);
+  const formatHours = (hours: number) => {
+    const h = hours;
     if (h < 24) return `Last ${h} hours`;
     const days = Math.round(h / 24);
     if (days === 1) return 'Last 24 hours';
@@ -35,21 +45,21 @@ const LinkedinnApp = () => {
     return `Last ${days} days`;
   };
 
-  // Main function to handle form submission and API call
-  const handleSearch = async (e) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Reset state for a new search
     setIsLoading(true);
     setHasSearched(true);
     setJobs([]);
     setError(null);
 
+    if (!linkedInnDemo) return;
+
     const jobTitle = jobTitleSelect === 'manual' ? jobTitleManual : jobTitleSelect;
-    const timeInMinutes = parseInt(timeSlider, 10) * 60;
+    const timeInMinutes = timeSlider * 60;
     
     try {
-      const baseUrl = 'https://linked-early-apply-966926647025.us-central1.run.app/search';
+      const baseUrl = linkedInnDemo.apiBaseUrl;
       const params = new URLSearchParams({
         job_title: jobTitle,
         location: location,
@@ -61,7 +71,7 @@ const LinkedinnApp = () => {
       }
       
       const targetApiUrl = `${baseUrl}?${params.toString().replace(/\+/g, '%20')}`;
-      const proxyUrl = 'https://corsproxy.io/?';
+      const proxyUrl = linkedInnDemo.corsProxyUrl;
       const requestUrl = proxyUrl + encodeURIComponent(targetApiUrl);
       
       const response = await fetch(requestUrl);
@@ -76,71 +86,16 @@ const LinkedinnApp = () => {
 
     } catch (err) {
       console.error("Failed to fetch jobs:", err);
-      setError(err.message);
+      setError(err instanceof Error ? err.message : String(err));
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <HelmetProvider>
+    <>
       <Helmet>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Job Search Interface</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <style>{`
-          body {
-              font-family: 'Inter', sans-serif;
-              background-color: #0a0e1a;
-              color: #e0e0e0;
-          }
-          .ai-glow {
-              box-shadow: 0 0 15px rgba(59, 130, 246, 0.5), 0 0 5px rgba(59, 130, 246, 0.3);
-          }
-          input, select {
-              background-color: #1e293b;
-              border-color: #3b82f6;
-          }
-          input[type=range]::-webkit-slider-thumb {
-              -webkit-appearance: none; appearance: none;
-              width: 20px; height: 20px;
-              background: #3b82f6; cursor: pointer;
-              border-radius: 50%; margin-top: -6px;
-              box-shadow: 0 0 10px #3b82f6;
-          }
-          input[type=range]::-moz-range-thumb {
-              width: 20px; height: 20px;
-              background: #3b82f6; cursor: pointer;
-              border-radius: 50%; box-shadow: 0 0 10px #3b82f6;
-          }
-          .loader {
-              width: 50px; height: 50px;
-              border-radius: 50%;
-              border: 5px solid rgba(59, 130, 246, 0.2);
-              border-top-color: #3b82f6;
-              animation: spin 1s linear infinite;
-          }
-          @keyframes spin { to { transform: rotate(360deg); } }
-          .results-bubble {
-              display: inline-flex; align-items: center; justify-content: center;
-              width: 32px; height: 32px;
-              border-radius: 50%; background-color: #3b82f6;
-              color: white; font-weight: bold; font-size: 0.875rem;
-              margin-left: 0.75rem; transform: scale(0);
-              transition: transform 0.3s ease-out;
-          }
-          .results-bubble.show { transform: scale(1); }
-          .filter-bubble {
-              padding: 0.5rem 1rem; border-radius: 9999px;
-              font-size: 0.875rem; font-weight: 500; cursor: pointer;
-              transition: all 0.2s ease-in-out; border: 1px solid #3b82f6;
-              background-color: transparent; color: #93c5fd;
-          }
-          .filter-bubble:hover { background-color: rgba(59, 130, 246, 0.2); }
-          .filter-bubble.active { background-color: #3b82f6; color: white; }
-        `}</style>
       </Helmet>
 
       <div className="container mx-auto px-4 py-8 md:py-12">
@@ -173,7 +128,7 @@ const LinkedinnApp = () => {
 
             <div>
               <label htmlFor="timeSlider" className="block text-sm font-medium text-gray-300 mb-2">Job Post Freshness</label>
-              <input type="range" id="timeSlider" name="timeSlider" min="2" max="336" value={timeSlider} onChange={(e) => setTimeSlider(e.target.value)} step="1" className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer" />
+              <input type="range" id="timeSlider" name="timeSlider" min="2" max="336" value={timeSlider} onChange={(e) => setTimeSlider(parseInt(e.target.value))} step="1" className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer" />
               <div className="text-center text-sm text-gray-400 mt-2">{formatHours(timeSlider)}</div>
             </div>
 
@@ -200,7 +155,7 @@ const LinkedinnApp = () => {
           <div ref={resultsRef} className="max-w-6xl mx-auto mt-12">
             <div className="text-center mb-6 flex items-center justify-center">
               <h2 className="text-2xl font-bold">Search Results</h2>
-              {!isLoading && <div className={`results-bubble show`}>{jobs.length}</div>}
+              {!isLoading && <div className="results-bubble show">{jobs.length}</div>}
             </div>
             {isLoading ? (
               <div className="flex justify-center items-center py-16"><div className="loader"></div></div>
@@ -248,7 +203,7 @@ const LinkedinnApp = () => {
           </div>
         )}
       </div>
-    </HelmetProvider>
+    </>
   );
 };
 

@@ -14,13 +14,27 @@ const data = [
   { name: 'Throughput multiplier (x)', Manual: 1.0, NetworkApp: 17.72 }
 ];
 
+interface TooltipPayloadEntry {
+  dataKey?: string | number;
+  name?: string | number;
+  value?: string | number;
+  payload?: {
+    name?: string;
+  };
+}
+
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: TooltipPayloadEntry[];
+}
+
 const PerformanceChart: React.FC = () => {
-  const CustomTooltip = ({ active, payload }: any) => {
+  const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-[#07080d] rounded-[8px] p-3 border border-white/[0.08] text-xs font-mono tabular-nums">
-          <p className="text-[#eef0f5] font-medium mb-1.5">{payload[0].payload.name}</p>
-          {payload.map((entry: any) => (
+          <p className="text-[#eef0f5] font-medium mb-1.5">{payload[0].payload?.name}</p>
+          {payload.map((entry) => (
             <div key={entry.dataKey} className="flex items-center justify-between gap-4 py-0.5">
               <span className="text-[#a3a9b8]">{entry.name}:</span>
               <span className="text-[#eef0f5]">{entry.value}</span>

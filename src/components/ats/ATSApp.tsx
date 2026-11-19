@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { Upload, FileText, ArrowLeft, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { calculateATSScore } from './atsScoring';
+import { usePortfolio } from '../../context/PortfolioContext';
+import { Helmet } from 'react-helmet-async';
 
 interface ScoringResult {
   score: number;
@@ -20,12 +22,17 @@ interface ScoringResult {
 }
 
 const ATSApp: React.FC = () => {
+  const { data } = usePortfolio();
+  const atsData = data.atsPage;
+  
   const [jobDescription, setJobDescription] = useState('');
   const [file, setFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState<ScoringResult | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  if (!atsData) return null;
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -127,237 +134,244 @@ const ATSApp: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0d14] text-[#eef0f5]">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 h-9 px-3.5 rounded-[8px] bg-[#1a1e28]/70 backdrop-blur-md hover:bg-[#222734]/80 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] text-xs font-medium text-[#eef0f5] transition-colors duration-150 mb-8"
-        >
-          <ArrowLeft className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
-          <span>Back to portfolio</span>
-        </Link>
+    <>
+      <Helmet>
+        <title>{atsData.metaTitle}</title>
+        <meta name="description" content={atsData.metaDescription} />
+      </Helmet>
 
-        <div className="mb-10">
-          <p className="font-mono text-xs text-[#7a8296] mb-2">
-            SYS-03 / INTERACTIVE ANALYZER
-          </p>
-          <h1 className="text-2xl sm:text-3xl font-medium tracking-[-0.02em] text-[#eef0f5] mb-2">
-            ATS compatibility analyzer
-          </h1>
-          <p className="text-sm sm:text-base text-[#a3a9b8] max-w-2xl">
-            Evaluate resume keyword alignment, structural parsing, and role compatibility against a target job description.
-          </p>
-        </div>
+      <div className="min-h-screen bg-[#0b0d14] text-[#eef0f5]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 h-9 px-3.5 rounded-[8px] bg-[#1a1e28]/70 backdrop-blur-md hover:bg-[#222734]/80 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] text-xs font-medium text-[#eef0f5] transition-colors duration-150 mb-8"
+          >
+            <ArrowLeft className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
+            <span>{atsData.backLabel}</span>
+          </Link>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-6 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-medium text-[#a3a9b8]">
-                  1. Resume document
-                </span>
-                <span className="font-mono text-xs text-[#7a8296]">
-                  PDF / DOC / DOCX / TXT
-                </span>
-              </div>
-
-              <div
-                className={`border border-dashed rounded-[10px] p-8 text-center cursor-pointer transition-colors duration-150 ${
-                  isDragging
-                    ? 'border-[#eef0f5] bg-[#1a1e28]/70'
-                    : 'border-white/[0.14] hover:border-white/[0.28] bg-[#0b0d14]/70'
-                }`}
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-                onDrop={handleDrop}
-                onClick={() => fileInputRef.current?.click()}
-              >
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  onChange={handleFileInput}
-                  accept=".pdf,.doc,.docx,.txt"
-                  className="hidden"
-                />
-                <div className="flex flex-col items-center space-y-3">
-                  {file ? (
-                    <>
-                      <FileText
-                        className="w-8 h-8 text-[#4cc38a]"
-                        strokeWidth={1.5}
-                      />
-                      <p className="text-sm font-medium text-[#eef0f5]">
-                        {file.name}
-                      </p>
-                      <p className="font-mono tabular-nums text-xs text-[#7a8296]">
-                        {(file.size / 1024).toFixed(1)} KB · Click to replace
-                      </p>
-                    </>
-                  ) : (
-                    <>
-                      <Upload
-                        className="w-8 h-8 text-[#7a8296]"
-                        strokeWidth={1.5}
-                      />
-                      <p className="text-sm text-[#eef0f5]">
-                        Drop resume file here or click to browse
-                      </p>
-                      <p className="text-xs text-[#7a8296]">
-                        Processed locally in your browser
-                      </p>
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-4 pt-4 border-t border-white/[0.10] flex items-center justify-between text-xs text-[#7a8296]">
-              <span>Status</span>
-              <span className="font-mono">
-                {file ? 'DOCUMENT_LOADED' : 'AWAITING_INPUT'}
-              </span>
-            </div>
+          <div className="mb-10">
+            <p className="font-mono text-xs text-[#7a8296] mb-2">
+              {atsData.eyebrow}
+            </p>
+            <h1 className="text-2xl sm:text-3xl font-medium tracking-[-0.02em] text-[#eef0f5] mb-2">
+              {atsData.title}
+            </h1>
+            <p className="text-sm sm:text-base text-[#a3a9b8] max-w-2xl">
+              {atsData.subtitle}
+            </p>
           </div>
 
-          <div className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-6 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex flex-col justify-between space-y-4">
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <label
-                  htmlFor="job-desc-input"
-                  className="text-xs font-medium text-[#a3a9b8]"
-                >
-                  2. Target job description
-                </label>
-                <span className="font-mono tabular-nums text-xs text-[#7a8296]">
-                  {jobDescription.trim()
-                    ? `${jobDescription.trim().split(/\s+/).length} words`
-                    : '0 words'}
-                </span>
-              </div>
-              <textarea
-                id="job-desc-input"
-                value={jobDescription}
-                onChange={(e) => setJobDescription(e.target.value)}
-                placeholder="Paste the target job description here..."
-                className="w-full h-44 p-3.5 rounded-[8px] bg-[#1a1e28]/70 backdrop-blur-md border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] text-sm text-[#eef0f5] placeholder-[#7a8296] focus:outline-none focus:border-white/[0.24] resize-none transition-colors duration-150"
-              />
-            </div>
-
-            <button
-              onClick={analyzeResume}
-              disabled={!file || !jobDescription || isAnalyzing}
-              className="w-full h-10 px-5 rounded-[8px] bg-[#eef0f5] text-[#0b0d14] text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:bg-white disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2 transition-colors duration-150"
-            >
-              <Send className="w-4 h-4" strokeWidth={1.5} />
-              <span>{isAnalyzing ? 'Evaluating...' : 'Run ATS evaluation'}</span>
-            </button>
-          </div>
-        </div>
-
-        {result && (
-          <div className="mt-8 space-y-6">
-            <div className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-6 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
-              <div className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-white/[0.10]">
-                <div>
-                  <span className="font-mono text-xs text-[#7a8296] block mb-1">
-                    EVALUATION SUMMARY
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-6 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-medium text-[#a3a9b8]">
+                    {atsData.uploadCardTitle}
                   </span>
-                  <h2 className="text-lg font-medium text-[#eef0f5]">
-                    Overall ATS compatibility score
-                  </h2>
+                  <span className="font-mono text-xs text-[#7a8296]">
+                    {atsData.uploadFormatsHint}
+                  </span>
                 </div>
+
                 <div
-                  className={`font-mono tabular-nums text-3xl font-medium ${getScoreTextColor(
-                    result.score
-                  )}`}
+                  className={`border border-dashed rounded-[10px] p-8 text-center cursor-pointer transition-colors duration-150 ${
+                    isDragging
+                      ? 'border-[#eef0f5] bg-[#1a1e28]/70'
+                      : 'border-white/[0.14] hover:border-white/[0.28] bg-[#0b0d14]/70'
+                  }`}
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
+                  onClick={() => fileInputRef.current?.click()}
                 >
-                  {result.score}%
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleFileInput}
+                    accept=".pdf,.doc,.docx,.txt"
+                    className="hidden"
+                  />
+                  <div className="flex flex-col items-center space-y-3">
+                    {file ? (
+                      <>
+                        <FileText
+                          className="w-8 h-8 text-[#4cc38a]"
+                          strokeWidth={1.5}
+                        />
+                        <p className="text-sm font-medium text-[#eef0f5]">
+                          {file.name}
+                        </p>
+                        <p className="font-mono tabular-nums text-xs text-[#7a8296]">
+                          {(file.size / 1024).toFixed(1)} KB · Click to replace
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <Upload
+                          className="w-8 h-8 text-[#7a8296]"
+                          strokeWidth={1.5}
+                        />
+                        <p className="text-sm text-[#eef0f5]">
+                          {atsData.dropzonePrompt}
+                        </p>
+                        <p className="text-xs text-[#7a8296]">
+                          {atsData.localNote}
+                        </p>
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
 
-              {renderScoreBreakdown()}
-
-              <div className="grid md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-white/[0.10]">
-                <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <CheckCircle2
-                      className="w-4 h-4 text-[#4cc38a]"
-                      strokeWidth={1.5}
-                    />
-                    <h3 className="text-sm font-medium text-[#eef0f5]">
-                      Matched keywords ({result.matched.length})
-                    </h3>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {result.matched.length > 0 ? (
-                      result.matched.map((keyword, index) => (
-                        <span
-                          key={index}
-                          className="px-2.5 py-1 rounded-[6px] bg-[#1a1e28]/70 backdrop-blur-md text-[#eef0f5] border border-white/[0.10] text-xs font-mono"
-                        >
-                          {keyword}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-xs text-[#7a8296]">
-                        No direct keyword matches detected.
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <AlertCircle
-                      className="w-4 h-4 text-[#7a8296]"
-                      strokeWidth={1.5}
-                    />
-                    <h3 className="text-sm font-medium text-[#eef0f5]">
-                      Missing keywords ({result.missing.length})
-                    </h3>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {result.missing.length > 0 ? (
-                      result.missing.map((keyword, index) => (
-                        <span
-                          key={index}
-                          className="px-2.5 py-1 rounded-[6px] bg-[#0b0d14]/70 text-[#a3a9b8] border border-white/[0.10] text-xs font-mono"
-                        >
-                          {keyword}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-xs text-[#7a8296]">
-                        All target keywords present.
-                      </span>
-                    )}
-                  </div>
-                </div>
+              <div className="mt-4 pt-4 border-t border-white/[0.10] flex items-center justify-between text-xs text-[#7a8296]">
+                <span>{atsData.statusLabel}</span>
+                <span className="font-mono">
+                  {file ? 'DOCUMENT_LOADED' : 'AWAITING_INPUT'}
+                </span>
               </div>
             </div>
 
-            <div className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-6 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
-              <h2 className="text-base font-medium text-[#eef0f5] mb-4">
-                Recommended adjustments
-              </h2>
-              <ul className="space-y-2.5">
-                {result.suggestions.map((suggestion, index) => (
-                  <li
-                    key={index}
-                    className="flex items-start gap-2.5 text-sm text-[#a3a9b8]"
+            <div className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-6 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex flex-col justify-between space-y-4">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <label
+                    htmlFor="job-desc-input"
+                    className="text-xs font-medium text-[#a3a9b8]"
                   >
-                    <span className="font-mono tabular-nums text-xs text-[#7a8296] mt-0.5">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span>{suggestion}</span>
-                  </li>
-                ))}
-              </ul>
+                    {atsData.jdCardTitle}
+                  </label>
+                  <span className="font-mono tabular-nums text-xs text-[#7a8296]">
+                    {jobDescription.trim()
+                      ? `${jobDescription.trim().split(/\s+/).length} words`
+                      : '0 words'}
+                  </span>
+                </div>
+                <textarea
+                  id="job-desc-input"
+                  value={jobDescription}
+                  onChange={(e) => setJobDescription(e.target.value)}
+                  placeholder={atsData.jdPlaceholder}
+                  className="w-full h-44 p-3.5 rounded-[8px] bg-[#1a1e28]/70 backdrop-blur-md border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] text-sm text-[#eef0f5] placeholder-[#7a8296] focus:outline-none focus:border-white/[0.24] resize-none transition-colors duration-150"
+                />
+              </div>
+
+              <button
+                onClick={analyzeResume}
+                disabled={!file || !jobDescription || isAnalyzing}
+                className="w-full h-10 px-5 rounded-[8px] bg-[#eef0f5] text-[#0b0d14] text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:bg-white disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2 transition-colors duration-150"
+              >
+                <Send className="w-4 h-4" strokeWidth={1.5} />
+                <span>{isAnalyzing ? atsData.analyzingButtonLabel : atsData.analyzeButtonLabel}</span>
+              </button>
             </div>
           </div>
-        )}
+
+          {result && (
+            <div className="mt-8 space-y-6">
+              <div className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-6 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+                <div className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-white/[0.10]">
+                  <div>
+                    <span className="font-mono text-xs text-[#7a8296] block mb-1">
+                      {atsData.resultsEyebrow}
+                    </span>
+                    <h2 className="text-lg font-medium text-[#eef0f5]">
+                      {atsData.overallScoreLabel}
+                    </h2>
+                  </div>
+                  <div
+                    className={`font-mono tabular-nums text-3xl font-medium ${getScoreTextColor(
+                      result.score
+                    )}`}
+                  >
+                    {result.score}%
+                  </div>
+                </div>
+
+                {renderScoreBreakdown()}
+
+                <div className="grid md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-white/[0.10]">
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <CheckCircle2
+                        className="w-4 h-4 text-[#4cc38a]"
+                        strokeWidth={1.5}
+                      />
+                      <h3 className="text-sm font-medium text-[#eef0f5]">
+                        {atsData.matchedKeywordsTitle} ({result.matched.length})
+                      </h3>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {result.matched.length > 0 ? (
+                        result.matched.map((keyword, index) => (
+                          <span
+                            key={index}
+                            className="px-2.5 py-1 rounded-[6px] bg-[#1a1e28]/70 backdrop-blur-md text-[#eef0f5] border border-white/[0.10] text-xs font-mono"
+                          >
+                            {keyword}
+                          </span>
+                        ))
+                      ) : (
+                        <span className="text-xs text-[#7a8296]">
+                          No direct keyword matches detected.
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <AlertCircle
+                        className="w-4 h-4 text-[#7a8296]"
+                        strokeWidth={1.5}
+                      />
+                      <h3 className="text-sm font-medium text-[#eef0f5]">
+                        {atsData.missingKeywordsTitle} ({result.missing.length})
+                      </h3>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {result.missing.length > 0 ? (
+                        result.missing.map((keyword, index) => (
+                          <span
+                            key={index}
+                            className="px-2.5 py-1 rounded-[6px] bg-[#0b0d14]/70 text-[#a3a9b8] border border-white/[0.10] text-xs font-mono"
+                          >
+                            {keyword}
+                          </span>
+                        ))
+                      ) : (
+                        <span className="text-xs text-[#7a8296]">
+                          All target keywords present.
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] p-6 border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+                <h2 className="text-base font-medium text-[#eef0f5] mb-4">
+                  {atsData.recommendationsTitle}
+                </h2>
+                <ul className="space-y-2.5">
+                  {result.suggestions.map((suggestion, index) => (
+                    <li
+                      key={index}
+                      className="flex items-start gap-2.5 text-sm text-[#a3a9b8]"
+                    >
+                      <span className="font-mono tabular-nums text-xs text-[#7a8296] mt-0.5">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span>{suggestion}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

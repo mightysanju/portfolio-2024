@@ -16,6 +16,7 @@ import {
   LucideIcon,
 } from 'lucide-react';
 import SkillBar from './SkillBar';
+import TechStackStrip from './TechStackStrip';
 import { usePortfolio } from '../context/PortfolioContext';
 
 const ICON_MAP: Record<string, LucideIcon> = {
@@ -37,6 +38,8 @@ const ICON_MAP: Record<string, LucideIcon> = {
 const Skills: React.FC = () => {
   const { data } = usePortfolio();
   const skills = data.skills || [];
+  const skillsMeta = data.sections?.skills;
+  const allFilterLabel = skillsMeta?.allFilterLabel || 'All skills';
   const [activeTab, setActiveTab] = useState<string>('all');
 
   const categories = useMemo(() => {
@@ -57,14 +60,14 @@ const Skills: React.FC = () => {
     ];
 
     return [
-      { id: 'all', label: 'All skills', count: skills.length },
+      { id: 'all', label: allFilterLabel, count: skills.length },
       ...allCats.map((cat) => ({
         id: cat,
         label: cat,
         count: counts[cat] || 0,
       })),
     ];
-  }, [skills]);
+  }, [skills, allFilterLabel]);
 
   const filteredSkills = useMemo(() => {
     if (activeTab === 'all') return skills;
@@ -73,16 +76,17 @@ const Skills: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-        <div>
-          <p className="font-mono text-xs text-[#7a8296] mb-2">
-            01 / Capabilities
+      <div className="flex flex-col gap-6 mb-10">
+        <div className="flex flex-col gap-2">
+          <p className="font-mono text-xs text-[#7a8296]">
+            {skillsMeta?.eyebrow || '01 / Capabilities'}
           </p>
-          <h2 className="text-2xl sm:text-3xl font-medium tracking-[-0.02em] text-[#eef0f5] mb-2">
-            Technical skills
+          <h2 className="text-2xl sm:text-3xl font-medium tracking-[-0.02em] text-[#eef0f5]">
+            {skillsMeta?.title || 'Technical skills'}
           </h2>
           <p className="text-sm sm:text-base text-[#a3a9b8] max-w-xl">
-            Applied proficiency across data science, process automation, security frameworks, and operational tooling.
+            {skillsMeta?.description ||
+              'Applied proficiency across data science, process automation, security frameworks, and operational tooling.'}
           </p>
         </div>
 
@@ -126,6 +130,11 @@ const Skills: React.FC = () => {
           );
         })}
       </div>
+
+      {/* Dynamic Unique Tech Stack Strip across all projects */}
+      {/* <div className="mt-10 pt-8 border-t border-white/[0.08]">
+        <TechStackStrip />
+      </div> */}
     </div>
   );
 };

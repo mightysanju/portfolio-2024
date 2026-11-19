@@ -1,6 +1,40 @@
 import React, { useEffect, useRef, useState } from 'react';
 import BlogLayout from './BlogLayout';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
+import { usePortfolio } from '../../context/PortfolioContext';
+
+interface PayPalSubscriptionActions {
+  subscription: {
+    create: (options: { plan_id: string }) => Promise<string>;
+  };
+}
+
+interface PayPalApproveData {
+  subscriptionID?: string;
+}
+
+interface PayPalButtonsConfig {
+  style: {
+    shape: string;
+    color: string;
+    layout: string;
+    label: string;
+  };
+  createSubscription: (
+    data: Record<string, unknown>,
+    actions: PayPalSubscriptionActions
+  ) => Promise<string>;
+  onApprove: (data: PayPalApproveData) => void;
+  onError: (err: unknown) => void;
+}
+
+interface PayPalWindow extends Window {
+  paypal?: {
+    Buttons: (config: PayPalButtonsConfig) => {
+      render: (selector: string) => Promise<void> | void;
+    };
+  };
+}
 
 interface PayPalButtonProps {
   containerId?: string;
@@ -10,7 +44,7 @@ interface PayPalButtonProps {
 
 const PayPalButton: React.FC<PayPalButtonProps> = ({
   containerId = 'paypal-button-container',
-  planId = 'P-5C171323XC216760BNDDXMIY',
+  planId,
   clientId
 }) => {
   const sdkUrl = clientId
@@ -21,7 +55,7 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({
     if (typeof window === 'undefined' || !document) return;
 
     let mounted = true;
-    const w = window as any;
+    const w = window as PayPalWindow;
 
     const renderButton = () => {
       if (!mounted || !w.paypal) return;
@@ -36,12 +70,14 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({
               layout: 'horizontal',
               label: 'subscribe'
             },
-            createSubscription: (_data: any, actions: any) =>
-              actions.subscription.create({ plan_id: planId }),
-            onApprove: (data: any) => {
+            createSubscription: (
+              _data: Record<string, unknown>,
+              actions: PayPalSubscriptionActions
+            ) => actions.subscription.create({ plan_id: planId || 'P-5C171323XC216760BNDDXMIY' }),
+            onApprove: (data: PayPalApproveData) => {
               alert(`Subscription approved: ${data.subscriptionID}`);
             },
-            onError: (err: any) => {
+            onError: (err: unknown) => {
               console.error('PayPal Buttons error:', err);
             }
           })
@@ -204,15 +240,15 @@ const AnimatedLineChart = ({
 };
 
 const Linkedinn: React.FC = () => {
-  useEffect(() => {
-    if (typeof window !== 'undefined') window.scrollTo(0, 0);
-  }, []);
-
-  const beforeData = [6, 8, 7, 9, 8, 10, 9, 11];
-  const afterData = [6, 10, 12, 18, 24, 30, 36, 42];
+  const { data, resolveAssetUrl } = usePortfolio();
+  const linkedinn = data.standalonePages?.linkedinn;
 
   const [videoVisible, setVideoVisible] = useState(false);
   const videoRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined' || !videoRef.current) return;
@@ -228,67 +264,57 @@ const Linkedinn: React.FC = () => {
     return () => io.disconnect();
   }, []);
 
-  const youtubeId = 'dQw4w9WgXcQ';
+  if (!linkedinn) return null;
+
   const ytSrc = videoVisible
-    ? `https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&rel=0&playsinline=1&enablejsapi=1`
+    ? `https://www.youtube.com/embed/${linkedinn.youtubeId}?autoplay=1&mute=1&rel=0&playsinline=1&enablejsapi=1`
     : undefined;
 
   return (
-    <HelmetProvider>
+    <>
       <Helmet>
-        <title>LinkedIn Early Applicant Automation: Job Alert Pipeline</title>
+        <title>{linkedinn.metaTitle}</title>
         <meta
           name="description"
-          content="A Python job monitoring and SMTP alert system that surfaces newly posted roles within minutes."
+          content={linkedinn.metaDescription}
         />
       </Helmet>
 
       <BlogLayout
-        title="LinkedIn Early Applicant Automation"
-        date="August 31, 2025"
-        readTime="6 min read"
-        tags={['Automation', 'Web Scraping', 'Python', 'SMTP']}
-        image="https://i.imgur.com/hNa0ROb.jpeg"
-        demoLink="/blog/LinkedInnAppDemo"
-        githubLink="https://github.com/mightysanju/Linked-Inn-Be-an-Early-Applicant.git"
+        title={linkedinn.title}
+        date={linkedinn.date}
+        readTime={linkedinn.readTime}
+        tags={linkedinn.tags}
+        image={resolveAssetUrl(linkedinn.image)}
+        demoLink={linkedinn.demoLink}
+        githubLink={linkedinn.githubLink}
       >
         <div className="flex items-center gap-4 mb-6">
           <div>
-            <h4 className="text-xs font-mono text-[#7a8296] mb-2">SUPPORT PROJECT</h4>
+            <h4 className="text-xs font-mono text-[#7a8296] mb-2">{linkedinn.supportTitle}</h4>
             <PayPalButton
               containerId="paypal-top"
-              planId="P-5C171323XC216760BNDDXMIY"
+              planId={linkedinn.paypalPlanId}
+              clientId={linkedinn.paypalClientId}
             />
           </div>
         </div>
 
-        <h2 className="text-xl font-medium text-[#eef0f5] mb-3">Introduction</h2>
-        <p className="text-[#a3a9b8] text-base leading-relaxed mb-6">
-          Applying within the first wave of candidates materially improves recruiter review rates. I
-          built the LinkedIn Early Applicant Automation pipeline in Python to poll newly published
-          roles matching target filters and dispatch immediate SMTP notifications.
-        </p>
+        {linkedinn.sections.map((section, idx) => (
+          <React.Fragment key={idx}>
+            <h2 className="text-xl font-medium text-[#eef0f5] mb-3">{section.heading}</h2>
+            {section.paragraphs.map((p, pIdx) => (
+              <p key={pIdx} className="text-[#a3a9b8] text-base leading-relaxed mb-6">{p}</p>
+            ))}
+          </React.Fragment>
+        ))}
 
         <div className="mb-6">
           <h3 className="text-base font-medium text-[#eef0f5] mb-3">
-            Shortlisting rate — baseline vs. automated alerts
+            {linkedinn.chartTitle}
           </h3>
-          <AnimatedLineChart beforeData={beforeData} afterData={afterData} />
+          <AnimatedLineChart beforeData={linkedinn.beforeData.map(d => d.value)} afterData={linkedinn.afterData.map(d => d.value)} />
         </div>
-
-        <h2 className="text-xl font-medium text-[#eef0f5] mb-3">Problem statement</h2>
-        <p className="text-[#a3a9b8] text-base leading-relaxed mb-6">
-          Manually refreshing job boards across multiple titles and locations is repetitive and
-          high-latency. By the time a candidate sees a role hours later, hundreds of applications
-          are already queued.
-        </p>
-
-        <h2 className="text-xl font-medium text-[#eef0f5] mb-3">System overview</h2>
-        <p className="text-[#a3a9b8] text-base leading-relaxed mb-6">
-          The service runs scheduled queries with configurable recency windows (e.g., past 2 hours)
-          and applicant-count thresholds (&quot;Be among the first 25 applicants&quot;), deduplicates
-          seen job IDs, and delivers structured alerts.
-        </p>
 
         <div className="mb-6">
           <h3 className="text-base font-medium text-[#eef0f5] mb-3">Walkthrough video</h3>
@@ -314,24 +340,15 @@ const Linkedinn: React.FC = () => {
         </div>
 
         <div className="bg-[#1a1e28] border border-white/[0.08] rounded-[10px] p-6 mb-6">
-          <h3 className="text-base font-medium text-[#eef0f5] mb-3">Operational impact</h3>
+          <h3 className="text-base font-medium text-[#eef0f5] mb-3">{linkedinn.impactTitle}</h3>
           <ul className="list-disc list-inside text-[#a3a9b8] text-sm space-y-2 leading-relaxed">
-            <li>
-              <span className="text-[#eef0f5] font-medium">Sub-hour detection:</span> Surfaces new
-              postings while applicant volume is still under 25.
-            </li>
-            <li>
-              <span className="text-[#eef0f5] font-medium">Zero manual polling:</span> Replaces
-              repetitive browser searches with scheduled background checks.
-            </li>
-            <li>
-              <span className="text-[#eef0f5] font-medium">Targeted filtering:</span> Filters by
-              role keyword, location, and exact recency in minutes.
-            </li>
+            {linkedinn.impactItems.map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
           </ul>
         </div>
       </BlogLayout>
-    </HelmetProvider>
+    </>
   );
 };
 

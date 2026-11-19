@@ -8,7 +8,18 @@
     "faviconUrl": "/favicon.png",
     "linkedinUrl": "https://linkedin.com/in/mightysanju/",
     "credlyUrl": "https://www.credly.com/users/sanju-kumar.671f31d3",
-    "linkedinCertsUrl": "https://www.linkedin.com/in/mightysanju/details/certifications/"
+    "linkedinCertsUrl": "https://www.linkedin.com/in/mightysanju/details/certifications/",
+    "statusBadge": "Naperville, IL · Data Science & ML Engineering",
+    "profileCardName": "Sanju Kumar",
+    "profileCardSubtitle": "Supply Chain Analytics · ML Systems",
+    "profileCardId": "ID: SK-2024 · ACTIVE",
+    "resumeButtonLabel": "Download resume",
+    "aboutButtonLabel": "About",
+    "linkedinButtonLabel": "LinkedIn",
+    "shippedSystemsTitle": "SHIPPED_SYSTEMS",
+    "shippedSystemsFooterStack": "STACK: PYTHON · SQL · TENSORFLOW",
+    "shippedSystemsFooterStatus": "VERIFIED",
+    "shippedSystemProjectIds": ["proj-1", "proj-2", "proj-3", "proj-4"]
   },
   "testimonials": [
     {
@@ -151,7 +162,8 @@
       ],
       "demo": "/blog/LinkedInnAppDemo",
       "github": "https://github.com/mightysanju/Linked-Inn-Be-an-Early-Applicant.git",
-      "blog": "/blog/Linkedinn"
+      "blog": "/blog/Linkedinn",
+      "attachments": []
     },
     {
       "id": "proj-2",
@@ -165,7 +177,8 @@
       ],
       "demo": "",
       "github": "https://github.com/mightysanju/DDO-Tool-Code-for-Public",
-      "blog": "/blog/DDO"
+      "blog": "/blog/DDO",
+      "attachments": []
     },
     {
       "id": "proj-3",
@@ -179,7 +192,8 @@
       ],
       "demo": "",
       "github": "",
-      "blog": "/blog/Networkapp"
+      "blog": "/blog/Networkapp",
+      "attachments": []
     },
     {
       "id": "proj-4",
@@ -193,7 +207,8 @@
       ],
       "demo": "/ats",
       "github": "https://github.com/mightysanju",
-      "blog": "/blog/ats-score-checker"
+      "blog": "/blog/ats-score-checker",
+      "attachments": []
     }
   ],
   "certifications": [
@@ -581,5 +596,632 @@
         "answer": "I am based in Naperville, IL and open to Data Science, Machine Learning Engineering, Business Intelligence, and Process Automation roles.\n\n• Email: sanju.k3r@gmail.com\n• Phone: 224-702-6736\n• LinkedIn: https://linkedin.com/in/mightysanju/\n• You can also use the Contact section on this page or download my resume directly from the Hero section."
       }
     ]
+  },
+  "site": {
+    "seo": {
+      "title": "SANJU KUMAR | Data Scientist & ML Engineer",
+      "description": "Expert Data Scientist and ML Engineer specializing in AI, Machine Learning, and Data Engineering. View my certifications, projects, and skills.",
+      "keywords": "DDO tool, sanju, sanju kumar, data scientist, machine learning engineer, AI, deep learning, python, data engineering, AWS, Azure, TensorFlow, computer vision, NLP",
+      "author": "Sanju Kumar",
+      "ogImage": "https://i.imgur.com/e9T4kwI.png"
+    },
+    "navbar": {
+      "brandName": "Sanju Kumar",
+      "roleTag": "DS / ML",
+      "logoImage": "/favicon.png",
+      "adminLabel": "Admin",
+      "navItems": [
+        { "label": "Home", "href": "#home" },
+        { "label": "Skills", "href": "#skills" },
+        { "label": "Certifications", "href": "#certifications" },
+        { "label": "Projects", "href": "#projects" },
+        { "label": "Contact", "href": "#contact" }
+      ],
+      "socialLinks": [
+        { "id": "github", "label": "GitHub", "href": "https://github.com/mightysanju" },
+        { "id": "linkedin", "label": "LinkedIn", "href": "https://linkedin.com/in/mightysanju" },
+        { "id": "youtube", "label": "YouTube", "href": "https://youtube.com/@sanjukumar" },
+        { "id": "instagram", "label": "Instagram", "href": "https://instagram.com/mightysanju3" },
+        { "id": "email", "label": "Email", "href": "mailto:sanju.k3r+portfolio@gmail.com" }
+      ]
+    },
+    "footer": {
+      "logoImage": "/favicon.png",
+      "brandName": "Sanju Kumar",
+      "roleText": "Data Scientist & ML Engineer",
+      "copyrightText": "© 2026",
+      "attributionText": "Unslopped with unslop by @heydamir (CC BY 4.0)",
+      "attributionUrl": "",
+      "adminLabel": "Admin",
+      "socialLinks": [
+        { "id": "github", "label": "GitHub", "href": "https://github.com/mightysanju" },
+        { "id": "linkedin", "label": "LinkedIn", "href": "https://linkedin.com/in/mightysanju" },
+        { "id": "email", "label": "Email", "href": "mailto:sanju.k3r+portfolio@gmail.com" }
+      ]
+    }
+  },
+  "sections": {
+    "skills": {
+      "eyebrow": "01 / Capabilities",
+      "title": "Technical skills",
+      "description": "Applied proficiency across data science, process automation, security frameworks, and operational tooling.",
+      "allFilterLabel": "All skills",
+      "techStackEyebrow": "PROJECT_STACK_UNION",
+      "techStackTitle": "Tech stack across projects",
+      "techStackEmptyText": "No project tags configured yet."
+    },
+    "certifications": {
+      "eyebrow": "02 / Credentials",
+      "title": "Certifications",
+      "description": "Verified credentials across machine learning, data science, software development, and security compliance.",
+      "allLabel": "All credentials",
+      "credlyLabel": "Credly profile",
+      "linkedinLabel": "LinkedIn credentials"
+    },
+    "projects": {
+      "eyebrow": "03 / Selected work",
+      "title": "Featured projects",
+      "description": "Production tools, machine learning applications, and workflow automation systems.",
+      "allTagLabel": "All",
+      "demoLabel": "Demo",
+      "codeLabel": "Code",
+      "blogLabel": "Blog"
+    },
+    "contact": {
+      "eyebrow": "04 / Contact",
+      "title": "Get in touch",
+      "description": "Direct inquiries for engineering roles, consulting, or technical collaboration.",
+      "directChannelsTitle": "Direct channels",
+      "email": "sanju.k3r@gmail.com",
+      "phone": "224 702 6736",
+      "location": "Naperville, IL",
+      "formspreeUrl": "https://formspree.io/f/manyjkkr",
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "inquiryLabel": "Inquiry type",
+      "recruiterLabel": "Recruiter",
+      "generalLabel": "General inquiry",
+      "messageLabel": "Message",
+      "submitLabel": "Send message",
+      "sendingLabel": "Sending...",
+      "sentMessage": "Message sent.",
+      "errorMessage": "Failed to send message. Please try again."
+    },
+    "chatbotUi": {
+      "subtitle": "AI portfolio assistant",
+      "emptyPrompt": "Select a prompt or ask a question about my work and experience.",
+      "thinkingLabel": "Thinking...",
+      "inputPlaceholder": "Ask a question...",
+      "unreachableError": "External API endpoint is currently unreachable. Switch mode to Hybrid or Local CMS in /admin, or try again later."
+    },
+    "blogLayout": {
+      "backLabel": "Back to projects",
+      "demoLabel": "Live demo",
+      "codeLabel": "View code"
+    }
+  },
+  "aboutPage": {
+    "metaTitle": "Sanju Kumar | Background & Experience",
+    "metaDescription": "Sanju Kumar is a Data Scientist and ML Engineer with hands-on experience in Python, TensorFlow, PyTorch, SQL, and enterprise process automation.",
+    "backLabel": "Back to portfolio",
+    "eyebrow": "PROFILE / DOSSIER",
+    "title": "Background & engineering experience",
+    "subtitle": "Academic credentials, production systems shipped at Amazon, and core technical competencies.",
+    "profileImage": "/favicon.png",
+    "resumeAttachmentLabel": "Download resume",
+    "attachments": [],
+    "sectionTitles": {
+      "education": "Education",
+      "experience": "Experience",
+      "domainStack": "Domain stack",
+      "technicalLabel": "Technical",
+      "mlLabel": "Machine learning",
+      "softLabel": "Operations",
+      "strengths": "Core strengths",
+      "improvements": "Current focus & growth areas",
+      "interests": "Research interests"
+    },
+    "education": [
+      {
+        "id": "EDU-01",
+        "degree": "Master's in Information Studies",
+        "school": "Trine University",
+        "period": "2024 – Present",
+        "description": "Specializing in Data Science and Machine Learning",
+        "courses": [
+          "Advanced Machine Learning",
+          "Deep Learning & Neural Networks",
+          "Big Data Analytics",
+          "Cybersecurity",
+          "Cloud Computing"
+        ],
+        "gpa": "4.0 / 4.0"
+      },
+      {
+        "id": "EDU-02",
+        "degree": "Bachelor's in Electronics & Communication Engineering",
+        "school": "Jawaharlal Nehru Technological University",
+        "period": "2014 – 2018",
+        "description": "Focused on Electronics & Embedded Programming",
+        "courses": [
+          "C Programming & Embedded C",
+          "Electrical and Electronics Engineering",
+          "VLSI Design",
+          "Transmission Lines"
+        ],
+        "achievements": [
+          "Organized workshops and trained 1,000+ undergraduates in PCB design",
+          "Member of Innovation Council",
+          "Technical Club Lead"
+        ]
+      }
+    ],
+    "experience": [
+      {
+        "id": "EXP-01",
+        "role": "Associate (Support Analyst)",
+        "company": "Amazon",
+        "period": "May 2022 – Nov 2023",
+        "location": "Hyderabad, India",
+        "achievements": [
+          "Developed a Python-SQL automation application reducing processing time from 19 minutes to 5 seconds (99.56% improvement)",
+          "Created a notification bot achieving 100% SLA compliance through Amazon Chime integration",
+          "Developed the Defect Dispute Override (DDO) tool reducing carrier-related cases by 70% with permanent issue resolution",
+          "Assisted Program Manager with data mining for strategic planning and operational decision-making",
+          "Maintained 100% accuracy while achieving a 228x increase in processing throughput"
+        ],
+        "technologies": [
+          "Python",
+          "SQL",
+          "Automation",
+          "Data Mining",
+          "Bot Development",
+          "Process Optimization"
+        ]
+      },
+      {
+        "id": "EXP-02",
+        "role": "IT Analyst",
+        "company": "AppMinds Inc",
+        "period": "Jun 2019 – Jun 2021",
+        "location": "Hyderabad, India",
+        "achievements": [
+          "Provided comprehensive IT support ensuring minimal system downtime",
+          "Implemented structured troubleshooting procedures for employee technical issues",
+          "Maintained system integrity and operational reliability",
+          "Contributed to IT infrastructure optimization",
+          "Delivered prompt resolution of technical incidents"
+        ],
+        "technologies": [
+          "IT Support",
+          "System Administration",
+          "Troubleshooting",
+          "Technical Support",
+          "Infrastructure Management"
+        ]
+      },
+      {
+        "id": "EXP-03",
+        "role": "Student Intern",
+        "company": "Defence Research and Development Laboratory (DRDL) – DRDO",
+        "period": "Jun 2017 – Aug 2017",
+        "location": "Hyderabad, India",
+        "achievements": [
+          "Developed a Smart Attendance System under Technical Officer guidance",
+          "Gained hands-on engineering experience in a defense research organization",
+          "Completed end-to-end project implementation and testing",
+          "Collaborated with cross-functional technical team members",
+          "Followed strict defense research protocols and documentation standards"
+        ],
+        "technologies": [
+          "Project Management",
+          "System Development",
+          "Research Methodology",
+          "Technical Documentation"
+        ]
+      }
+    ],
+    "skills": {
+      "technical": [
+        "Python",
+        "TensorFlow",
+        "PyTorch",
+        "Scikit-learn",
+        "SQL",
+        "AWS",
+        "Azure",
+        "Docker",
+        "Kubernetes",
+        "Git",
+        "REST APIs",
+        "Microservices"
+      ],
+      "ml": [
+        "Deep Learning",
+        "NLP",
+        "Computer Vision",
+        "Reinforcement Learning",
+        "Time Series Analysis",
+        "Feature Engineering",
+        "Model Optimization"
+      ],
+      "soft": [
+        "Leadership",
+        "Problem Solving",
+        "Communication",
+        "Team Management",
+        "Mentoring",
+        "Project Planning"
+      ]
+    },
+    "strengths": [
+      {
+        "title": "Analytical problem solving",
+        "description": "Rigorous engineering mindset with a track record of resolving high-volume operational bottlenecks."
+      },
+      {
+        "title": "Technical leadership",
+        "description": "Experience leading and mentoring peers while shipping self-serve internal tools."
+      },
+      {
+        "title": "Rapid systems adaptation",
+        "description": "Quick to evaluate, adopt, and integrate modern data and ML toolchains into production workflows."
+      },
+      {
+        "title": "Cross-functional communication",
+        "description": "Translates statistical findings and system trade-offs clearly for non-technical stakeholders."
+      },
+      {
+        "title": "Mathematical foundation",
+        "description": "Grounded in applied statistics, linear algebra, and quantitative optimization."
+      }
+    ],
+    "areasOfImprovement": [
+      {
+        "area": "Public speaking",
+        "plan": "Participating in technical meetups and presenting architecture walkthroughs."
+      },
+      {
+        "area": "Work-life balance",
+        "plan": "Maintaining structured time-blocking and sprint boundaries."
+      },
+      {
+        "area": "Pragmatic iteration",
+        "plan": "Balancing deep optimization with incremental shipping milestones."
+      },
+      {
+        "area": "Systems-level abstraction",
+        "plan": "Pairing low-level implementation detail with long-horizon product architecture."
+      }
+    ],
+    "interests": [
+      "Artificial General Intelligence",
+      "Quantum Computing",
+      "Robotics",
+      "Sustainable Technology",
+      "Edge Computing"
+    ]
+  },
+  "atsPage": {
+    "metaTitle": "ATS Compatibility Analyzer | Sanju Kumar",
+    "metaDescription": "Evaluate resume keyword alignment, structural parsing, and role compatibility against a target job description.",
+    "backLabel": "Back to portfolio",
+    "eyebrow": "SYS-03 / INTERACTIVE ANALYZER",
+    "title": "ATS compatibility analyzer",
+    "subtitle": "Evaluate resume keyword alignment, structural parsing, and role compatibility against a target job description.",
+    "uploadCardTitle": "1. Resume document",
+    "uploadFormatsHint": "PDF / DOC / DOCX / TXT",
+    "dropzonePrompt": "Drop resume file here or click to browse",
+    "localNote": "Processed locally in your browser",
+    "statusLabel": "Status",
+    "jdCardTitle": "2. Target job description",
+    "jdPlaceholder": "Paste the target job description here...",
+    "analyzeButtonLabel": "Run ATS evaluation",
+    "analyzingButtonLabel": "Evaluating...",
+    "resultsEyebrow": "EVALUATION SUMMARY",
+    "overallScoreLabel": "Overall ATS compatibility score",
+    "matchedKeywordsTitle": "Matched keywords",
+    "missingKeywordsTitle": "Missing keywords",
+    "recommendationsTitle": "Recommended adjustments",
+    "attachments": []
+  },
+  "standalonePages": {
+    "networkapp": {
+      "metaTitle": "Network App: Automating Network Balancing SIMs",
+      "metaDescription": "Network App automates SQL data retrieval, payload formatting, and fulfillment center notifications for network balancing SIM workflows.",
+      "title": "Network App",
+      "date": "April 15, 2023",
+      "readTime": "10 min read",
+      "tags": ["Automation", "Advanced SQL", "Python"],
+      "image": "https://i.imgur.com/VxGPpEB.png",
+      "githubLink": "",
+      "demoLink": "",
+      "sections": [
+        {
+          "heading": "Introduction",
+          "paragraphs": [
+            "Network balancing operations require rapid coordination across fulfillment centers. The Network App automates SQL extraction, redirectable volume aggregation, and structured notification drafting—reducing average handling time per SIM by 94.36%."
+          ]
+        },
+        {
+          "heading": "Problem statement",
+          "paragraphs": [
+            "In daily operations, analysts spent substantial manual effort executing repetitive queries across multiple sources, collating vendor redirectable volume, and formatting approval requests for fulfillment centers. Manual assembly introduced latency and transcription errors."
+          ]
+        },
+        {
+          "heading": "Solution architecture",
+          "paragraphs": [
+            "We built the Network App in Python and SQL to execute end-to-end data retrieval and dispatch preparation in a single workflow:",
+            "Automated SQL extraction: Queries live operational tables and aggregates redirectable volume by lane.",
+            "Deterministic formatting: Generates standardized approval payloads without manual copy-paste.",
+            "Rapid dispatch: Routes formatted requests directly to target facility stakeholders."
+          ]
+        }
+      ],
+      "chartTitle": "Benchmark comparison: Manual vs. Network App",
+      "chartSubtitle": "PILOT SAMPLE: 149 SIM RECORDS",
+      "chartSpeedupLabel": "SPEEDUP: 17.72x",
+      "chartReductionLabel": "AHT REDUCTION: 94.36%",
+      "chartData": [
+        { "name": "Avg handling time (min)", "Manual": 4.75, "NetworkApp": 0.27 },
+        { "name": "Throughput multiplier (x)", "Manual": 1.0, "NetworkApp": 17.72 }
+      ],
+      "pilotTableTitle": "Pilot study results",
+      "pilotHeaders": [
+        "Metric",
+        "Unit",
+        "Manual (149 SIMs)",
+        "Manual Avg",
+        "Network App Total",
+        "Network App Avg",
+        "Speedup",
+        "AHT Saved"
+      ],
+      "pilotRows": [
+        ["Duration", "Minutes", "708.30", "4.75", "39.97", "0.27", "17.72x", "94.36%"],
+        ["Duration", "Seconds", "42,498.0", "285.22", "2,398.2", "16.10", "17.72x", "94.36%"]
+      ],
+      "roadmapTitle": "Roadmap",
+      "roadmapItems": [
+        "Automated facility alias resolution: Direct lookup of origin and destination distribution lists.",
+        "Trailer tag status verification: Pre-flight validation ensuring only eligible trailers are flagged for redirection."
+      ],
+      "attachments": []
+    },
+    "ddo": {
+      "metaTitle": "Defect Dispute Override (DDO): Logistics & Supply Chain Automation",
+      "metaDescription": "Defect Dispute Override (DDO) is a Python desktop application built to streamline carrier performance evaluation and dispute dispositioning in supply chain operations.",
+      "title": "Defect Dispute Override Tool",
+      "date": "March 10, 2023",
+      "readTime": "8 min read",
+      "tags": ["Data Science", "Python", "SQL", "Analytics"],
+      "image": "https://i.imgur.com/pqH8SRU.png",
+      "githubLink": "https://github.com/mightysanju/DDO-Tool-Code-for-Public",
+      "demoLink": "",
+      "sections": [
+        {
+          "heading": "Introduction",
+          "paragraphs": [
+            "In logistics and supply chain operations, accurate carrier performance evaluation directly impacts network reliability and cost. Discrepancies in carrier defect rankings create financial friction and manual research overhead. I engineered the Defect Dispute Override (DDO) desktop application for Amazon's Carrier Management Team (TCMT) to automate defect research and dispositioning."
+          ]
+        },
+        {
+          "heading": "Problem statement",
+          "paragraphs": [
+            "Prior to DDO, resolving carrier appointment defect disputes required associates to manually query multiple tables and cross-check timestamps during live calls. That workflow was slow, repetitive, and susceptible to inconsistent dispositioning."
+          ]
+        },
+        {
+          "heading": "Solution architecture",
+          "paragraphs": [
+            "DDO is a Python desktop application built with Tkinter and backed by parameterized SQL pipelines. It retrieves appointment telemetry in real time and validates dispute criteria automatically:",
+            "Structured operator GUI: Single-pane interface for looking up carrier appointment records and defect codes.",
+            "Concurrent query execution: Multithreading and multiprocessing keep the UI responsive during bulk SQL fetches.",
+            "Real-time validation: Evaluates carrier performance logs immediately to surface root-cause indicators.",
+            "One-click disposition upload: Standardizes override logging and eliminates manual transcription errors."
+          ]
+        },
+        {
+          "heading": "Technical implementation",
+          "paragraphs": [
+            "Built in Python using Tkinter for the operator interface, concurrent worker pools for I/O bound SQL queries, and automated validation rules that reconcile carrier-submitted evidence against warehouse gate and appointment logs."
+          ]
+        }
+      ],
+      "metrics": [
+        {
+          "label": "RANKING DISCREPANCIES",
+          "value": "-70%",
+          "detail": "Reduction in carrier ranking discrepancies across evaluated disputes"
+        },
+        {
+          "label": "ROOT-CAUSE COVERAGE",
+          "value": "100%",
+          "detail": "Automated root-cause classification across supported appointment defect types"
+        }
+      ],
+      "stakeholdersTitle": "Project stakeholders",
+      "stakeholders": [
+        {
+          "name": "Jake Porter",
+          "role": "Global Logistics · Prepaid Transportation",
+          "company": "Amazon",
+          "linkedinUrl": "https://www.linkedin.com/in/jake-porter-20083b257/",
+          "image": "https://ui-avatars.com/api/?name=Jake+Porter&background=1a1e28&color=eef0f5&size=200",
+          "contribution": "Project sponsor for the Defect Dispute Override (DDO) application."
+        },
+        {
+          "name": "Jayadev Addepalli",
+          "role": "Supply Chain Manager",
+          "company": "Amazon",
+          "linkedinUrl": "https://www.linkedin.com/in/jdaddepalli/",
+          "image": "https://ui-avatars.com/api/?name=Jayadev+Addepalli&background=1a1e28&color=eef0f5&size=200",
+          "contribution": "Project manager for the Defect Dispute Override (DDO) deployment."
+        }
+      ],
+      "attachments": []
+    },
+    "atsBlog": {
+      "metaTitle": "Building an AI-Powered ATS Score Checker",
+      "metaDescription": "An overview of how we built an Applicant Tracking System (ATS) resume analyzer that evaluates resume compatibility against target job descriptions using natural language processing and structured keyword extraction.",
+      "title": "Building an AI-Powered ATS Score Checker",
+      "date": "March 20, 2024",
+      "readTime": "15 min read",
+      "tags": ["Machine Learning", "NLP", "React"],
+      "image": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80",
+      "demoLink": "/ats",
+      "githubLink": "https://github.com/mightysanju",
+      "sections": [
+        {
+          "heading": "Overview",
+          "paragraphs": [
+            "An overview of how we built an Applicant Tracking System (ATS) resume analyzer that evaluates resume compatibility against target job descriptions using natural language processing and structured keyword extraction."
+          ]
+        },
+        {
+          "heading": "Problem statement",
+          "paragraphs": [
+            "Modern job applications pass through automated ATS parsers before reaching technical recruiters. Candidates frequently miss qualified roles due to formatting mismatches or missing domain terminology. We designed a transparent analyzer that scores resumes and surfaces concrete missing terms."
+          ]
+        },
+        {
+          "heading": "Technical implementation",
+          "paragraphs": [
+            "The pipeline tokenizes both the uploaded resume and target job description, computes weighted term overlap across technical skills, action verbs, and structural sections, and outputs a deterministic compatibility report."
+          ]
+        }
+      ],
+      "capabilitiesTitle": "System capabilities",
+      "capabilities": [
+        "Real-time resume parsing and keyword extraction",
+        "Role-specific term gap identification",
+        "Document structure and formatting validation",
+        "Section-by-section scoring breakdown",
+        "Actionable revision recommendations"
+      ],
+      "attachments": []
+    },
+    "linkedinn": {
+      "metaTitle": "LinkedIn Early Applicant Automation: Job Alert Pipeline",
+      "metaDescription": "A Python job monitoring and SMTP alert system that surfaces newly posted roles within minutes.",
+      "title": "LinkedIn Early Applicant Automation",
+      "date": "August 31, 2025",
+      "readTime": "6 min read",
+      "tags": ["Automation", "Web Scraping", "Python", "SMTP"],
+      "image": "https://i.imgur.com/hNa0ROb.jpeg",
+      "demoLink": "/blog/LinkedInnAppDemo",
+      "githubLink": "https://github.com/mightysanju/Linked-Inn-Be-an-Early-Applicant.git",
+      "youtubeId": "dQw4w9WgXcQ",
+      "paypalClientId": "AaTJvFXMHqSxzTnmhoH-PMiem_RRZyCdF_0fMbdQkyAGAkLB2rgZVQODfHlDGO1T0UOOrbRZwlcUQLHS",
+      "paypalPlanId": "P-5C171323XC216760BNDDXMIY",
+      "supportTitle": "SUPPORT PROJECT",
+      "supportDescription": "Subscribe to support ongoing maintenance and hosted alert infrastructure.",
+      "chartTitle": "Shortlisting rate — baseline vs. automated alerts",
+      "beforeData": [
+        { "label": "W1", "value": 6 },
+        { "label": "W2", "value": 8 },
+        { "label": "W3", "value": 7 },
+        { "label": "W4", "value": 9 },
+        { "label": "W5", "value": 8 },
+        { "label": "W6", "value": 10 },
+        { "label": "W7", "value": 9 },
+        { "label": "W8", "value": 11 }
+      ],
+      "afterData": [
+        { "label": "W1", "value": 6 },
+        { "label": "W2", "value": 10 },
+        { "label": "W3", "value": 12 },
+        { "label": "W4", "value": 18 },
+        { "label": "W5", "value": 24 },
+        { "label": "W6", "value": 30 },
+        { "label": "W7", "value": 36 },
+        { "label": "W8", "value": 42 }
+      ],
+      "sections": [
+        {
+          "heading": "Introduction",
+          "paragraphs": [
+            "Applying within the first wave of candidates materially improves recruiter review rates. I built the LinkedIn Early Applicant Automation pipeline in Python to poll newly published roles matching target filters and dispatch immediate SMTP notifications."
+          ]
+        },
+        {
+          "heading": "Problem statement",
+          "paragraphs": [
+            "Manually refreshing job boards across multiple titles and locations is repetitive and high-latency. By the time a candidate sees a role hours later, hundreds of applications are already queued."
+          ]
+        },
+        {
+          "heading": "System overview",
+          "paragraphs": [
+            "The service runs scheduled queries with configurable recency windows (e.g., past 2 hours) and applicant-count thresholds (\"Be among the first 25 applicants\"), deduplicates seen job IDs, and delivers structured alerts."
+          ]
+        }
+      ],
+      "impactTitle": "Operational impact",
+      "impactItems": [
+        "Sub-hour detection: Surfaces new postings while applicant volume is still under 25.",
+        "Zero manual polling: Replaces repetitive browser searches with scheduled background checks.",
+        "Targeted filtering: Filters by role keyword, location, and exact recency in minutes."
+      ],
+      "attachments": []
+    },
+    "linkedInnDemo": {
+      "metaTitle": "Early Applicant Job Finder — Live Demo",
+      "metaDescription": "Query newly posted LinkedIn roles by recency window and applicant threshold.",
+      "backLabel": "Back to projects",
+      "eyebrow": "DEMO · LINKEDIN EARLY APPLICANT QUERY ENGINE",
+      "title": "Early applicant job finder",
+      "subtitle": "Query newly posted LinkedIn roles by recency window and applicant threshold.",
+      "jobTitleOptions": [
+        "Java",
+        "Data Analyst",
+        "Data Scientist",
+        "Network Engineer",
+        "Data Engineer"
+      ],
+      "applicantFilterOptions": [
+        "all",
+        "Be among the first 25 applicants"
+      ],
+      "defaultJobTitle": "Data Scientist",
+      "defaultLocation": "Chicago",
+      "defaultTimeFilterMinutes": 120,
+      "apiBaseUrl": "https://linked-early-apply-966926647025.us-central1.run.app/search",
+      "corsProxyUrl": "https://corsproxy.io/?",
+      "contactEmail": "sanju.k3r@gmail.com",
+      "contactPrompt": "For scheduled daily SMTP alerts, contact",
+      "searchButtonLabel": "Run search",
+      "mockJobs": [
+        {
+          "id": "mock1",
+          "title": "Data Scientist (Sample)",
+          "company": "Enterprise Analytics Corp",
+          "location": "Chicago",
+          "postedAt": "42 minutes ago",
+          "applicants": "Be among the first 25 applicants",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=Data%20Scientist"
+        },
+        {
+          "id": "mock2",
+          "title": "Machine Learning Engineer (Sample)",
+          "company": "Data Systems LLC",
+          "location": "Chicago",
+          "postedAt": "1 hour ago",
+          "applicants": "18 applicants",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=Machine%20Learning%20Engineer"
+        },
+        {
+          "id": "mock3",
+          "title": "Analytics Engineer (Sample)",
+          "company": "Cloud Logistics Inc",
+          "location": "Chicago",
+          "postedAt": "2 hours ago",
+          "applicants": "Be among the first 25 applicants",
+          "url": "https://www.linkedin.com/jobs/search/?keywords=Analytics%20Engineer"
+        }
+      ],
+      "attachments": []
+    }
   }
 }

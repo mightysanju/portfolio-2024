@@ -1,0 +1,2 @@
+## 2026-11-18T20:47:02Z
+Explore M2 site-wide CMS wiring strategy (Features F4, F5: Shared Chrome, Landing Sections, /about, /ats, /blog/*). Inspect M1-landed CMS `PortfolioContext.tsx` and the M2 target components: `Navbar.tsx`, `Footer.tsx`, `ChatButton.tsx`, `TestimonialScroll.tsx`, `Certifications.tsx`, `Contact.tsx`, `About.tsx`, `ATSApp.tsx`, and `blog/*` components. Recommend specific wiring strategy (which data fields from `PortfolioData` to use, where to add `resolveAssetUrl`) for each component in the scope, ensuring adherence to the CMS architecture.

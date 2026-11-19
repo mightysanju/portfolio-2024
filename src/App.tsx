@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -15,7 +15,8 @@ import Linkedinn from './components/blog/Linkedinn';
 import LinkedinnApp from './components/blog/LinkedInnAppDemo';
 import ATSScoreChecker from './components/blog/ATSScoreChecker';
 import ATSApp from './components/ats/ATSApp';
-import AdminPanel from './components/admin/AdminPanel';
+import { AdminPanel } from './components/admin/AdminPanel';
+import DesignPreview from './components/DesignPreview';
 import { PortfolioProvider } from './context/PortfolioContext';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
@@ -75,6 +76,7 @@ function App() {
               }
             />
             <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/design-preview" element={<DesignPreview />} />
             <Route path="/about" element={<About />} />
             <Route path="/blog/Networkapp" element={<Networkapp />} />
             <Route path="/blog/DDO" element={<DDO />} />

@@ -1,7 +1,8 @@
-import React, { useState, useCallback } from 'react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ExternalLink, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { usePortfolio } from '../../context/PortfolioContext';
 
 interface JobRecord {
   job_ID?: string;
@@ -14,6 +15,21 @@ interface JobRecord {
 }
 
 const LinkedinnApp: React.FC = () => {
+  const { data } = usePortfolio();
+  const linkedInnDemo = data.standalonePages?.linkedInnDemo;
+
+  const [jobTitle, setJobTitle] = useState(linkedInnDemo?.defaultJobTitle || '');
+  const [location, setLocation] = useState(linkedInnDemo?.defaultLocation || '');
+  const [timeFilterMinutes, setTimeFilterMinutes] = useState(linkedInnDemo?.defaultTimeFilterMinutes || 120);
+  const [applicantFilter, setApplicantFilter] = useState('all');
+  const [jobs, setJobs] = useState<JobRecord[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [message, setMessage] = useState('');
+  const [hasSearched, setHasSearched] = useState(false);
+
+  if (!linkedInnDemo) return null;
+
   const formatMinutes = (minutes: number) => {
     if (minutes < 60) return `${minutes}m`;
     const hours = minutes / 60;
@@ -71,26 +87,7 @@ const LinkedinnApp: React.FC = () => {
     );
   };
 
-  const [jobTitle, setJobTitle] = useState('Data Scientist');
-  const [location, setLocation] = useState('Chicago');
-  const [timeFilterMinutes, setTimeFilterMinutes] = useState(120);
-  const [applicantFilter, setApplicantFilter] = useState('all');
-  const [jobs, setJobs] = useState<JobRecord[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [message, setMessage] = useState('');
-  const [hasSearched, setHasSearched] = useState(false);
-
-  const jobTitleOptions = [
-    'Java',
-    'Data Analyst',
-    'Data Scientist',
-    'Network Engineer',
-    'Data Engineer'
-  ];
-  const applicantFilterOptions = ['all', 'Be among the first 25 applicants'];
-
-  const handleSearch = useCallback(async () => {
+  const handleSearch = async () => {
     if (!jobTitle.trim() || !location.trim()) {
       setError('Job title and location are required.');
       return;
@@ -105,7 +102,7 @@ const LinkedinnApp: React.FC = () => {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 300000);
 
-    const API_BASE_URL = 'https://linked-early-apply-966926647025.us-central1.run.app/search';
+    const API_BASE_URL = linkedInnDemo.apiBaseUrl;
     const params = new URLSearchParams({
       job_title: jobTitle,
       location: location,
@@ -115,7 +112,7 @@ const LinkedinnApp: React.FC = () => {
 
     const queryString = params.toString().replace(/\+/g, '%20');
     const targetUrl = `${API_BASE_URL}?${queryString}`;
-    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`;
+    const proxyUrl = `${linkedInnDemo.corsProxyUrl}${encodeURIComponent(targetUrl)}`;
 
     try {
       const response = await fetch(proxyUrl, { signal: controller.signal });
@@ -141,57 +138,35 @@ const LinkedinnApp: React.FC = () => {
           setMessage('No jobs found matching your criteria.');
         }
       }
-    } catch (err: any) {
+    } catch {
       clearTimeout(timeoutId);
       setError('Live job endpoint unavailable or timed out. Showing sample telemetry records.');
 
-      const mockJobs: JobRecord[] = [
-        {
-          job_ID: 'mock1',
-          job_title: `${jobTitle || 'Data Scientist'} (Sample)`,
-          company_name: 'Enterprise Analytics Corp',
-          location,
-          Link: 'https://www.linkedin.com/jobs/search/?keywords=Data%20Scientist',
-          num_applicants: 'Be among the first 25 applicants',
-          time_posted: '42 minutes ago'
-        },
-        {
-          job_ID: 'mock2',
-          job_title: 'Machine Learning Engineer (Sample)',
-          company_name: 'Data Systems LLC',
-          location,
-          Link: 'https://www.linkedin.com/jobs/search/?keywords=Machine%20Learning%20Engineer',
-          num_applicants: '18 applicants',
-          time_posted: '1 hour ago'
-        },
-        {
-          job_ID: 'mock3',
-          job_title: 'Analytics Engineer (Sample)',
-          company_name: 'Cloud Logistics Inc',
-          location,
-          Link: 'https://www.linkedin.com/jobs/search/?keywords=Analytics%20Engineer',
-          num_applicants: 'Be among the first 25 applicants',
-          time_posted: '2 hours ago'
-        }
-      ];
-
       const filteredMockJobs =
         applicantFilter === 'all'
-          ? mockJobs
-          : mockJobs.filter((job) =>
-              job.num_applicants.toLowerCase().includes('be among the first 25 applicants')
+          ? linkedInnDemo.mockJobs
+          : linkedInnDemo.mockJobs.filter((job) =>
+              job.applicants.toLowerCase().includes('be among the first 25 applicants')
             );
 
-      setJobs(filteredMockJobs);
+      setJobs(filteredMockJobs.map(j => ({
+          job_title: j.title,
+          company_name: j.company,
+          location: j.location,
+          Link: j.url,
+          num_applicants: j.applicants,
+          time_posted: j.postedAt
+      })));
     } finally {
       setIsLoading(false);
     }
-  }, [jobTitle, location, timeFilterMinutes, applicantFilter]);
+  };
 
   return (
-    <HelmetProvider>
+    <>
       <Helmet>
-        <title>Early Applicant Job Finder — Live Demo</title>
+        <title>{linkedInnDemo.metaTitle}</title>
+        <meta name="description" content={linkedInnDemo.metaDescription} />
       </Helmet>
 
       <div className="min-h-screen bg-[#0b0d14] text-[#eef0f5] pt-28 pb-20 px-4 sm:px-6 lg:px-8">
@@ -201,18 +176,18 @@ const LinkedinnApp: React.FC = () => {
             className="inline-flex items-center gap-2 text-sm font-medium text-[#a3a9b8] hover:text-[#eef0f5] mb-8 transition-colors duration-150"
           >
             <ArrowLeft className="w-4 h-4 text-[#7a8296]" strokeWidth={1.5} />
-            <span>Back to projects</span>
+            <span>{linkedInnDemo.backLabel}</span>
           </Link>
 
           <header className="mb-8">
             <p className="font-mono text-xs text-[#7a8296] tabular-nums mb-2">
-              DEMO · LINKEDIN EARLY APPLICANT QUERY ENGINE
+              {linkedInnDemo.eyebrow}
             </p>
             <h1 className="text-3xl sm:text-4xl font-medium tracking-[-0.025em] text-[#eef0f5] mb-2">
-              Early applicant job finder
+              {linkedInnDemo.title}
             </h1>
             <p className="text-[#a3a9b8] text-base">
-              Query newly posted LinkedIn roles by recency window and applicant threshold.
+              {linkedInnDemo.subtitle}
             </p>
           </header>
 
@@ -231,11 +206,10 @@ const LinkedinnApp: React.FC = () => {
                   list="job-titles"
                   value={jobTitle}
                   onChange={(e) => setJobTitle(e.target.value)}
-                  placeholder="e.g., Data Scientist"
                   className="w-full h-10 bg-[#1a1e28]/70 backdrop-blur-md border border-white/[0.10] focus:border-white/[0.24] rounded-[8px] px-3.5 text-sm text-[#eef0f5] placeholder-[#7a8296] outline-none transition-colors duration-150"
                 />
                 <datalist id="job-titles">
-                  {jobTitleOptions.map((opt) => (
+                  {linkedInnDemo.jobTitleOptions.map((opt) => (
                     <option key={opt} value={opt} />
                   ))}
                 </datalist>
@@ -252,7 +226,6 @@ const LinkedinnApp: React.FC = () => {
                   type="text"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
-                  placeholder="e.g., Chicago"
                   className="w-full h-10 bg-[#1a1e28]/70 backdrop-blur-md border border-white/[0.10] focus:border-white/[0.24] rounded-[8px] px-3.5 text-sm text-[#eef0f5] placeholder-[#7a8296] outline-none transition-colors duration-150"
                 />
               </div>
@@ -281,7 +254,7 @@ const LinkedinnApp: React.FC = () => {
                 APPLICANT THRESHOLD
               </label>
               <div className="flex flex-wrap gap-2">
-                {applicantFilterOptions.map((opt) => (
+                {linkedInnDemo.applicantFilterOptions.map((opt) => (
                   <button
                     key={opt}
                     type="button"
@@ -300,12 +273,12 @@ const LinkedinnApp: React.FC = () => {
 
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/[0.10]">
               <p className="text-xs text-[#7a8296]">
-                For scheduled daily SMTP alerts, contact{' '}
+                {linkedInnDemo.contactPrompt}{' '}
                 <a
-                  href="mailto:sanju.k3r@gmail.com"
+                  href={`mailto:${linkedInnDemo.contactEmail}`}
                   className="text-[#eef0f5] hover:underline"
                 >
-                  sanju.k3r@gmail.com
+                  {linkedInnDemo.contactEmail}
                 </a>
               </p>
               <button
@@ -314,7 +287,7 @@ const LinkedinnApp: React.FC = () => {
                 className="w-full sm:w-auto h-10 px-5 rounded-[8px] bg-[#eef0f5] text-[#0b0d14] hover:bg-white disabled:opacity-50 text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] inline-flex items-center justify-center gap-2 transition-colors duration-150"
               >
                 <Search className="w-4 h-4 text-[#0b0d14]" strokeWidth={1.5} />
-                <span>{isLoading ? 'Querying...' : 'Run search'}</span>
+                <span>{isLoading ? 'Querying...' : linkedInnDemo.searchButtonLabel}</span>
               </button>
             </div>
           </div>
@@ -349,7 +322,7 @@ const LinkedinnApp: React.FC = () => {
           </main>
         </div>
       </div>
-    </HelmetProvider>
+    </>
   );
 };
 

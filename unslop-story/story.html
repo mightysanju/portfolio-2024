@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Unslopping Story</title>
+    <meta name="unslop-steps" content="Spacing, Color and palette, Type and copy, Details" />
+    <meta name="unslop-frame" content="0 0 960" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        width: 1440px;
+        min-height: 960px;
+        background-color: #0d1117;
+        color: #f3f4f6;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        overflow-x: hidden;
+        position: relative;
+        transition: background-color 0.4s ease;
+      }
+
+      /* Background Nebulas and Slop Glows */
+      .slop-glow-layer {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        transition: opacity 0.5s ease;
+      }
+      .slop-orb-1 {
+        position: absolute;
+        width: 480px;
+        height: 480px;
+        border-radius: 240px;
+        background: radial-gradient(circle, rgba(168, 85, 247, 0.28) 0%, rgba(59, 130, 246, 0.12) 60%, transparent 70%);
+        top: -100px;
+        left: -100px;
+        filter: blur(48px);
+      }
+      .slop-orb-2 {
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        border-radius: 210px;
+        background: radial-gradient(circle, rgba(236, 72, 153, 0.22) 0%, rgba(139, 92, 246, 0.14) 55%, transparent 70%);
+        top: 180px;
+        left: 360px;
+        filter: blur(54px);
+      }
+
+      /* Base Layout Container */
+      .page-stage {
+        width: 1440px;
+        padding: 64px 80px;
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        transition: padding 0.4s ease;
+      }
+
+      /* Stack items with measured gaps */
+      .hero-stack {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Block 1: Monospace / status pill */
+      .status-row {
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        transition: margin-bottom 0.4s ease;
+      }
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 18px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+        background: rgba(168, 85, 247, 0.18);
+        border: 1px solid rgba(192, 132, 252, 0.4);
+        color: #d8b4fe;
+        box-shadow: 0 0 16px rgba(168, 85, 247, 0.35);
+        transition: all 0.4s ease;
+      }
+
+      /* Block 2: Main Display Heading */
+      .heading-row {
+        margin-bottom: 18px;
+        transition: margin-bottom 0.4s ease;
+      }
+      .hero-title {
+        font-size: 68px;
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #c084fc 0%, #60a5fa 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: all 0.4s ease;
+      }
+
+      /* Block 3: Subtitle */
+      .subtitle-row {
+        margin-bottom: 24px;
+        transition: margin-bottom 0.4s ease;
+      }
+      .hero-subtitle {
+        font-size: 34px;
+        font-weight: 700;
+        line-height: 1.15;
+        background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #f472b6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: all 0.4s ease;
+      }
+
+      /* Block 4: Body Description */
+      .prose-row {
+        margin-bottom: 32px;
+        max-width: 680px;
+        transition: margin-bottom 0.4s ease;
+      }
+      .hero-prose {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #9ca3af;
+        transition: all 0.4s ease;
+      }
+
+      /* Block 5: Action Button Group */
+      .actions-row {
+        margin-bottom: 40px;
+        display: flex;
+        gap: 18px;
+        transition: margin-bottom 0.4s ease, gap 0.4s ease;
+      }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 28px;
+        border-radius: 24px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #ffffff;
+        background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 24px rgba(147, 51, 234, 0.5);
+        cursor: pointer;
+        transition: all 0.4s ease;
+      }
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 28px;
+        border-radius: 24px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(12px);
+        transition: all 0.4s ease;
+      }
+
+      /* Block 6: Feature Preview Card */
+      .card-row {
+        max-width: 820px;
+      }
+      .preview-card {
+        padding: 28px;
+        border-radius: 24px;
+        background: rgba(30, 41, 59, 0.65);
+        border: 1px solid rgba(168, 85, 247, 0.35);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+        transition: all 0.4s ease;
+      }
+      .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+      .card-title {
+        font-size: 17px;
+        font-weight: 600;
+        color: #e5e7eb;
+      }
+      .card-badge {
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 12px;
+        background: rgba(59, 130, 246, 0.2);
+        color: #93c5fd;
+      }
+      .meter-track {
+        height: 14px;
+        border-radius: 7px;
+        background: rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        position: relative;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+      }
+      .meter-fill {
+        height: 100%;
+        width: 85%;
+        border-radius: 7px;
+        background: linear-gradient(90deg, #3b82f6 0%, #a855f7 100%);
+        box-shadow: 0 0 14px rgba(168, 85, 247, 0.6);
+        transition: all 0.4s ease;
+      }
+      .meter-segments {
+        display: none;
+        gap: 3px;
+        height: 100%;
+      }
+
+      /* Swap Text helper */
+      .swap {
+        position: relative;
+        display: inline-block;
+      }
+      .swap .to {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        transform: translateY(4px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+      .swap .from {
+        opacity: 1;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      /* ========================================================= */
+      /* STEP 1: SPACING (Rhythm & tightened gaps)                 */
+      /* ========================================================= */
+      .s1 .page-stage {
+        padding: 48px 72px;
+      }
+      .s1 .status-row {
+        margin-bottom: 16px;
+      }
+      .s1 .heading-row {
+        margin-bottom: 12px;
+      }
+      .s1 .subtitle-row {
+        margin-bottom: 18px;
+      }
+      .s1 .prose-row {
+        margin-bottom: 24px;
+      }
+      .s1 .actions-row {
+        margin-bottom: 28px;
+        gap: 12px;
+      }
+      .s1 .preview-card {
+        padding: 20px 24px;
+      }
+
+      /* ========================================================= */
+      /* STEP 2: COLOR & PALETTE (Ink ramp, no purple slop)        */
+      /* ========================================================= */
+      .s2 body {
+        background-color: #0b0d14;
+      }
+      .s2 .slop-glow-layer {
+        opacity: 0;
+      }
+      .s2 .status-pill {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #a3a9b8;
+        box-shadow: none;
+      }
+      .s2 .hero-title {
+        background: none;
+        -webkit-text-fill-color: #eef0f5;
+        color: #eef0f5;
+      }
+      .s2 .hero-subtitle {
+        background: none;
+        -webkit-text-fill-color: #cbd5e1;
+        color: #cbd5e1;
+      }
+      .s2 .hero-prose {
+        color: #a3a9b8;
+      }
+      .s2 .btn-primary {
+        background: #1a1e28;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+        color: #eef0f5;
+      }
+      .s2 .btn-secondary {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #a3a9b8;
+      }
+      .s2 .preview-card {
+        background: rgba(17, 20, 28, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      }
+      .s2 .card-title {
+        color: #eef0f5;
+      }
+      .s2 .card-badge {
+        background: rgba(76, 195, 138, 0.12);
+        color: #4cc38a;
+      }
+      .s2 .meter-fill {
+        background: #4cc38a;
+        box-shadow: none;
+      }
+
+      /* ========================================================= */
+      /* STEP 3: TYPE & COPY (Inter, JetBrains Mono, telemetry)    */
+      /* ========================================================= */
+      .s3 body {
+        font-family: "Inter", -apple-system, sans-serif;
+      }
+      .s3 .status-pill {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .s3 .swap .from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      .s3 .swap .to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .s3 .hero-title {
+        font-weight: 700;
+        letter-spacing: -0.03em;
+      }
+      .s3 .hero-subtitle {
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        font-size: 30px;
+      }
+      .s3 .btn-primary, .s3 .btn-secondary {
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px 20px;
+      }
+
+      /* ========================================================= */
+      /* STEP 4: DETAILS (Sharp corners, 20-segment gauge)        */
+      /* ========================================================= */
+      .s4 .status-pill {
+        border-radius: 6px;
+      }
+      .s4 .btn-primary, .s4 .btn-secondary {
+        border-radius: 8px;
+      }
+      .s4 .preview-card {
+        border-radius: 12px;
+      }
+      .s4 .meter-track {
+        height: 10px;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.04);
+        padding: 2px;
+        box-shadow: none;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .s4 .meter-fill {
+        display: none;
+      }
+      .s4 .meter-segments {
+        display: flex;
+      }
+      .meter-segment {
+        flex: 1;
+        height: 100%;
+        border-radius: 1px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .meter-segment.active {
+        background: #4cc38a;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Slop Gradient Layer (fades out in Step 2) -->
+    <div class="slop-glow-layer">
+      <div class="slop-orb-1"></div>
+      <div class="slop-orb-2"></div>
+    </div>
+
+    <!-- Main Viewport -->
+    <div class="page-stage">
+      <div class="hero-stack">
+        
+        <!-- Stack Block 1: Status badge -->
+        <div class="status-row" data-gap="main">
+          <div class="status-pill" data-radius>
+            <span class="swap" data-at="3">
+              <span class="from">✨ AI Machine Learning Specialist</span>
+              <span class="to">SYS // DATA_ENG_ML.LIVE</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Stack Block 2: Hero title -->
+        <div class="heading-row" data-gap="main">
+          <h1 class="hero-title" data-slop="Purple gradient headline">
+            I'm Sanju Kumar
+          </h1>
+        </div>
+
+        <!-- Stack Block 3: Subtitle -->
+        <div class="subtitle-row" data-gap="main">
+          <h2 class="hero-subtitle">
+            Data Scientist &amp; ML Engineer
+          </h2>
+        </div>
+
+        <!-- Stack Block 4: Body Description -->
+        <div class="prose-row" data-gap="main">
+          <p class="hero-prose">
+            Production ML pipelines, Amazon TCMT operational tooling, and automated carrier defect reconciliation.
+          </p>
+        </div>
+
+        <!-- Stack Block 5: Buttons -->
+        <div class="actions-row" data-gap="main">
+          <button class="btn-primary" data-radius data-slop="Neon gradient pill button">
+            Download Resume
+          </button>
+          <button class="btn-secondary" data-radius>
+            Explore Projects
+          </button>
+        </div>
+
+        <!-- Stack Block 6: Feature Preview Card -->
+        <div class="card-row" data-gap="main">
+          <div class="preview-card" data-radius data-slop="Glowing blur card">
+            <div class="card-header">
+              <span class="card-title">Telemetry &amp; Skill Metering</span>
+              <span class="card-badge">20-SEGMENT HARDWARE</span>
+            </div>
+            <div class="meter-track">
+              <div class="meter-fill"></div>
+              <div class="meter-segments">
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment active"></div>
+                <div class="meter-segment"></div>
+                <div class="meter-segment"></div>
+                <div class="meter-segment"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

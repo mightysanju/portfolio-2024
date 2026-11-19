@@ -115,3 +115,49 @@
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
+
+@keyframes scroll-vertical {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll var(--marquee-duration, 60s) linear infinite;
+  will-change: transform;
+}
+
+.animate-scroll-vertical {
+  animation: scroll-vertical var(--vertical-marquee-duration, 32s) linear infinite;
+  will-change: transform;
+}
+
+.vertical-marquee-mask {
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-pause-on-hover:hover .animate-scroll-left,
+.marquee-pause-on-hover:hover .animate-scroll-vertical,
+.marquee-pause-on-hover:hover .animate-scroll-fast,
+.marquee-pause-on-hover:focus-within .animate-scroll-left,
+.marquee-pause-on-hover:focus-within .animate-scroll-vertical,
+.marquee-pause-on-hover:focus-within .animate-scroll-fast {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-scroll-fast,
+  .animate-scroll-left,
+  .animate-scroll-vertical,
+  .animate-fade-in {
+    animation: none !important;
+  }
+}

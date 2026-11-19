@@ -23,11 +23,8 @@ function slugifyTitle(text: string): string {
 
 export const DynamicBlogPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const portfolio = usePortfolio() as ReturnType<typeof usePortfolio> & {
-    resolveAssetUrl?: (url: string) => string;
-  };
-  const resolveUrl =
-    portfolio.resolveAssetUrl || ((url: string) => url);
+  const portfolio = usePortfolio();
+  const resolveUrl = portfolio.resolveAssetUrl;
   const projects = portfolio.data.projects || [];
 
   const project = useMemo(() => {
@@ -57,12 +54,14 @@ export const DynamicBlogPage: React.FC = () => {
             to="/"
             className="inline-flex items-center gap-2 h-9 px-4 rounded-[8px] bg-[#eef0f5] text-[#0b0d14] text-xs font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:bg-white transition-colors duration-150"
           >
-            Return to portfolio
+            {portfolio.data.sections?.blogLayout?.backLabel || 'Return to portfolio'}
           </Link>
         </div>
       </BlogLayout>
     );
   }
+  
+  // ... (rest of DynamicBlogPage logic)
 
   const blogContent = (
     project as typeof project & { blogContent?: BlogContentShape }
@@ -71,17 +70,20 @@ export const DynamicBlogPage: React.FC = () => {
   const subtitle = blogContent?.subtitle || project.description;
   const date = blogContent?.date || '2025';
   const readTime = blogContent?.readTime || '5 min read';
-  const highlights = (blogContent?.highlights || []).filter((h) => h.trim().length > 0);
-  const images = (blogContent?.images || []).filter((img) => img.trim().length > 0);
+  const highlights = Array.isArray(blogContent?.highlights) ? blogContent.highlights.filter((h) => typeof h === 'string' && h.trim().length > 0) : [];
+  const images = Array.isArray(blogContent?.images) ? blogContent.images.filter((img) => typeof img === 'string' && img.trim().length > 0) : [];
   const rawBody = blogContent?.body?.trim() || project.description;
   const blocks = rawBody.split(/\n\s*\n/);
+  const attachments = Array.isArray(project.attachments) 
+    ? project.attachments.filter((a) => a && typeof a.url === 'string' && a.url.trim().length > 0) 
+    : [];
 
   return (
     <BlogLayout
       title={project.title}
       date={date}
       readTime={readTime}
-      tags={project.tags || []}
+      tags={Array.isArray(project.tags) ? project.tags.filter((t) => typeof t === 'string') : []}
       image={resolveUrl(project.image)}
       demoLink={project.demo || undefined}
       githubLink={project.github || undefined}
@@ -186,44 +188,77 @@ export const DynamicBlogPage: React.FC = () => {
             </div>
           </div>
         )}
+        
+        {attachments.length > 0 && (
+          <div className="pt-4 border-t border-white/[0.10]">
+            <h3 className="font-mono text-xs text-[#7a8296] mb-4">
+              PROJECT FILES &amp; ATTACHMENTS
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {attachments.map((att) => (
+                <a
+                  key={att.id}
+                  href={resolveUrl(att.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download={att.fileName || undefined}
+                  className="px-3 py-1.5 rounded-[8px] text-xs font-mono bg-[#1a1e28] text-[#eef0f5] border border-white/[0.10] hover:bg-[#222734]"
+                >
+                  {att.label || att.fileName || 'Attachment'}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </BlogLayout>
   );
 };
 
+
 const Projects: React.FC = () => {
   const navigate = useNavigate();
-  const portfolio = usePortfolio() as ReturnType<typeof usePortfolio> & {
-    resolveAssetUrl?: (url: string) => string;
-  };
-  const resolveUrl =
-    portfolio.resolveAssetUrl || ((url: string) => url);
+  const portfolio = usePortfolio();
+  const resolveUrl = portfolio.resolveAssetUrl;
   const projects = portfolio.data.projects || [];
-  const [activeTag, setActiveTag] = useState<string>('All');
+
+  const projectsMeta = portfolio.data.sections?.projects;
+  const ALL_TAG_KEY = '__all__';
+  const [activeTagKey, setActiveTagKey] = useState<string>(ALL_TAG_KEY);
 
   const tagPills = useMemo(() => {
     const counts: Record<string, number> = {};
+    const labelMap = new Map<string, string>(); // normalizedKey -> firstSeenLabel
+
     projects.forEach((project) => {
+      const uniqueTags = new Set<string>();
       (project.tags || []).forEach((tag) => {
-        counts[tag] = (counts[tag] || 0) + 1;
+        if (typeof tag !== 'string') return;
+        const trimmed = tag.trim();
+        if (!trimmed) return;
+        uniqueTags.add(trimmed);
+      });
+      uniqueTags.forEach((tag) => {
+        const normalized = tag.toLowerCase();
+        if (!labelMap.has(normalized)) labelMap.set(normalized, tag);
+        counts[normalized] = (counts[normalized] || 0) + 1;
       });
     });
 
-    const uniqueTags = Object.keys(counts);
     return [
-      { label: 'All', count: projects.length },
-      ...uniqueTags.map((tag) => ({ label: tag, count: counts[tag] })),
+      { key: ALL_TAG_KEY, label: projectsMeta?.allTagLabel || 'All', count: projects.length },
+      ...Array.from(labelMap.entries()).map(([key, label]) => ({ key, label, count: counts[key] })),
     ];
-  }, [projects]);
+  }, [projects, projectsMeta?.allTagLabel]);
 
   const filteredProjects = useMemo(() => {
-    if (activeTag === 'All') return projects;
+    if (activeTagKey === ALL_TAG_KEY) return projects;
     return projects.filter((project) =>
       (project.tags || []).some(
-        (tag) => tag.toLowerCase() === activeTag.toLowerCase()
+        (tag) => typeof tag === 'string' && tag.trim().toLowerCase() === activeTagKey
       )
     );
-  }, [projects, activeTag]);
+  }, [projects, activeTagKey]);
 
   const handleDemoClick = (demo: string) => {
     if (!demo) return;
@@ -236,27 +271,26 @@ const Projects: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-        <div>
-          <p className="font-mono text-xs text-[#7a8296] mb-2">
-            03 / Selected work
+      <div className="flex flex-col gap-6 mb-10">
+        <div className="flex flex-col gap-2">
+          <p className="font-mono text-xs text-[#7a8296]">
+            {projectsMeta?.eyebrow || '03 / Selected work'}
           </p>
-          <h2 className="text-2xl sm:text-3xl font-medium tracking-[-0.02em] text-[#eef0f5] mb-2">
-            Featured projects
+          <h2 className="text-2xl sm:text-3xl font-medium tracking-[-0.02em] text-[#eef0f5]">
+            {projectsMeta?.title || 'Featured projects'}
           </h2>
           <p className="text-sm sm:text-base text-[#a3a9b8] max-w-xl">
-            Production tools, machine learning applications, and workflow automation systems.
+            {projectsMeta?.description || 'Production tools, machine learning applications, and workflow automation systems.'}
           </p>
         </div>
 
-        {/* Interactive Tag Filter Pills */}
         <div className="flex flex-wrap gap-2">
           {tagPills.map((pill) => {
-            const isActive = activeTag === pill.label;
+            const isActive = activeTagKey === pill.key;
             return (
               <button
-                key={pill.label}
-                onClick={() => setActiveTag(pill.label)}
+                key={pill.key}
+                onClick={() => setActiveTagKey(pill.key)}
                 className={`h-9 px-3.5 rounded-[8px] text-sm font-medium transition-colors duration-150 ease-[cubic-bezier(0.22,1,0.36,1)] flex items-center gap-2 border ${
                   isActive
                     ? 'bg-[#1a1e28]/70 backdrop-blur-md text-[#eef0f5] border-white/[0.16] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]'
@@ -273,21 +307,23 @@ const Projects: React.FC = () => {
         </div>
       </div>
 
-      {/* Bento Project Cards */}
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {filteredProjects.map((project, index) => {
           const globalIndex = projects.indexOf(project);
           const prjNum = String(
             (globalIndex >= 0 ? globalIndex : index) + 1
           ).padStart(2, '0');
+          const attachments = Array.isArray(project.attachments) 
+            ? project.attachments.filter((a) => a && typeof a.url === 'string' && a.url.trim().length > 0) 
+            : [];
 
           return (
             <div
               key={project.id || index}
+              data-testid="project-card"
               className="flex flex-col justify-between bg-[#11141c]/75 backdrop-blur-xl rounded-[14px] overflow-hidden border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:border-white/[0.18] transition-colors duration-150 ease-[cubic-bezier(0.22,1,0.36,1)]"
             >
               <div>
-                {/* Image Container */}
                 <div className="relative h-48 overflow-hidden bg-[#07080d] border-b border-white/[0.10]">
                   <img
                     src={resolveUrl(project.image)}
@@ -297,38 +333,47 @@ const Projects: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#11141c] via-transparent to-transparent opacity-60" />
                 </div>
 
-                {/* Card Body */}
-                <div className="p-5 pb-4">
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="font-mono tabular-nums text-xs text-[#7a8296]">
-                      PRJ-{prjNum}
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-medium text-[#eef0f5] mb-2 leading-snug">
+                <div className="p-5 pb-4 flex flex-col gap-3" data-testid="project-card-body">
+                  <span className="font-mono tabular-nums text-xs text-[#7a8296]">
+                    PRJ-{prjNum}
+                  </span>
+                  <h3 className="text-lg font-medium text-[#eef0f5] leading-snug" data-testid="project-card-title">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-[#a3a9b8] leading-relaxed mb-4">
+                  <p className="text-sm text-[#a3a9b8] leading-relaxed" data-testid="project-card-description">
                     {project.description}
                   </p>
-
-                  {/* Tag Badges */}
-                  <div className="flex flex-wrap gap-1.5 mb-2">
+                  <div className="flex flex-wrap gap-1.5" data-testid="project-card-tags">
                     {(project.tags || []).map((tag, tagIndex) => (
                       <button
                         type="button"
                         key={tagIndex}
-                        onClick={() => setActiveTag(tag)}
+                        onClick={() => setActiveTagKey(tag.trim().toLowerCase())}
                         className="px-2.5 py-1 rounded-[6px] text-xs font-medium bg-[#1a1e28]/70 backdrop-blur-md text-[#a3a9b8] border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:text-[#eef0f5] transition-colors duration-150"
                       >
                         {tag}
                       </button>
                     ))}
                   </div>
+                  {attachments.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-1">
+                      {attachments.map((att) => (
+                        <a
+                          key={att.id}
+                          href={resolveUrl(att.url)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          download={att.fileName || undefined}
+                          className="px-2 py-1 rounded-[6px] text-[10px] font-mono bg-[#1a1e28] text-[#a3a9b8] hover:text-[#eef0f5] border border-white/[0.10]"
+                        >
+                          {att.label || att.fileName || 'Attachment'}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
 
-              {/* Bottom-aligned Action Buttons */}
               <div className="px-5 py-3.5 border-t border-white/[0.10] flex items-center gap-2">
                 {project.demo && (
                   <button
@@ -336,10 +381,9 @@ const Projects: React.FC = () => {
                     className="flex-1 h-9 px-3 rounded-[8px] text-xs font-medium bg-[#eef0f5] text-[#0b0d14] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:bg-white inline-flex items-center justify-center gap-1.5 transition-colors duration-150"
                   >
                     <ExternalLink className="w-3.5 h-3.5" strokeWidth={1.5} />
-                    <span>Demo</span>
+                    <span>{projectsMeta?.demoLabel || 'Demo'}</span>
                   </button>
                 )}
-
                 {project.github && (
                   <a
                     href={project.github}
@@ -348,17 +392,16 @@ const Projects: React.FC = () => {
                     className="flex-1 h-9 px-3 rounded-[8px] text-xs font-medium bg-[#1a1e28]/70 backdrop-blur-md text-[#eef0f5] border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:bg-[#222734]/80 inline-flex items-center justify-center gap-1.5 transition-colors duration-150"
                   >
                     <Github className="w-3.5 h-3.5 text-[#7a8296]" strokeWidth={1.5} />
-                    <span>Code</span>
+                    <span>{projectsMeta?.codeLabel || 'Code'}</span>
                   </a>
                 )}
-
                 {project.blog && (
                   <Link
                     to={project.blog}
                     className="flex-1 h-9 px-3 rounded-[8px] text-xs font-medium bg-[#1a1e28]/70 backdrop-blur-md text-[#eef0f5] border border-white/[0.10] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] hover:bg-[#222734]/80 inline-flex items-center justify-center gap-1.5 transition-colors duration-150"
                   >
                     <BookOpen className="w-3.5 h-3.5 text-[#7a8296]" strokeWidth={1.5} />
-                    <span>Blog</span>
+                    <span>{projectsMeta?.blogLabel || 'Blog'}</span>
                   </Link>
                 )}
               </div>
