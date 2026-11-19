@@ -173,4 +173,3 @@ export const VaultTab: React.FC<VaultTabProps> = ({
     </div>
   );
 };
-
