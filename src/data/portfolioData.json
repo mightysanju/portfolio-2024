@@ -19,7 +19,13 @@
     "shippedSystemsTitle": "SHIPPED_SYSTEMS",
     "shippedSystemsFooterStack": "STACK: PYTHON · SQL · TENSORFLOW",
     "shippedSystemsFooterStatus": "VERIFIED",
-    "shippedSystemProjectIds": ["proj-1", "proj-2", "proj-3", "proj-4"]
+    "shippedSystemProjectIds": [
+      "proj-1",
+      "proj-2",
+      "proj-3",
+      "proj-4",
+      "proj-1794878780592"
+    ]
   },
   "testimonials": [
     {
@@ -162,8 +168,7 @@
       ],
       "demo": "/blog/LinkedInnAppDemo",
       "github": "https://github.com/mightysanju/Linked-Inn-Be-an-Early-Applicant.git",
-      "blog": "/blog/Linkedinn",
-      "attachments": []
+      "blog": "/blog/Linkedinn"
     },
     {
       "id": "proj-2",
@@ -177,8 +182,7 @@
       ],
       "demo": "",
       "github": "https://github.com/mightysanju/DDO-Tool-Code-for-Public",
-      "blog": "/blog/DDO",
-      "attachments": []
+      "blog": "/blog/DDO"
     },
     {
       "id": "proj-3",
@@ -192,8 +196,7 @@
       ],
       "demo": "",
       "github": "",
-      "blog": "/blog/Networkapp",
-      "attachments": []
+      "blog": "/blog/Networkapp"
     },
     {
       "id": "proj-4",
@@ -207,8 +210,7 @@
       ],
       "demo": "/ats",
       "github": "https://github.com/mightysanju",
-      "blog": "/blog/ats-score-checker",
-      "attachments": []
+      "blog": "/blog/ats-score-checker"
     }
   ],
   "certifications": [
@@ -611,18 +613,53 @@
       "logoImage": "/favicon.png",
       "adminLabel": "Admin",
       "navItems": [
-        { "label": "Home", "href": "#home" },
-        { "label": "Skills", "href": "#skills" },
-        { "label": "Certifications", "href": "#certifications" },
-        { "label": "Projects", "href": "#projects" },
-        { "label": "Contact", "href": "#contact" }
+        {
+          "label": "Home",
+          "href": "#home"
+        },
+        {
+          "label": "Skills",
+          "href": "#skills"
+        },
+        {
+          "label": "Certifications",
+          "href": "#certifications"
+        },
+        {
+          "label": "Projects",
+          "href": "#projects"
+        },
+        {
+          "label": "Contact",
+          "href": "#contact"
+        }
       ],
       "socialLinks": [
-        { "id": "github", "label": "GitHub", "href": "https://github.com/mightysanju" },
-        { "id": "linkedin", "label": "LinkedIn", "href": "https://linkedin.com/in/mightysanju" },
-        { "id": "youtube", "label": "YouTube", "href": "https://youtube.com/@sanjukumar" },
-        { "id": "instagram", "label": "Instagram", "href": "https://instagram.com/mightysanju3" },
-        { "id": "email", "label": "Email", "href": "mailto:sanju.k3r+portfolio@gmail.com" }
+        {
+          "id": "github",
+          "label": "GitHub",
+          "href": "https://github.com/mightysanju"
+        },
+        {
+          "id": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://linkedin.com/in/mightysanju"
+        },
+        {
+          "id": "youtube",
+          "label": "YouTube",
+          "href": "https://youtube.com/@sanjukumar"
+        },
+        {
+          "id": "instagram",
+          "label": "Instagram",
+          "href": "https://instagram.com/mightysanju3"
+        },
+        {
+          "id": "email",
+          "label": "Email",
+          "href": "mailto:sanju.k3r+portfolio@gmail.com"
+        }
       ]
     },
     "footer": {
@@ -634,9 +671,21 @@
       "attributionUrl": "",
       "adminLabel": "Admin",
       "socialLinks": [
-        { "id": "github", "label": "GitHub", "href": "https://github.com/mightysanju" },
-        { "id": "linkedin", "label": "LinkedIn", "href": "https://linkedin.com/in/mightysanju" },
-        { "id": "email", "label": "Email", "href": "mailto:sanju.k3r+portfolio@gmail.com" }
+        {
+          "id": "github",
+          "label": "GitHub",
+          "href": "https://github.com/mightysanju"
+        },
+        {
+          "id": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://linkedin.com/in/mightysanju"
+        },
+        {
+          "id": "email",
+          "label": "Email",
+          "href": "mailto:sanju.k3r+portfolio@gmail.com"
+        }
       ]
     }
   },
@@ -932,7 +981,11 @@
       "title": "Network App",
       "date": "April 15, 2023",
       "readTime": "10 min read",
-      "tags": ["Automation", "Advanced SQL", "Python"],
+      "tags": [
+        "Automation",
+        "Advanced SQL",
+        "Python"
+      ],
       "image": "https://i.imgur.com/VxGPpEB.png",
       "githubLink": "",
       "demoLink": "",
@@ -964,8 +1017,16 @@
       "chartSpeedupLabel": "SPEEDUP: 17.72x",
       "chartReductionLabel": "AHT REDUCTION: 94.36%",
       "chartData": [
-        { "name": "Avg handling time (min)", "Manual": 4.75, "NetworkApp": 0.27 },
-        { "name": "Throughput multiplier (x)", "Manual": 1.0, "NetworkApp": 17.72 }
+        {
+          "name": "Avg handling time (min)",
+          "Manual": 4.75,
+          "NetworkApp": 0.27
+        },
+        {
+          "name": "Throughput multiplier (x)",
+          "Manual": 1,
+          "NetworkApp": 17.72
+        }
       ],
       "pilotTableTitle": "Pilot study results",
       "pilotHeaders": [
@@ -979,8 +1040,26 @@
         "AHT Saved"
       ],
       "pilotRows": [
-        ["Duration", "Minutes", "708.30", "4.75", "39.97", "0.27", "17.72x", "94.36%"],
-        ["Duration", "Seconds", "42,498.0", "285.22", "2,398.2", "16.10", "17.72x", "94.36%"]
+        [
+          "Duration",
+          "Minutes",
+          "708.30",
+          "4.75",
+          "39.97",
+          "0.27",
+          "17.72x",
+          "94.36%"
+        ],
+        [
+          "Duration",
+          "Seconds",
+          "42,498.0",
+          "285.22",
+          "2,398.2",
+          "16.10",
+          "17.72x",
+          "94.36%"
+        ]
       ],
       "roadmapTitle": "Roadmap",
       "roadmapItems": [
@@ -995,7 +1074,12 @@
       "title": "Defect Dispute Override Tool",
       "date": "March 10, 2023",
       "readTime": "8 min read",
-      "tags": ["Data Science", "Python", "SQL", "Analytics"],
+      "tags": [
+        "Data Science",
+        "Python",
+        "SQL",
+        "Analytics"
+      ],
       "image": "https://i.imgur.com/pqH8SRU.png",
       "githubLink": "https://github.com/mightysanju/DDO-Tool-Code-for-Public",
       "demoLink": "",
@@ -1068,7 +1152,11 @@
       "title": "Building an AI-Powered ATS Score Checker",
       "date": "March 20, 2024",
       "readTime": "15 min read",
-      "tags": ["Machine Learning", "NLP", "React"],
+      "tags": [
+        "Machine Learning",
+        "NLP",
+        "React"
+      ],
       "image": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80",
       "demoLink": "/ats",
       "githubLink": "https://github.com/mightysanju",
@@ -1108,7 +1196,12 @@
       "title": "LinkedIn Early Applicant Automation",
       "date": "August 31, 2025",
       "readTime": "6 min read",
-      "tags": ["Automation", "Web Scraping", "Python", "SMTP"],
+      "tags": [
+        "Automation",
+        "Web Scraping",
+        "Python",
+        "SMTP"
+      ],
       "image": "https://i.imgur.com/hNa0ROb.jpeg",
       "demoLink": "/blog/LinkedInnAppDemo",
       "githubLink": "https://github.com/mightysanju/Linked-Inn-Be-an-Early-Applicant.git",
@@ -1119,24 +1212,72 @@
       "supportDescription": "Subscribe to support ongoing maintenance and hosted alert infrastructure.",
       "chartTitle": "Shortlisting rate — baseline vs. automated alerts",
       "beforeData": [
-        { "label": "W1", "value": 6 },
-        { "label": "W2", "value": 8 },
-        { "label": "W3", "value": 7 },
-        { "label": "W4", "value": 9 },
-        { "label": "W5", "value": 8 },
-        { "label": "W6", "value": 10 },
-        { "label": "W7", "value": 9 },
-        { "label": "W8", "value": 11 }
+        {
+          "label": "W1",
+          "value": 6
+        },
+        {
+          "label": "W2",
+          "value": 8
+        },
+        {
+          "label": "W3",
+          "value": 7
+        },
+        {
+          "label": "W4",
+          "value": 9
+        },
+        {
+          "label": "W5",
+          "value": 8
+        },
+        {
+          "label": "W6",
+          "value": 10
+        },
+        {
+          "label": "W7",
+          "value": 9
+        },
+        {
+          "label": "W8",
+          "value": 11
+        }
       ],
       "afterData": [
-        { "label": "W1", "value": 6 },
-        { "label": "W2", "value": 10 },
-        { "label": "W3", "value": 12 },
-        { "label": "W4", "value": 18 },
-        { "label": "W5", "value": 24 },
-        { "label": "W6", "value": 30 },
-        { "label": "W7", "value": 36 },
-        { "label": "W8", "value": 42 }
+        {
+          "label": "W1",
+          "value": 6
+        },
+        {
+          "label": "W2",
+          "value": 10
+        },
+        {
+          "label": "W3",
+          "value": 12
+        },
+        {
+          "label": "W4",
+          "value": 18
+        },
+        {
+          "label": "W5",
+          "value": 24
+        },
+        {
+          "label": "W6",
+          "value": 30
+        },
+        {
+          "label": "W7",
+          "value": 36
+        },
+        {
+          "label": "W8",
+          "value": 42
+        }
       ],
       "sections": [
         {
