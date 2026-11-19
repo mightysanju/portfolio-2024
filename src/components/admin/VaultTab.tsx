@@ -58,7 +58,7 @@ export const VaultTab: React.FC<VaultTabProps> = ({
         throw new Error('Vault verification failed after encryption');
       }
       onTokenSaved(clean);
-      setTokenInput('');
+      // setTokenInput(''); // Do not clear the input after save
       refresh();
       setMsg({ ok: true, text: 'Token encrypted (AES-GCM, PBKDF2) and stored in this browser.' });
     } catch (e) {
