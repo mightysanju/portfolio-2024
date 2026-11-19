@@ -59,7 +59,10 @@ export const VaultTab: React.FC<VaultTabProps> = ({
         throw new Error('Vault verification failed after encryption');
       }
       onTokenSaved(clean);
-      setTokenInput('');
+      // Remove setTokenInput('') here to persist the value in the input field if desired, 
+      // or set it to the masked version/empty as per your preference.
+      // To keep it shown after save, comment out the line below.
+      // setTokenInput(''); 
       refresh();
       setMsg({ ok: true, text: 'Token encrypted and stored.' });
     } catch (e) {
