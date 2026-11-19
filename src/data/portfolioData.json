@@ -168,7 +168,8 @@
       ],
       "demo": "/blog/LinkedInnAppDemo",
       "github": "https://github.com/mightysanju/Linked-Inn-Be-an-Early-Applicant.git",
-      "blog": "/blog/Linkedinn"
+      "blog": "/blog/Linkedinn",
+      "attachments": []
     },
     {
       "id": "proj-2",
@@ -182,7 +183,8 @@
       ],
       "demo": "",
       "github": "https://github.com/mightysanju/DDO-Tool-Code-for-Public",
-      "blog": "/blog/DDO"
+      "blog": "/blog/DDO",
+      "attachments": []
     },
     {
       "id": "proj-3",
@@ -196,7 +198,8 @@
       ],
       "demo": "",
       "github": "",
-      "blog": "/blog/Networkapp"
+      "blog": "/blog/Networkapp",
+      "attachments": []
     },
     {
       "id": "proj-4",
@@ -210,7 +213,8 @@
       ],
       "demo": "/ats",
       "github": "https://github.com/mightysanju",
-      "blog": "/blog/ats-score-checker"
+      "blog": "/blog/ats-score-checker",
+      "attachments": []
     }
   ],
   "certifications": [
